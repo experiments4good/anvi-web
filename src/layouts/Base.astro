@@ -1,0 +1,59 @@
+---
+import '../styles/fonts.css';
+import '../styles/site.css';
+import Mark from '../components/Mark.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** The index carries the mark itself and has no top bar. */
+  bar?: boolean;
+}
+
+const { title, description, bar = true } = Astro.props;
+const origin = Astro.site?.origin ?? Astro.url.origin;
+const canonical = new URL(Astro.url.pathname, origin).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anvi" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="preload" href="/fonts/PlayfairDisplay-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    {bar && (
+      <div class="bar">
+        <a href="/" aria-label="Anvi home">
+          <Mark />
+          <span>Anvi</span>
+        </a>
+      </div>
+    )}
+    <main>
+      <slot />
+    </main>
+    <footer class="foot">
+      <div class="foot-inner">
+        <nav aria-label="Legal">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="mailto:support@getanvi.app">support@getanvi.app</a>
+        </nav>
+        <p>&copy; 2026 Utopian Visions, LLC</p>
+      </div>
+    </footer>
+  </body>
+</html>

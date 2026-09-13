@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // The Worker's name in the account, and the workers.dev hostname until the
+  // custom domain is attached.
+  "name": "anvi-web",
+
+  // Pinned to a date the adapter is known to build and run against, rather
+  // than to today's date, so a runtime behaviour change is a decision.
+  "compatibility_date": "2026-08-31",
+
+  "observability": { "enabled": true },
+
+  // A Custom Domain makes the Worker the origin for getanvi.app. Attaching it
+  // replaced the registrar parking record and issued the certificate the
+  // domain did not have before (Sept 13, 2026). The workers.dev hostname
+  // still serves the same site.
+  "routes": [{ "pattern": "getanvi.app", "custom_domain": true }],
+
+  // "main" and "assets" are deliberately absent. The Cloudflare Vite plugin
+  // writes dist/server/wrangler.json at build time with the entry point and
+  // the client directory filled in, and that generated file is what deploys.
+}

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
+
+const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
+---
+
+<Base title="Anvi" description={description} bar={false}>
+  <section class="hero">
+    <Mark />
+    <h1>Anvi</h1>
+    <p class="tagline">Your Ayurvedic wellness companion</p>
+    <p class="about">Find your dosha, then get daily guidance shaped to your constitution and the season.</p>
+    <p class="soon">Coming to the App Store</p>
+  </section>
+</Base>

@@ -1,0 +1,39 @@
+/* Self hosted type, served from this origin. No webfont CDN: a privacy
+ * policy should not hand a third party a log of who read it.
+ *
+ * The same four cuts the app ships: Playfair Display 600 for headings and
+ * the wordmark, Lato 400/500/600 for everything else. Subset to Latin and
+ * packed as woff2 from the OFL files in the app repo (assets/fonts); the
+ * license texts are beside them. Adding a weight means adding a file. */
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/PlayfairDisplay-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Lato-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Lato-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Lato-SemiBold.woff2') format('woff2');
+}

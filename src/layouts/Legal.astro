@@ -1,0 +1,25 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  updated: Date;
+}
+
+const { title, description, updated } = Astro.props;
+const dateText = updated.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const dateAttr = updated.toISOString().slice(0, 10);
+---
+
+<Base title={`${title} | Anvi`} description={description}>
+  <article class="legal">
+    <header>
+      <h1>{title}</h1>
+      <p class="updated">Last updated <time datetime={dateAttr}>{dateText}</time></p>
+    </header>
+    <div class="doc">
+      <slot />
+    </div>
+  </article>
+</Base>
