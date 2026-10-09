@@ -4,8 +4,10 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://getanvi.app',
 
-  // Three flat pages and nothing else. No page opts into on-demand rendering,
-  // so the Worker serves static files and has no server surface.
+  // Static pages only: the holding page, the privacy policy and terms, the
+  // dosha quiz (which runs entirely in the browser) and the seven type
+  // guides under /dosha/. No page opts into on-demand rendering, so the
+  // Worker serves static files and has no server surface.
   output: 'static',
 
   // No sessions, so no KV namespace for the adapter to provision.

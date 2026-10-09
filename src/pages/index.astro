@@ -1,6 +1,18 @@
 ---
+import '../styles/guides.css';
 import Base from '../layouts/Base.astro';
 import Mark from '../components/Mark.astro';
+
+// The seven type guides, in the order the quiz names the types.
+const guides = [
+  ['vata', 'Vata'],
+  ['pitta', 'Pitta'],
+  ['kapha', 'Kapha'],
+  ['vata-pitta', 'Vata-Pitta'],
+  ['vata-kapha', 'Vata-Kapha'],
+  ['pitta-kapha', 'Pitta-Kapha'],
+  ['tridoshic', 'Tridoshic'],
+];
 
 const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
 ---
@@ -12,5 +24,12 @@ const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha an
     <p class="tagline">Your Ayurvedic wellness companion</p>
     <p class="about">Find your dosha, then get daily guidance shaped to your constitution and the season.</p>
     <p class="soon">Coming to the App Store</p>
+    <a class="btn btn-primary home-quiz" href="/quiz/">Take the free dosha quiz</a>
+    <nav class="home-guides" aria-label="Type guides">
+      <p>Type guides</p>
+      <ul>
+        {guides.map(([slug, name]) => <li><a href={`/dosha/${slug}/`}>{name}</a></li>)}
+      </ul>
+    </nav>
   </section>
 </Base>

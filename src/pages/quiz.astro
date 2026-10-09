@@ -1,0 +1,163 @@
+---
+import '../styles/guides.css';
+import Base from '../layouts/Base.astro';
+
+const title = 'Free Dosha Quiz | Anvi';
+const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Your answers stay in your browser.";
+---
+
+<Base title={title} description={description}>
+  <section class="quiz">
+    <!-- Intro: the app's own words (app/quiz-intro.tsx). -->
+    <div id="intro">
+      <h1>Discover your dosha</h1>
+      <p class="lead">Answer 20 questions to find yours.</p>
+      <button class="btn btn-primary" id="start" type="button">Start quiz</button>
+      <p class="disclaimer">This quiz is for educational purposes only and does not constitute medical advice.</p>
+      <noscript><p class="lead">The quiz runs in your browser and needs JavaScript turned on.</p></noscript>
+    </div>
+
+    <!-- One question at a time, as in the app. -->
+    <div id="ask" hidden>
+      <div class="pips" id="pips" role="img"></div>
+      <h1 class="question" id="question" tabindex="-1"></h1>
+      <p class="hint" id="hint"></p>
+      <div class="options" id="options"></div>
+      <button class="back" id="back" type="button">Back</button>
+    </div>
+
+    <!-- The result: the type and the percentages, as the app's Results shows them. -->
+    <div id="result" hidden>
+      <p class="result-label">Your dosha</p>
+      <h1 class="result-name" id="result-name"></h1>
+      <div class="breakdown">
+        <h2>Your constitution breakdown</h2>
+        <div id="rows"></div>
+      </div>
+      <div class="result-actions">
+        <a class="btn btn-primary" id="guide-link" href="/">Read your guide</a>
+        <a class="btn btn-outlined" href="https://apps.apple.com/app/id6811624799">Get Anvi on the App Store</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // The whole quiz runs here. No network calls, no cookies, no storage: the
+  // answers live in this page's memory and are gone when it closes.
+  import { QUIZ } from '../lib/quiz';
+  import { breakdown, guidePath, resultLabel, scoresFor } from '../lib/scoring';
+
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const intro = $('intro');
+  const ask = $('ask');
+  const result = $('result');
+
+  const COLORS: Record<string, string> = { Vata: 'var(--vata)', Pitta: 'var(--pitta)', Kapha: 'var(--kapha)' };
+
+  /** Answer indexes, one per question; -1 while unanswered. */
+  let answers: number[] = [];
+  /** Each question's display order, shuffled once per run as the app does per screen. */
+  let orders: number[][] = [];
+  let current = 0;
+
+  function shuffled(): number[] {
+    const a = [0, 1, 2];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j]!, a[i]!];
+    }
+    return a;
+  }
+
+  function show(view: HTMLElement) {
+    for (const v of [intro, ask, result]) v.hidden = v !== view;
+    window.scrollTo(0, 0);
+  }
+
+  function renderQuestion() {
+    const q = QUIZ[current]!;
+    const pips = $('pips');
+    pips.setAttribute('aria-label', `Question ${current + 1} of ${QUIZ.length}`);
+    pips.replaceChildren(
+      ...QUIZ.map((_, i) => {
+        const p = document.createElement('span');
+        p.className = i === current ? 'pip on' : 'pip';
+        return p;
+      }),
+    );
+    $('question').textContent = q.question;
+    $('hint').textContent = q.hint;
+    const options = $('options');
+    options.replaceChildren(
+      ...orders[current]!.map((i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'option';
+        b.textContent = q.answers[i]!;
+        b.setAttribute('aria-pressed', String(answers[current] === i));
+        b.addEventListener('click', () => choose(i));
+        return b;
+      }),
+    );
+    show(ask);
+    $('question').focus({ preventScroll: true });
+  }
+
+  function choose(i: number) {
+    answers[current] = i;
+    if (current < QUIZ.length - 1) {
+      current++;
+      renderQuestion();
+    } else {
+      renderResult();
+    }
+  }
+
+  function renderResult() {
+    const scores = scoresFor(answers);
+    const label = resultLabel(scores);
+    $('result-name').textContent = label;
+    $('rows').replaceChildren(
+      ...breakdown(scores).map(({ dosha, percent }) => {
+        const row = document.createElement('div');
+        row.className = 'row';
+        const head = document.createElement('div');
+        head.className = 'row-head';
+        const name = document.createElement('span');
+        name.textContent = dosha;
+        const pct = document.createElement('span');
+        pct.textContent = `${percent}%`;
+        head.append(name, pct);
+        const track = document.createElement('div');
+        track.className = 'track';
+        const fill = document.createElement('div');
+        fill.className = 'fill';
+        fill.style.width = `${percent}%`;
+        fill.style.background = COLORS[dosha]!;
+        track.append(fill);
+        row.append(head, track);
+        return row;
+      }),
+    );
+    const link = $<HTMLAnchorElement>('guide-link');
+    link.href = guidePath(label);
+    link.textContent = `Read the ${label} guide`;
+    show(result);
+  }
+
+  $('start').addEventListener('click', () => {
+    answers = QUIZ.map(() => -1);
+    orders = QUIZ.map(() => shuffled());
+    current = 0;
+    renderQuestion();
+  });
+
+  $('back').addEventListener('click', () => {
+    if (current === 0) show(intro);
+    else {
+      current--;
+      renderQuestion();
+    }
+  });
+</script>

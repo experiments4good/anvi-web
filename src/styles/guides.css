@@ -1,0 +1,354 @@
+/* The quiz, the type guides and the index links. Kept apart from site.css so
+ * the privacy policy and terms keep their published stylesheet. The colors,
+ * faces and sizes are the app's tokens (src/theme/tokens.ts), declared on
+ * :root in site.css; the two below are the ones site.css does not carry. */
+
+:root {
+  --vata: #7B6BA8;
+  --pitta: #C4956A;
+  --kapha: #1D5F5F;
+  --vata-soft: #F2F0F6;
+  --on-primary: #FFFFFF;
+  /* Inputs and buttons. */
+  --radius-control: 12px;
+}
+
+/* Buttons, as the app draws them: primary filled, outlined second. */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 20px;
+  border-radius: var(--radius-control);
+  border: 1.5px solid var(--primary);
+  font: 600 1.0625rem / 1.35 var(--sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn-outlined {
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.btn:hover {
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+
+/* Index: the quiz button and the guide links, under the existing hero. */
+.hero .home-quiz {
+  margin: 32px 0 0;
+  width: 100%;
+  max-width: 360px;
+}
+
+.hero .home-guides {
+  margin: 28px 0 0;
+}
+
+.hero .home-guides p {
+  font: var(--label);
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.hero .home-guides ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero .home-guides a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font: var(--small);
+  text-decoration: none;
+}
+
+/* Guides. One measure, the legal pages' leading, headings in Playfair. */
+.guide {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 24px var(--page) 0;
+}
+
+.guide h1 {
+  font: var(--headline);
+  margin: 0 0 20px;
+}
+
+.guide .doc h2 {
+  font: var(--title);
+  margin: 36px 0 12px;
+}
+
+.guide .doc p,
+.guide .doc li {
+  margin: 0 0 14px;
+}
+
+.guide .doc ul {
+  padding-left: 1.25em;
+  margin: 0 0 14px;
+}
+
+.guide .doc li {
+  margin-bottom: 8px;
+}
+
+.guide .doc strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.guide .doc em.now {
+  display: block;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: var(--pitta-soft);
+  border-radius: var(--radius);
+  font-style: normal;
+  color: var(--ink);
+}
+
+.guide .doc em.now[hidden],
+.guide .doc .season-routine[hidden] {
+  display: none;
+}
+
+/* Tables scroll sideways on a narrow phone rather than squeeze. */
+.guide .doc table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  width: 100%;
+  font: var(--small);
+  margin: 0 0 20px;
+}
+
+.guide .doc th,
+.guide .doc td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  min-width: 7em;
+}
+
+.guide .doc th {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.guide .season-label {
+  font: var(--label);
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+
+/* The end of every guide: quiz, App Store, wellness line, sources. */
+.guide-end {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+}
+
+.guide-end .wellness {
+  font: var(--small);
+  color: var(--muted);
+  margin: 16px 0 0;
+}
+
+.sources {
+  margin-top: 20px;
+}
+
+.sources h2 {
+  font: var(--title);
+  margin: 0 0 10px;
+}
+
+.sources ul {
+  padding-left: 1.25em;
+  margin: 0;
+  font: var(--small);
+}
+
+.sources li {
+  margin-bottom: 8px;
+}
+
+/* The quiz. */
+.quiz {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 24px var(--page) 0;
+}
+
+.quiz h1 {
+  font: var(--headline);
+  margin: 0 0 16px;
+}
+
+.quiz .lead {
+  margin: 0 0 24px;
+}
+
+.quiz .disclaimer {
+  font: var(--label);
+  color: var(--muted);
+  margin: 16px 0 0;
+}
+
+.quiz [hidden] {
+  display: none !important;
+}
+
+.quiz .pips {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 8px 0 24px;
+  flex-wrap: wrap;
+}
+
+.quiz .pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.quiz .pip.on {
+  background: var(--secondary);
+  width: 20px;
+  border-radius: 999px;
+}
+
+.quiz .question {
+  font: var(--headline);
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.quiz .hint {
+  font: var(--small);
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.quiz .options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz .option {
+  width: 100%;
+  text-align: left;
+  padding: 16px 18px;
+  border-radius: var(--radius-control);
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  font: var(--body-text);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.quiz .option[aria-pressed='true'] {
+  border-color: var(--primary);
+  background: var(--kapha-soft);
+}
+
+.quiz .back {
+  margin-top: 20px;
+  background: none;
+  border: 0;
+  padding: 10px 0;
+  font: 600 1rem / 1.3 var(--sans);
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.quiz .result-label {
+  font: var(--label);
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.quiz .result-name {
+  font: var(--display);
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+
+.quiz .breakdown {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(26, 44, 44, 0.06);
+  margin: 0 0 24px;
+}
+
+.quiz .breakdown h2 {
+  font: var(--label);
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.quiz .row {
+  margin-bottom: 14px;
+}
+
+.quiz .row:last-child {
+  margin-bottom: 0;
+}
+
+.quiz .row-head {
+  display: flex;
+  justify-content: space-between;
+  font: var(--small);
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.quiz .row-head span:last-child {
+  color: var(--muted);
+}
+
+.quiz .track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.quiz .fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.quiz .result-actions {
+  display: grid;
+  gap: 12px;
+}

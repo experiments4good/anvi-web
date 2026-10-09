@@ -1,0 +1,71 @@
+---
+import '../styles/guides.css';
+import Base from './Base.astro';
+import sources from '../lib/sources.json';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  /** The type named in the quiz button: "Pitta-Kapha". */
+  type: string;
+  /** Source keys in the order the approved text lists them. */
+  sourceKeys: string[];
+}
+
+const { title, description, heading, type, sourceKeys } = Astro.props;
+const list = sourceKeys.map((k) => {
+  const entries = (sources as Record<string, { name: string; url: string }[]>)[k];
+  if (!entries) throw new Error(`Unknown source key ${k}`);
+  return { key: k, entries };
+});
+---
+
+<Base title={title} description={description}>
+  <article class="guide">
+    <h1>{heading}</h1>
+    <div class="doc">
+      <slot />
+    </div>
+
+    <div class="guide-end">
+      <a class="btn btn-primary" href="/quiz/">Not sure {type} is you? Take the free dosha quiz: 20 questions, no sign-up.</a>
+      <a class="btn btn-outlined" href="https://apps.apple.com/app/id6811624799">Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.</a>
+      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+    </div>
+
+    <section class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources</h2>
+      <ul>
+        {
+          list.map(({ entries }) => (
+            <li>
+              {entries.map((e, i) => (
+                <>
+                  {i > 0 && '; and '}
+                  <a href={e.url} rel="noopener">{e.name}</a>
+                </>
+              ))}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // The lines that change with the date, from the visitor's own clock, with
+  // the same windows as the app. Nothing is fetched or stored. Without
+  // JavaScript these stay hidden and the full date ranges in the text stand.
+  import { rightNow, seasonForDate, type Pair } from '../lib/windows';
+
+  const today = new Date();
+  for (const el of document.querySelectorAll<HTMLElement>('em.now[data-pair]')) {
+    el.textContent = rightNow(el.dataset.pair as Pair, today);
+    el.hidden = false;
+  }
+  const season = seasonForDate(today);
+  const blocks = document.querySelectorAll<HTMLElement>('.season-routine[data-season]');
+  for (const b of blocks) b.hidden = b.dataset.season !== season;
+</script>

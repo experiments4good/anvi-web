@@ -1,0 +1,18 @@
+---
+import { getCollection, render } from 'astro:content';
+import Guide from '../../layouts/Guide.astro';
+
+// One page per type guide in src/content/guides. Two-dosha results in either
+// order share a guide; public/_redirects sends the reversed address here.
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Guide title={entry.data.title} description={entry.data.description} heading={entry.data.heading} type={entry.data.type} sourceKeys={entry.data.sources}>
+  <Content />
+</Guide>

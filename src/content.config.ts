@@ -11,4 +11,18 @@ const legal = defineCollection({
   }),
 });
 
-export const collections = { legal };
+// The seven type guides, generated word for word from the approved text by
+// scripts/build-guides.py. The page shell is Guide.astro.
+const guides = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/guides' }),
+  schema: z.object({
+    slug: z.string(),
+    type: z.string(),
+    title: z.string(),
+    description: z.string(),
+    heading: z.string(),
+    sources: z.array(z.string()),
+  }),
+});
+
+export const collections = { legal, guides };

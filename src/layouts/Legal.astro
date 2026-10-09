@@ -12,7 +12,7 @@ const dateText = updated.toLocaleDateString('en-US', { year: 'numeric', month: '
 const dateAttr = updated.toISOString().slice(0, 10);
 ---
 
-<Base title={`${title} | Anvi`} description={description}>
+<Base title={`${title} | Anvi`} description={description} appBanner={false}>
   <article class="legal">
     <header>
       <h1>{title}</h1>

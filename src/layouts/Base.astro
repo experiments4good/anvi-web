@@ -8,9 +8,14 @@ interface Props {
   description: string;
   /** The index carries the mark itself and has no top bar. */
   bar?: boolean;
+  /**
+   * Apple's Smart App Banner for the app. Off on the privacy policy and
+   * terms, which are kept exactly as published.
+   */
+  appBanner?: boolean;
 }
 
-const { title, description, bar = true } = Astro.props;
+const { title, description, bar = true, appBanner = true } = Astro.props;
 const origin = Astro.site?.origin ?? Astro.url.origin;
 const canonical = new URL(Astro.url.pathname, origin).href;
 ---
@@ -30,6 +35,7 @@ const canonical = new URL(Astro.url.pathname, origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    {appBanner && <meta name="apple-itunes-app" content="app-id=6811624799" />}
     <link rel="preload" href="/fonts/PlayfairDisplay-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin />
   </head>

@@ -1,0 +1,7 @@
+# Two-dosha results in either order share one guide.
+/dosha/pitta-vata /dosha/vata-pitta/ 301
+/dosha/pitta-vata/ /dosha/vata-pitta/ 301
+/dosha/kapha-vata /dosha/vata-kapha/ 301
+/dosha/kapha-vata/ /dosha/vata-kapha/ 301
+/dosha/kapha-pitta /dosha/pitta-kapha/ 301
+/dosha/kapha-pitta/ /dosha/pitta-kapha/ 301
