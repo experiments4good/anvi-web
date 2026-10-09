@@ -5,3 +5,7 @@
 /dosha/kapha-vata/ /dosha/vata-kapha/ 301
 /dosha/kapha-pitta /dosha/pitta-kapha/ 301
 /dosha/kapha-pitta/ /dosha/pitta-kapha/ 301
+
+# Google Search Console verification: serve the file at its .html address,
+# not the extensionless one the asset handling redirects to.
+/google8436bdfad2414050.html /google8436bdfad2414050 200
