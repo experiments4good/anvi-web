@@ -1,7 +1,8 @@
-/* The quiz, the type guides and the index links. Kept apart from site.css so
- * the privacy policy and terms keep their published stylesheet. The colors,
- * faces and sizes are the app's tokens (src/theme/tokens.ts), declared on
- * :root in site.css; the two below are the ones site.css does not carry. */
+/* The home page, the quiz and the type guides. Kept apart from site.css so
+ * the privacy policy and terms keep their published stylesheet. Colors,
+ * faces and sizes are the app's tokens (src/theme/tokens.ts): the shared ones
+ * are on :root in site.css, the rest are below. Small text uses --body, not
+ * --muted, for contrast. */
 
 :root {
   --vata: #7B6BA8;
@@ -9,11 +10,50 @@
   --kapha: #1D5F5F;
   --vata-soft: #F2F0F6;
   --on-primary: #FFFFFF;
-  /* Inputs and buttons. */
   --radius-control: 12px;
+  --shadow-card: 0 4px 16px rgba(26, 44, 44, 0.06);
 }
 
-/* Buttons, as the app draws them: primary filled, outlined second. */
+/* The glyph: a white disc with the app's card shadow. One gentle settle on
+   load for the page's main glyph, off when the visitor asks for less motion. */
+.glyph-disc {
+  display: inline-block;
+  width: var(--glyph, 96px);
+  height: var(--glyph, 96px);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  flex: none;
+}
+
+.glyph {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.glyph.settle {
+  animation: glyph-settle 900ms cubic-bezier(0.33, 1, 0.68, 1) both;
+  transform-origin: 50% 50%;
+}
+
+@keyframes glyph-settle {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyph.settle {
+    animation: none;
+  }
+}
+
+/* Buttons, as the app draws them. */
 .btn {
   display: flex;
   align-items: center;
@@ -40,57 +80,206 @@
 }
 
 .btn:hover {
-  text-decoration: none;
-  filter: brightness(0.96);
+  filter: brightness(0.95);
 }
 
-/* Index: the quiz button and the guide links, under the existing hero. */
-.hero .home-quiz {
-  margin: 32px 0 0;
-  width: 100%;
-  max-width: 360px;
+/* Apple's badge, unaltered, at Apple's minimum on-screen height or more. */
+.store-badge {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 8px;
 }
 
-.hero .home-guides {
-  margin: 28px 0 0;
+.store-badge img {
+  height: 48px;
+  width: auto;
 }
 
-.hero .home-guides p {
-  font: var(--label);
-  letter-spacing: 0.4px;
-  color: var(--muted);
-  margin: 0 0 8px;
+/* Shared page column. */
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--page);
 }
 
-.hero .home-guides ul {
+/* ---- Home ---- */
+
+.home-hero {
+  padding-top: 48px;
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+.home-hero .glyph-disc {
+  --glyph: 168px;
+}
+
+.home-hero h1 {
+  font: var(--display);
+  letter-spacing: -0.01em;
+}
+
+.home-hero .tagline {
+  font: var(--title);
+  color: var(--primary);
+  margin: 8px 0 0;
+}
+
+.home-hero .about {
+  margin: 16px 0 0;
+  max-width: 40ch;
+}
+
+.home-hero .store-badge {
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .home-hero {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 36px;
+    padding-top: 72px;
+  }
+}
+
+.home-section {
+  margin-top: 56px;
+}
+
+.home-section h2 {
+  font: var(--headline);
+  margin: 0 0 20px;
+}
+
+.features {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  gap: 32px;
 }
 
-.hero .home-guides a {
-  display: inline-block;
-  padding: 8px 14px;
+.feature {
+  display: grid;
+  gap: 16px;
+}
+
+/* On a phone: the screenshot large and centred, its words underneath. */
+.feature img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  justify-self: center;
+  border-radius: 22px;
+  box-shadow: var(--shadow-card);
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
+}
+
+.feature h3 {
+  font: var(--title);
+  margin: 0 0 6px;
+}
+
+.feature p {
   font: var(--small);
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .feature {
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .feature img {
+    width: 180px;
+    border-radius: 18px;
+  }
+
+  .feature:nth-child(even) {
+    grid-template-columns: 1fr 180px;
+  }
+
+  .feature:nth-child(even) img {
+    order: 2;
+  }
+}
+
+.home-quiz {
+  margin-top: 56px;
+}
+
+.guide-cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.guide-card a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
   text-decoration: none;
+  color: var(--body);
 }
 
-/* Guides. One measure, the legal pages' leading, headings in Playfair. */
+.guide-card .glyph-disc {
+  --glyph: 56px;
+  box-shadow: none;
+  border: 1px solid var(--line);
+}
+
+.guide-card strong {
+  display: block;
+  font: var(--title);
+  color: var(--ink);
+}
+
+.guide-card span.first {
+  display: block;
+  font: var(--small);
+  margin-top: 2px;
+}
+
+.guide-card a:hover strong {
+  color: var(--primary);
+}
+
+/* ---- Guides ---- */
+
 .guide {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 24px var(--page) 0;
+  padding-top: 24px;
 }
 
-.guide h1 {
+.guide-head {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  margin-bottom: 24px;
+}
+
+.guide-head .glyph-disc {
+  --glyph: 112px;
+}
+
+.guide-head h1 {
   font: var(--headline);
-  margin: 0 0 20px;
+}
+
+.guide-head .also {
+  font: var(--title);
+  color: var(--body);
+  margin: 4px 0 0;
 }
 
 .guide .doc h2 {
@@ -117,25 +306,89 @@
   font-weight: 600;
 }
 
+/* The date line: today's focus, in the soft clay of the app's tip card. */
 .guide .doc em.now {
   display: block;
-  margin-top: 12px;
-  padding: 12px 16px;
+  margin-top: 14px;
+  padding: 14px 16px;
   background: var(--pitta-soft);
   border-radius: var(--radius);
   font-style: normal;
   color: var(--ink);
 }
 
-.guide .doc em.now[hidden],
-.guide .doc .season-routine[hidden] {
-  display: none;
+.guide .doc [hidden] {
+  display: none !important;
 }
 
-/* Tables scroll sideways on a narrow phone rather than squeeze. */
+/* Season colors: fall vata, summer pitta, winter and spring kapha. */
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-vata {
+  background: var(--vata);
+}
+
+.dot-pitta {
+  background: var(--pitta);
+}
+
+.dot-kapha {
+  background: var(--kapha);
+}
+
+.guide .doc .season-intro {
+  margin: 28px 0 10px;
+}
+
+.guide .doc ul.seasons {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  margin: 0 0 20px;
+}
+
+.guide .doc li.season {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.guide .doc li.season .dots {
+  display: inline-flex;
+  gap: 4px;
+  transform: translateY(1px);
+}
+
+.guide .doc li.season.is-vata {
+  background: var(--vata-soft);
+  border-color: transparent;
+}
+
+.guide .doc li.season.is-pitta {
+  background: var(--pitta-soft);
+  border-color: transparent;
+}
+
+.guide .doc li.season.is-kapha {
+  background: var(--kapha-soft);
+  border-color: transparent;
+}
+
+/* Routine tables: a plain table on wide screens, a stack of labelled rows on
+   a phone, so nothing scrolls sideways. */
 .guide .doc table {
-  display: block;
-  overflow-x: auto;
   border-collapse: collapse;
   width: 100%;
   font: var(--small);
@@ -145,10 +398,9 @@
 .guide .doc th,
 .guide .doc td {
   text-align: left;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line);
   vertical-align: top;
-  min-width: 7em;
 }
 
 .guide .doc th {
@@ -156,91 +408,220 @@
   font-weight: 600;
 }
 
-.guide .season-label {
-  font: var(--label);
-  letter-spacing: 0.4px;
-  color: var(--muted);
-  margin: 16px 0 6px;
+.guide .doc th[data-balance='vata'],
+.guide .doc td[data-balance='vata'] {
+  box-shadow: inset 0 3px 0 var(--vata);
 }
 
-/* The end of every guide: quiz, App Store, wellness line, sources. */
+.guide .doc th[data-balance='pitta'],
+.guide .doc td[data-balance='pitta'] {
+  box-shadow: inset 0 3px 0 var(--pitta);
+}
+
+.guide .doc th[data-balance='kapha'],
+.guide .doc td[data-balance='kapha'] {
+  box-shadow: inset 0 3px 0 var(--kapha);
+}
+
+.guide .doc tbody td[data-balance] {
+  box-shadow: none;
+}
+
+@media (max-width: 559px) {
+  .guide .doc table,
+  .guide .doc tbody,
+  .guide .doc tr,
+  .guide .doc th,
+  .guide .doc td {
+    display: block;
+  }
+
+  .guide .doc thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .guide .doc tr {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 6px 16px;
+    margin-bottom: 10px;
+  }
+
+  .guide .doc tbody th {
+    border: 0;
+    padding: 10px 0 2px;
+    font: var(--title);
+  }
+
+  .guide .doc td {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .guide .doc td:last-child {
+    border-bottom: 0;
+  }
+
+  .guide .doc td::before {
+    content: attr(data-label);
+    display: block;
+    font: var(--label);
+    letter-spacing: 0.2px;
+    color: var(--body);
+    margin-bottom: 2px;
+  }
+
+  /* The window a value belongs to, marked in its dosha's color beside it. */
+  .guide .doc td[data-balance] {
+    padding-left: 12px;
+    border-left: 3px solid var(--line);
+  }
+
+  .guide .doc td[data-balance='vata'] {
+    border-left-color: var(--vata);
+  }
+
+  .guide .doc td[data-balance='pitta'] {
+    border-left-color: var(--pitta);
+  }
+
+  .guide .doc td[data-balance='kapha'] {
+    border-left-color: var(--kapha);
+  }
+}
+
+/* Tridoshic: the season's routine, in that season's color. */
+.guide .doc .season-routine {
+  border-radius: var(--radius);
+  padding: 4px 16px 2px;
+  margin: 0 0 12px;
+}
+
+.guide .doc .season-routine.is-vata {
+  background: var(--vata-soft);
+}
+
+.guide .doc .season-routine.is-pitta {
+  background: var(--pitta-soft);
+}
+
+.guide .doc .season-routine.is-kapha {
+  background: var(--kapha-soft);
+}
+
+.guide .doc .season-routine .season-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 1rem / 1.4 var(--sans);
+  color: var(--ink);
+  margin: 12px 0 8px;
+}
+
+.guide .doc .season-routine table {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 559px) {
+  .guide .doc .season-routine tr {
+    box-shadow: none;
+  }
+}
+
+/* The end of every guide. */
 .guide-end {
-  margin-top: 40px;
+  margin-top: 44px;
   padding-top: 28px;
   border-top: 1px solid var(--line);
   display: grid;
-  gap: 12px;
+  gap: 16px;
+}
+
+.guide-end .store-line {
+  margin: 8px 0 0;
 }
 
 .guide-end .wellness {
   font: var(--small);
-  color: var(--muted);
-  margin: 16px 0 0;
+  margin: 12px 0 0;
 }
 
+/* Sources: quiet, at the bottom. */
 .sources {
-  margin-top: 20px;
-}
-
-.sources h2 {
-  font: var(--title);
-  margin: 0 0 10px;
-}
-
-.sources ul {
-  padding-left: 1.25em;
-  margin: 0;
+  margin-top: 28px;
   font: var(--small);
 }
 
+.sources h2 {
+  font: 600 0.9375rem / 1.4 var(--sans);
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.sources ul {
+  padding-left: 1.1em;
+  margin: 0;
+}
+
 .sources li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-/* The quiz. */
+/* ---- Quiz ---- */
+
 .quiz {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 24px var(--page) 0;
-}
-
-.quiz h1 {
-  font: var(--headline);
-  margin: 0 0 16px;
-}
-
-.quiz .lead {
-  margin: 0 0 24px;
-}
-
-.quiz .disclaimer {
-  font: var(--label);
-  color: var(--muted);
-  margin: 16px 0 0;
+  padding-top: 32px;
 }
 
 .quiz [hidden] {
   display: none !important;
 }
 
-.quiz .pips {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin: 8px 0 24px;
-  flex-wrap: wrap;
+.quiz-intro .glyph-disc {
+  --glyph: 128px;
+  margin-bottom: 24px;
 }
 
-.quiz .pip {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.quiz-intro h1 {
+  font: var(--headline);
+  margin: 0 0 12px;
+}
+
+.quiz-intro .lead {
+  margin: 0 0 28px;
+}
+
+.quiz .disclaimer {
+  font: var(--small);
+  margin: 16px 0 0;
+}
+
+.progress {
+  margin: 0 0 28px;
+}
+
+.progress-text {
+  font: var(--small);
+  color: var(--body);
+  margin: 0 0 8px;
+}
+
+.progress-bar {
+  height: 6px;
+  border-radius: 999px;
   background: var(--line);
+  overflow: hidden;
 }
 
-.quiz .pip.on {
+.progress-bar span {
+  display: block;
+  height: 100%;
   background: var(--secondary);
-  width: 20px;
   border-radius: 999px;
 }
 
@@ -250,9 +631,12 @@
   margin: 0 0 8px;
 }
 
+.quiz .question:focus {
+  outline: none;
+}
+
 .quiz .hint {
   font: var(--small);
-  color: var(--muted);
   margin: 0 0 24px;
 }
 
@@ -263,14 +647,20 @@
 
 .quiz .option {
   width: 100%;
+  min-height: 64px;
   text-align: left;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border-radius: var(--radius-control);
   border: 1.5px solid var(--line);
   background: var(--surface);
+  box-shadow: var(--shadow-card);
   font: var(--body-text);
   color: var(--ink);
   cursor: pointer;
+}
+
+.quiz .option:hover {
+  border-color: var(--primary);
 }
 
 .quiz .option[aria-pressed='true'] {
@@ -279,7 +669,8 @@
 }
 
 .quiz .back {
-  margin-top: 20px;
+  margin-top: 24px;
+  min-height: 44px;
   background: none;
   border: 0;
   padding: 10px 0;
@@ -288,43 +679,45 @@
   cursor: pointer;
 }
 
-.quiz .result-label {
-  font: var(--label);
-  letter-spacing: 0.4px;
-  color: var(--muted);
-  margin: 0 0 6px;
+.result .glyph-disc {
+  --glyph: 160px;
+  margin-bottom: 20px;
 }
 
-.quiz .result-name {
+.result .result-label {
+  font: var(--small);
+  margin: 0 0 4px;
+}
+
+.result .result-name {
   font: var(--display);
   color: var(--ink);
-  margin: 0 0 28px;
-}
-
-.quiz .breakdown {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(26, 44, 44, 0.06);
   margin: 0 0 24px;
 }
 
-.quiz .breakdown h2 {
-  font: var(--label);
-  letter-spacing: 0.4px;
-  color: var(--muted);
+.breakdown {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  margin: 0 0 20px;
+}
+
+.breakdown h2 {
+  font: 600 1rem / 1.4 var(--sans);
+  color: var(--ink);
   margin: 0 0 14px;
 }
 
-.quiz .row {
+.breakdown .row {
   margin-bottom: 14px;
 }
 
-.quiz .row:last-child {
+.breakdown .row:last-child {
   margin-bottom: 0;
 }
 
-.quiz .row-head {
+.breakdown .row-head {
   display: flex;
   justify-content: space-between;
   font: var(--small);
@@ -332,23 +725,54 @@
   margin-bottom: 6px;
 }
 
-.quiz .row-head span:last-child {
-  color: var(--muted);
-}
-
-.quiz .track {
+.breakdown .track {
   height: 8px;
   border-radius: 999px;
   background: var(--line);
   overflow: hidden;
 }
 
-.quiz .fill {
+.breakdown .fill {
   height: 100%;
   border-radius: 999px;
 }
 
-.quiz .result-actions {
+.result .preview {
+  margin: 0 0 20px;
+  padding: 16px;
+  background: var(--pitta-soft);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.result .actions {
   display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.result .actions > .btn {
+  justify-self: stretch;
+}
+
+/* Apple's badge and Share side by side at the badge's 48px; they stack,
+   left-aligned, only when the screen is too narrow for both. */
+.result .action-row {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.result .btn-share {
+  width: auto;
+  min-height: 48px;
+  height: 48px;
+  padding: 0 28px;
+}
+
+.result .share-note {
+  font: var(--small);
+  margin: 0;
 }

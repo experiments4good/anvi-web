@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { balancedFor, rightNow, seasonForDate, windowEnd } from '../src/lib/windows.ts';
+import { balancedFor, focusNow, rightNow, seasonForDate, windowEnd } from '../src/lib/windows.ts';
 
 const on = (m: number, d: number) => new Date(2026, m - 1, d, 9, 0);
 
@@ -40,4 +40,11 @@ test("the app's month-based seasons", () => {
   for (const [m, s] of [[1, 'kapha'], [5, 'kapha'], [6, 'pitta'], [8, 'pitta'], [9, 'vata'], [11, 'vata'], [12, 'kapha']] as const) {
     assert.equal(seasonForDate(on(m, 15)), s);
   }
+});
+
+test("the quiz result's short line uses the same windows", () => {
+  assert.deepEqual(focusNow('pitta-kapha', on(10, 9)), ['Pitta', 'Nov 1']);
+  assert.deepEqual(focusNow('pitta-kapha', on(11, 2)), ['Kapha', 'Apr 30']);
+  assert.deepEqual(focusNow('vata-pitta', on(3, 21)), ['Pitta', 'Sep 21']);
+  assert.deepEqual(focusNow('vata-kapha', on(12, 22)), ['Kapha', 'Jun 20']);
 });

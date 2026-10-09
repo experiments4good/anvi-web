@@ -48,6 +48,11 @@ export function windowEnd(pair: Pair, date: Date): string {
 
 const NAME: Record<Balanced, string> = { vata: 'Vata', pitta: 'Pitta', kapha: 'Kapha' };
 
+/** The dosha in force and its window's end, for the quiz result's short line: ["Pitta", "Nov 1"]. */
+export function focusNow(pair: Pair, date: Date): [string, string] {
+  return [NAME[balancedFor(pair, date)], windowEnd(pair, date)];
+}
+
 /** "Right now that means balancing Pitta, through Nov 1." */
 export function rightNow(pair: Pair, date: Date): string {
   return `Right now that means balancing ${NAME[balancedFor(pair, date)]}, through ${windowEnd(pair, date)}.`;

@@ -1,0 +1,19 @@
+---
+import { glyphSvg, proportionsFor, type Triple } from '../lib/glyph';
+
+interface Props {
+  /** Scores to draw; when absent, the app's stand-in proportions for `type`. */
+  scores?: Triple;
+  type?: string;
+  id: string;
+  /** Spoken name; omit when the name is shown beside it. */
+  label?: string;
+  settle?: boolean;
+  class?: string;
+}
+
+const { scores, type = '', id, label, settle = false, class: cls = '' } = Astro.props;
+const svg = glyphSvg(scores ?? proportionsFor(type), { id, label, settle });
+---
+
+<span class={`glyph-disc ${cls}`.trim()} set:html={svg} />

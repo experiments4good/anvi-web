@@ -11,7 +11,14 @@ the words. This script changes markup, never text:
   ranges in the text show;
 - the tridoshic routine note becomes the three single-dosha routine tables,
   taken from those guides, each under the matching words of the note;
-- "Sources: F, KP" becomes a frontmatter list the layout renders as links.
+- "Sources: F, KP" becomes a frontmatter list the layout renders as links;
+- tables become HTML tables whose cells carry their column header, so they
+  can read as cards on a phone, and the "(balancing X)" columns are tagged
+  with that dosha for the season colors;
+- the "By season" sentences become a set of items tagged with the seasons
+  each names (fall vata, summer pitta, winter and spring kapha);
+- the first sentence of each guide goes to frontmatter for the home cards
+  and the quiz result.
 Writes src/content/guides/<slug>.md and src/lib/sources.json.
 """
 import json
@@ -39,17 +46,69 @@ for path, body in zip(sections[1::2], sections[2::2]):
     content = re.sub(r'^Sources: .+$', '', content, flags=re.M).strip()
     pages[slug] = dict(title=title, description=description, heading=heading, sources=sources, content=content)
 
+def esc(t):
+    return t.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+
+def inline(t):
+    """The two inline marks the approved text uses, as HTML."""
+    t = esc(t)
+    t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
+    return t
+
+
+def html_table(block):
+    lines = [l.strip() for l in block.strip().splitlines()]
+    cells = [[c.strip() for c in l.strip('|').split('|')] for l in lines]
+    head, rows = cells[0], cells[2:]
+    row_headers = head[0] == ''
+    def balance(h):
+        m = re.search(r'balancing (Vata|Pitta|Kapha)', h)
+        return f' data-balance="{m.group(1).lower()}"' if m else ''
+    th = ''.join(f'<th scope="col"{balance(h)}>{esc(h)}</th>' if h else '<td></td>' for h in head)
+    body = ''
+    for r in rows:
+        tds = ''
+        for j, c in enumerate(r):
+            if row_headers and j == 0:
+                tds += f'<th scope="row">{esc(c)}</th>'
+            else:
+                tds += f'<td data-label="{esc(head[j])}"{balance(head[j])}>{esc(c)}</td>'
+        body += f'<tr>{tds}</tr>'
+    kind = 'windows' if row_headers else 'single'
+    return f'<table class="routine-table routine-{kind}"><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table>'
+
+
+def seasons_of(sentence):
+    low = sentence.lower()
+    found = []
+    if re.search(r'\bfall\b', low): found.append('vata')
+    if re.search(r'\bsummer\b', low): found.append('pitta')
+    if re.search(r'\b(winter|spring)\b', low): found.append('kapha')
+    return found
+
+
+def season_list(items):
+    def item(t):
+        found = seasons_of(t)
+        dots = ''.join(f'<span class="dot dot-{x}"></span>' for x in found)
+        one = f' is-{found[0]}' if len(found) == 1 else ''
+        return f'<li class="season{one}"><span class="dots" aria-hidden="true">{dots}</span><span>{inline(t)}</span></li>'
+    lis = ''.join(item(t) for t in items)
+    return f'<ul class="seasons">{lis}</ul>'
+
+
 PAIR = {'vata-pitta': 'vata-pitta', 'vata-kapha': 'vata-kapha', 'pitta-kapha': 'pitta-kapha'}
 
 
 def routine_table(slug):
-    m = re.search(r'(\| Wake up \| Oil massage \| Move \|\n\| --- \| --- \| --- \|\n\|[^\n]+\|)', pages[slug]['content'])
-    rows = [[c.strip() for c in line.strip('|').split('|')] for line in m.group(1).splitlines()]
-    head, cells = rows[0], rows[2]
-    th = ''.join(f'<th scope="col">{h}</th>' for h in head)
-    td = ''.join(f'<td>{c}</td>' for c in cells)
-    return f'<table><thead><tr>{th}</tr></thead><tbody><tr>{td}</tr></tbody></table>'
+    """A single-dosha guide's routine table, from its approved Markdown, as labelled HTML."""
+    m = re.search(r'(\| Wake up \| Oil massage \| Move \|\n\| --- \| --- \| --- \|\n\|[^\n]+\|)', pages[slug]['raw'])
+    return html_table(m.group(1))
 
+
+for p in pages.values():
+    p['raw'] = p['content']
 
 for slug, p in pages.items():
     c = p['content']
@@ -59,6 +118,18 @@ for slug, p in pages.items():
     def now(m):
         assert slug in PAIR, slug
         return f'<em class="now" data-pair="{PAIR[slug]}" hidden>{m.group(1)}</em>'
+    # Tables, as labelled HTML.
+    c = re.sub(r'(?:^\|.*\|\n?)+', lambda m: html_table(m.group(0)) + '\n', c, flags=re.M)
+    # "**By season:** a. b. c." becomes the season set, one sentence each.
+    def by_season(m):
+        sentences = re.split(r'(?<=\.)\s+(?=[A-Z])', m.group(1).strip())
+        return '<p class="season-intro"><strong>By season:</strong></p>\n' + season_list(sentences)
+    c = re.sub(r'^\*\*By season:\*\* (.+)$', by_season, c, flags=re.M)
+    # A "By season" bullet list ("- **Fall:** ...") becomes the same set.
+    def season_bullets(m):
+        items = [l[2:] for l in m.group(0).strip().splitlines()]
+        return season_list(items) + '\n'
+    c = re.sub(r'(?<=## By season\n\n)((?:^- .+\n?)+)', season_bullets, c, flags=re.M)
     c, n = re.subn(r'\*(Right now that means balancing [A-Za-z]+, through [A-Za-z]+ \d+\.)\* \(updates by date\)', now, c)
     assert n == (1 if slug in PAIR else 0), (slug, n)
     assert '(updates by date)' not in c
@@ -72,11 +143,12 @@ for slug, p in pages.items():
             ('kapha', 'The Kapha routine in winter and spring', routine_table('kapha')),
         ]
         html = '\n'.join(
-            f'<div class="season-routine" data-season="{s}">\n<p class="season-label">{label}</p>\n{table}\n</div>' for s, label, table in blocks
+            f'<div class="season-routine is-{s}" data-season="{s}">\n<p class="season-label"><span class="dot dot-{s}" aria-hidden="true"></span>{label}</p>\n{table}\n</div>' for s, label, table in blocks
         )
         c = c.rstrip() + '\n\n' + html
     p['content'] = c
     type_name = p['heading'].split(' (')[0]
+    first = re.match(r'(.+?\.)(?:\s|$)', p['content'].strip()).group(1)
     fm = {
         'slug': slug,
         'type': type_name,
@@ -84,6 +156,7 @@ for slug, p in pages.items():
         'description': p['description'],
         'heading': p['heading'],
         'sources': p['sources'],
+        'first': first,
     }
     front = '\n'.join(f'{k}: {json.dumps(v, ensure_ascii=False)}' for k, v in fm.items())
     (out_dir / f'{slug}.md').write_text(f'---\n{front}\n---\n\n{c}\n')

@@ -1,19 +1,26 @@
 ---
 import '../styles/guides.css';
 import Base from './Base.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import Glyph from '../components/Glyph.astro';
 import sources from '../lib/sources.json';
 
 interface Props {
   title: string;
   description: string;
   heading: string;
-  /** The type named in the quiz button: "Pitta-Kapha". */
+  /** The type named in the quiz button and drawn in the glyph: "Pitta-Kapha". */
   type: string;
   /** Source keys in the order the approved text lists them. */
   sourceKeys: string[];
 }
 
 const { title, description, heading, type, sourceKeys } = Astro.props;
+// Non-breaking hyphens, so a two-dosha name never splits at the hyphen.
+const nb = (s: string) => s.replace(/-/g, '\u2011');
+// "Pitta-Kapha (and Kapha-Pitta)": the type is the heading, the reversed
+// order its own smaller line under it.
+const also = heading.match(/\((and [^)]+)\)/)?.[1] ?? null;
 const list = sourceKeys.map((k) => {
   const entries = (sources as Record<string, { name: string; url: string }[]>)[k];
   if (!entries) throw new Error(`Unknown source key ${k}`);
@@ -22,15 +29,22 @@ const list = sourceKeys.map((k) => {
 ---
 
 <Base title={title} description={description}>
-  <article class="guide">
-    <h1>{heading}</h1>
+  <article class="guide page">
+    <header class="guide-head">
+      <Glyph type={type} id="guide-glyph" settle />
+      <div>
+        <h1>{nb(type)}</h1>
+        {also && <p class="also">{nb(also)}</p>}
+      </div>
+    </header>
     <div class="doc">
       <slot />
     </div>
 
     <div class="guide-end">
       <a class="btn btn-primary" href="/quiz/">Not sure {type} is you? Take the free dosha quiz: 20 questions, no sign-up.</a>
-      <a class="btn btn-outlined" href="https://apps.apple.com/app/id6811624799">Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.</a>
+      <p class="store-line">Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.</p>
+      <AppStoreBadge />
       <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
     </div>
 
@@ -66,6 +80,5 @@ const list = sourceKeys.map((k) => {
     el.hidden = false;
   }
   const season = seasonForDate(today);
-  const blocks = document.querySelectorAll<HTMLElement>('.season-routine[data-season]');
-  for (const b of blocks) b.hidden = b.dataset.season !== season;
+  for (const b of document.querySelectorAll<HTMLElement>('.season-routine[data-season]')) b.hidden = b.dataset.season !== season;
 </script>

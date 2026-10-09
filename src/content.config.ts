@@ -22,6 +22,7 @@ const guides = defineCollection({
     description: z.string(),
     heading: z.string(),
     sources: z.array(z.string()),
+    first: z.string(),
   }),
 });
 

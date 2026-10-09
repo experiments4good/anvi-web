@@ -1,17 +1,25 @@
 ---
 import '../styles/guides.css';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import Glyph from '../components/Glyph.astro';
 
 const title = 'Free Dosha Quiz | Anvi';
 const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Your answers stay in your browser.";
+
+// The first sentence of each guide, for the result's preview of single types
+// and Tridoshic. Two-dosha types preview their "Right now" line instead.
+const firsts = Object.fromEntries((await getCollection('guides')).map((g) => [g.data.type, g.data.first]));
 ---
 
 <Base title={title} description={description}>
-  <section class="quiz">
-    <!-- Intro: the app's own words (app/quiz-intro.tsx). -->
-    <div id="intro">
+  <section class="quiz page">
+    <!-- Intro. The line under the heading is the App Store description's quiz sentence. -->
+    <div id="intro" class="quiz-intro">
+      <Glyph scores={[4, 4, 4]} id="intro-glyph" settle />
       <h1>Discover your dosha</h1>
-      <p class="lead">Answer 20 questions to find yours.</p>
+      <p class="lead">Twenty questions about your body, digestion, skin and hair, sleep, energy, temperament, and stress.</p>
       <button class="btn btn-primary" id="start" type="button">Start quiz</button>
       <p class="disclaimer">This quiz is for educational purposes only and does not constitute medical advice.</p>
       <noscript><p class="lead">The quiz runs in your browser and needs JavaScript turned on.</p></noscript>
@@ -19,47 +27,72 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
 
     <!-- One question at a time, as in the app. -->
     <div id="ask" hidden>
-      <div class="pips" id="pips" role="img"></div>
+      <div class="progress">
+        <p class="progress-text" id="progress-text" aria-live="polite"></p>
+        <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+      </div>
       <h1 class="question" id="question" tabindex="-1"></h1>
       <p class="hint" id="hint"></p>
       <div class="options" id="options"></div>
       <button class="back" id="back" type="button">Back</button>
     </div>
 
-    <!-- The result: the type and the percentages, as the app's Results shows them. -->
-    <div id="result" hidden>
+    <!-- The result: the visitor's own glyph, the type and the percentages as the app shows them. -->
+    <div id="result" class="result" hidden>
+      <span class="glyph-disc" id="result-glyph"></span>
       <p class="result-label">Your dosha</p>
-      <h1 class="result-name" id="result-name"></h1>
+      <h1 class="result-name" id="result-name" tabindex="-1"></h1>
       <div class="breakdown">
         <h2>Your constitution breakdown</h2>
         <div id="rows"></div>
       </div>
-      <div class="result-actions">
+      <p class="preview" id="preview"></p>
+      <div class="actions">
         <a class="btn btn-primary" id="guide-link" href="/">Read your guide</a>
-        <a class="btn btn-outlined" href="https://apps.apple.com/app/id6811624799">Get Anvi on the App Store</a>
+        <div class="action-row">
+          <AppStoreBadge />
+          <button class="btn btn-outlined btn-share" id="share" type="button">Share</button>
+        </div>
+        <p class="share-note" id="share-note" aria-live="polite" hidden></p>
       </div>
     </div>
   </section>
+  <script type="application/json" id="guide-firsts" set:html={JSON.stringify(firsts)} />
 </Base>
 
 <script>
   // The whole quiz runs here. No network calls, no cookies, no storage: the
   // answers live in this page's memory and are gone when it closes.
+  import { glyphSvg } from '../lib/glyph';
   import { QUIZ } from '../lib/quiz';
   import { breakdown, guidePath, resultLabel, scoresFor } from '../lib/scoring';
+  import { focusNow, type Pair } from '../lib/windows';
 
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
   const intro = $('intro');
   const ask = $('ask');
   const result = $('result');
+  const firsts = JSON.parse($('guide-firsts').textContent ?? '{}') as Record<string, string>;
 
-  const COLORS: Record<string, string> = { Vata: 'var(--vata)', Pitta: 'var(--pitta)', Kapha: 'var(--kapha)' };
+  const BAR: Record<string, string> = { Vata: 'var(--vata)', Pitta: 'var(--pitta)', Kapha: 'var(--kapha)' };
+  const PAIR: Record<string, Pair> = {
+    'Vata-Pitta': 'vata-pitta',
+    'Pitta-Vata': 'vata-pitta',
+    'Vata-Kapha': 'vata-kapha',
+    'Kapha-Vata': 'vata-kapha',
+    'Pitta-Kapha': 'pitta-kapha',
+    'Kapha-Pitta': 'pitta-kapha',
+  };
+  // The app's share message (src/lib/share.ts), linking to this quiz.
+  const QUIZ_URL = 'https://getanvi.app/quiz/';
+  const shareText = (dosha: string) => `My dosha is ${dosha}, according to Anvi, an Ayurvedic companion app. Find yours: ${QUIZ_URL}`;
 
   /** Answer indexes, one per question; -1 while unanswered. */
   let answers: number[] = [];
   /** Each question's display order, shuffled once per run as the app does per screen. */
   let orders: number[][] = [];
   let current = 0;
+  let label = '';
 
   function shuffled(): number[] {
     const a = [0, 1, 2];
@@ -77,19 +110,11 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
 
   function renderQuestion() {
     const q = QUIZ[current]!;
-    const pips = $('pips');
-    pips.setAttribute('aria-label', `Question ${current + 1} of ${QUIZ.length}`);
-    pips.replaceChildren(
-      ...QUIZ.map((_, i) => {
-        const p = document.createElement('span');
-        p.className = i === current ? 'pip on' : 'pip';
-        return p;
-      }),
-    );
+    $('progress-text').textContent = `Question ${current + 1} of ${QUIZ.length}`;
+    $('progress-fill').style.width = `${((current + 1) / QUIZ.length) * 100}%`;
     $('question').textContent = q.question;
     $('hint').textContent = q.hint;
-    const options = $('options');
-    options.replaceChildren(
+    $('options').replaceChildren(
       ...orders[current]!.map((i) => {
         const b = document.createElement('button');
         b.type = 'button';
@@ -116,8 +141,10 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
 
   function renderResult() {
     const scores = scoresFor(answers);
-    const label = resultLabel(scores);
-    $('result-name').textContent = label;
+    label = resultLabel(scores);
+    $('result-glyph').innerHTML = glyphSvg([scores.vata, scores.pitta, scores.kapha], { id: 'result-glyph-svg', settle: true });
+    // A non-breaking hyphen, so a two-dosha name never splits across lines.
+    $('result-name').textContent = label.replace('-', '\u2011');
     $('rows').replaceChildren(
       ...breakdown(scores).map(({ dosha, percent }) => {
         const row = document.createElement('div');
@@ -134,16 +161,30 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
         const fill = document.createElement('div');
         fill.className = 'fill';
         fill.style.width = `${percent}%`;
-        fill.style.background = COLORS[dosha]!;
+        fill.style.background = BAR[dosha]!;
         track.append(fill);
         row.append(head, track);
         return row;
       }),
     );
+    // Two-dosha types: "Right now: balancing Pitta, through Nov 1.", from the
+    // guides' date windows. Single types and Tridoshic: the guide's first sentence.
+    const pair = PAIR[label];
+    const preview = $('preview');
+    if (pair) {
+      const [dosha, end] = focusNow(pair, new Date());
+      const lead = document.createElement('strong');
+      lead.textContent = 'Right now:';
+      preview.replaceChildren(lead, ` balancing ${dosha}, through ${end}.`);
+    } else {
+      preview.textContent = firsts[label] ?? '';
+    }
     const link = $<HTMLAnchorElement>('guide-link');
     link.href = guidePath(label);
     link.textContent = `Read the ${label} guide`;
+    $('share-note').hidden = true;
     show(result);
+    $('result-name').focus({ preventScroll: true });
   }
 
   $('start').addEventListener('click', () => {
@@ -159,5 +200,25 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
       current--;
       renderQuestion();
     }
+  });
+
+  // Share with the Web Share API where there is one; otherwise copy the link.
+  $('share').addEventListener('click', async () => {
+    const note = $('share-note');
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: shareText(label) });
+      } catch {
+        // Closing the share sheet is not an error worth showing.
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(QUIZ_URL);
+      note.textContent = 'Link copied.';
+    } catch {
+      note.textContent = `Copy this link: ${QUIZ_URL}`;
+    }
+    note.hidden = false;
   });
 </script>

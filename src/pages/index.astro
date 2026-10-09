@@ -1,35 +1,94 @@
 ---
 import '../styles/guides.css';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Mark from '../components/Mark.astro';
-
-// The seven type guides, in the order the quiz names the types.
-const guides = [
-  ['vata', 'Vata'],
-  ['pitta', 'Pitta'],
-  ['kapha', 'Kapha'],
-  ['vata-pitta', 'Vata-Pitta'],
-  ['vata-kapha', 'Vata-Kapha'],
-  ['pitta-kapha', 'Pitta-Kapha'],
-  ['tridoshic', 'Tridoshic'],
-];
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import Glyph from '../components/Glyph.astro';
 
 const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
+
+// The seven type guides, in the order the quiz names the types.
+const ORDER = ['vata', 'pitta', 'kapha', 'vata-pitta', 'vata-kapha', 'pitta-kapha', 'tridoshic'];
+const guides = (await getCollection('guides')).sort((a, b) => ORDER.indexOf(a.data.slug) - ORDER.indexOf(b.data.slug));
+// Each type's core advice, as approved for the cards.
+const CORE: Record<string, string> = {
+  vata: 'Stay warm, steady and nourished.',
+  pitta: 'Stay cool and moderate.',
+  kapha: 'Stay light, warm and active.',
+  'vata-pitta': 'Stay grounded and steady.',
+  'vata-kapha': 'Eat warm food and stay warm.',
+  'pitta-kapha': 'Stay dry and light.',
+  tridoshic: 'Follow the season and keep a regular routine.',
+};
+// Non-breaking hyphens, so a two-dosha name never splits at the hyphen.
+const nb = (s: string) => s.replace(/-/g, '\u2011');
+
+// "What Anvi does": two of the App Store screenshots, each with the App Store
+// description's own words for that feature.
+const features = [
+  {
+    title: 'Scan a menu',
+    text: 'Anvi reads it, recommends two or three dishes that suit your dosha and says why, points out what to skip, and tells you what to ask for when you order, such as no cream or a milder version.',
+    image: '/screens/scan-a-menu.jpg',
+    alt: "Anvi's suggestions for a restaurant menu, in the app",
+  },
+  {
+    title: 'Chat with Anvi',
+    text: 'Ask about food, sleep, digestion, stress, and daily routine, and get answers in plain language that account for the dosha result you got.',
+    image: '/screens/chat-with-anvi.jpg',
+    alt: 'A conversation with Anvi about breakfast, in the app',
+  },
+];
 ---
 
 <Base title="Anvi" description={description} bar={false}>
-  <section class="hero">
-    <Mark />
-    <h1>Anvi</h1>
-    <p class="tagline">Your Ayurvedic wellness companion</p>
-    <p class="about">Find your dosha, then get daily guidance shaped to your constitution and the season.</p>
-    <p class="soon">Coming to the App Store</p>
-    <a class="btn btn-primary home-quiz" href="/quiz/">Take the free dosha quiz</a>
-    <nav class="home-guides" aria-label="Type guides">
-      <p>Type guides</p>
-      <ul>
-        {guides.map(([slug, name]) => <li><a href={`/dosha/${slug}/`}>{name}</a></li>)}
+  <div class="page">
+    <section class="home-hero">
+      <Glyph scores={[4, 4, 4]} id="home-glyph" settle />
+      <div>
+        <h1>Anvi</h1>
+        <p class="tagline">Your Ayurvedic wellness companion</p>
+        <p class="about">Find your dosha, then get daily guidance shaped to your constitution and the season.</p>
+        <AppStoreBadge />
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="does-title">
+      <h2 id="does-title">What Anvi does</h2>
+      <ul class="features">
+        {
+          features.map((f) => (
+            <li class="feature">
+              <img src={f.image} alt={f.alt} width="598" height="1300" loading="lazy" decoding="async" />
+              <div>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            </li>
+          ))
+        }
       </ul>
-    </nav>
-  </section>
+    </section>
+
+    <a class="btn btn-primary home-quiz" href="/quiz/">Take the free dosha quiz</a>
+
+    <section class="home-section" aria-labelledby="guides-title">
+      <h2 id="guides-title">Type guides</h2>
+      <ul class="guide-cards">
+        {
+          guides.map((g) => (
+            <li class="guide-card">
+              <a href={`/dosha/${g.data.slug}/`}>
+                <Glyph type={g.data.type} id={`card-${g.data.slug}`} />
+                <span>
+                  <strong>{nb(g.data.type)}</strong>
+                  <span class="first">{CORE[g.data.slug]}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
 </Base>
