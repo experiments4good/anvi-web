@@ -955,3 +955,10 @@
 .guide .doc .guide-card a {
   text-decoration: none;
 }
+
+.home-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}

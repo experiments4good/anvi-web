@@ -20,11 +20,13 @@ const steps = routine.steps.map((s) => {
   return { ...s, v, tailored: !(same('howTo') && same('reason') && same('source')), sameReason: same('reason') };
 });
 // The routine's sources are named in the app by teacher; these are the keys
-// for those teachers' sources in the approved source list.
-const sourceGroups = [{ keys: ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM'] }];
+// for those teachers' sources in the approved source list. T2 is Templeton's
+// seasonal guide, the source of Kapha's brisk morning exercise. F and G are
+// the date windows two-dosha types switch by, and the tridoshic rule.
+const sourceGroups = [{ keys: ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G'] }];
 ---
 
-<Info title={p.title} description={p.description} heading={p.heading} glyph={[4, 4, 4]} sourceGroups={sourceGroups}>
+<Info title={p.title} description={p.description} heading={p.heading} glyph={[4, 4, 4]} sourceGroups={sourceGroups} routine>
   <p>{p.intro}</p>
   {
     routine.groups.map((group) => (

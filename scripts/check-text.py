@@ -11,8 +11,7 @@ Run after `astro build`. Exits non-zero on any mismatch.
   must appear on /routine/ exactly.
 - Season pages: every type's tip and source line, parsed here straight from
   seasonal_tips_2026.md, must appear on its season page exactly.
-- No em or en dash on any page but /privacy/ and /terms/, except inside text
-  taken unchanged from the app's routine (reported, not failed).
+- No em or en dash on any page but /privacy/ and /terms/.
 """
 import glob
 import html
@@ -55,16 +54,20 @@ def meta(h, title, description, where):
 
 
 sources = json.loads((root / 'src/lib/sources.json').read_text())
-ENDING = [
-    'Take the free dosha quiz: 20 questions, no sign-up.',
-    'Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.',
-    'This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.',
-]
+QUIZ_LINE = 'Take the free dosha quiz: 20 questions, no sign-up.'
+WELLNESS = 'This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.'
+# /routine/ keeps "this routine"; every other page has the general line.
+STORE_ROUTINE = 'Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.'
+STORE_OTHER = 'Anvi gives you guidance like this every day: a daily routine to check off, a tip at the time you choose, and what to order when you eat out.'
 
 
 def ending(h, text, keys, where):
-    for e in ENDING:
+    store = STORE_ROUTINE if where.startswith('/routine/') else STORE_OTHER
+    other = STORE_OTHER if store == STORE_ROUTINE else STORE_ROUTINE
+    for e in (QUIZ_LINE, store, WELLNESS):
         need(text, e, where + ' ending')
+    if other in text:
+        problems.append(f'{where}: has the other App Store line')
     if 'download-on-the-app-store-black.svg' not in h:
         problems.append(f'{where}: App Store badge')
     for k in keys:
@@ -136,7 +139,7 @@ need(text, [p for p in re.split(r'\n\s*\n', b[b.index('### '):].split('\n', 1)[1
 need(text, re.search(r'Below the steps: "([^"]+)"', b).group(1), '/routine/ closing')
 if h.count('class="guide-card"') != 7:
     problems.append('/routine/: seven guide cards')
-ending(h, text, ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM'], '/routine/')
+ending(h, text, ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G'], '/routine/')
 
 # Routine steps: identical to the app, and on the page exactly.
 committed = (root / 'src/lib/routine-steps.json').read_text()
@@ -189,26 +192,20 @@ for slug in ('fall', 'summer', 'winter-spring'):
     if f'href="/season/{slug}/"' not in home:
         problems.append(f'/: no-JavaScript link to {slug}')
 need(visible(home), 'This season', '/')
+for path in ('/six-tastes/', '/routine/'):
+    if f'href="{path}"' not in home:
+        problems.append(f'/: no link to {path}')
 
 # Dashes.
-routine_text = ' '.join(v[k] for s in steps for v in s['versions'].values() for k in ('howTo', 'reason', 'source'))
-exempt = []
 for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)) + sorted(glob.glob(str(dist / '_astro/*'))):
     rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
     if rel in ('/privacy/', '/terms/'):
         continue
     raw = Path(f).read_text(errors='ignore')
-    for m in re.finditer('[–—]', raw):
-        around = raw[max(0, m.start() - 12): m.end() + 12]
-        word = re.search(r'[^\s>]*[–—][^\s<]*', around).group(0)
-        if rel == '/routine/' and word in routine_text:
-            exempt.append(f'{rel} "{word}"')
-        else:
-            problems.append(f'{rel}: dash in "{around}"')
+    for m in re.finditer('[\u2013\u2014]', raw):
+        problems.append(f'{rel}: dash in "{raw[max(0, m.start() - 12): m.end() + 12]}"')
 
 print(f'checked {checked} strings')
-for e in sorted(set(exempt)):
-    print('dash taken unchanged from the app routine:', e)
 for p in problems:
     print('PROBLEM', p)
 sys.exit(1 if problems else 0)

@@ -14,9 +14,11 @@ interface Props {
   /** Drawn in the header: a season's dosha, or an even split. */
   glyph: Triple;
   sourceGroups: { keys: string[]; note?: string }[];
+  /** True on /routine/, which keeps its own App Store line. */
+  routine?: boolean;
 }
 
-const { title, description, heading, glyph, sourceGroups } = Astro.props;
+const { title, description, heading, glyph, sourceGroups, routine = false } = Astro.props;
 ---
 
 <Base title={title} description={description}>
@@ -28,6 +30,6 @@ const { title, description, heading, glyph, sourceGroups } = Astro.props;
     <div class="doc">
       <slot />
     </div>
-    <PageEnd sourceGroups={sourceGroups} />
+    <PageEnd sourceGroups={sourceGroups} routine={routine} />
   </article>
 </Base>

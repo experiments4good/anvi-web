@@ -59,7 +59,7 @@ const features = [
     <!-- "This season": the current season's page, by the app's month-based
          seasons on the visitor's own clock. Without JavaScript, all three. -->
     <nav class="home-season" aria-label="This season">
-      <a class="season-link" id="season-now" href="/season/fall/" hidden>This season</a>
+      <a class="season-link" id="season-now" href="/season/fall/" hidden>This season: Fall</a>
       <div class="season-all" id="season-all">
         <span class="season-all-label">This season</span>
         <a class="season-link is-vata" href="/season/fall/"><span class="dot dot-vata" aria-hidden="true"></span>Fall</a>
@@ -71,6 +71,10 @@ const features = [
     <section class="home-section" id="guides" aria-labelledby="guides-title">
       <h2 id="guides-title">Type guides</h2>
       <GuideCards idPrefix="card" />
+      <nav class="home-more" aria-label="More guides">
+        <a class="season-link" href="/six-tastes/">The six tastes</a>
+        <a class="season-link" href="/routine/">Your daily routine</a>
+      </nav>
     </section>
   </div>
 </Base>
@@ -78,10 +82,12 @@ const features = [
 <script>
   import { seasonForDate } from '../lib/windows';
 
-  const page = { vata: 'fall', pitta: 'summer', kapha: 'winter-spring' }[seasonForDate(new Date())];
+  const season = seasonForDate(new Date());
+  const [page, name] = ({ vata: ['fall', 'Fall'], pitta: ['summer', 'Summer'], kapha: ['winter-spring', 'Winter and spring'] } as const)[season];
   const now = document.getElementById('season-now') as HTMLAnchorElement;
   now.href = `/season/${page}/`;
-  now.classList.add(`is-${seasonForDate(new Date())}`);
+  now.textContent = `This season: ${name}`;
+  now.classList.add(`is-${season}`);
   now.hidden = false;
   (document.getElementById('season-all') as HTMLElement).hidden = true;
 </script>
