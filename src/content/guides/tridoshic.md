@@ -17,7 +17,7 @@ Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution. La
 - Go easy on caffeine and alcohol, and relax for a few minutes before you eat.
 - Then lean with the season: warm soups and stews in fall and early winter, fresh fruit, greens and plenty of fluids in summer, and lighter meals with less dairy and sweets in late winter and spring.
 
-**Your daily routine** follows the season the app is in: the Vata routine in fall, the Pitta routine in summer and the Kapha routine in winter and spring.
+**[Your daily routine](/routine/)** follows the season the app is in: the Vata routine in fall, the Pitta routine in summer and the Kapha routine in winter and spring.
 
 <div class="season-routine is-vata" data-season="vata">
 <p class="season-label"><span class="dot dot-vata" aria-hidden="true"></span>The Vata routine in fall</p>

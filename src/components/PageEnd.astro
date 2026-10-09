@@ -1,0 +1,48 @@
+---
+// The ending every guide and stage 2 page shares: the quiz button, the App
+// Store line and badge, the wellness line, and the linked sources.
+import AppStoreBadge from './AppStoreBadge.astro';
+import sources from '../lib/sources.json';
+
+interface Props {
+  /** On a type guide, the type the quiz button names. */
+  type?: string;
+  /** Source keys, each shown by its full name, linked; a group may carry a note. */
+  sourceGroups: { keys: string[]; note?: string }[];
+}
+
+const { type, sourceGroups } = Astro.props;
+const all = sources as Record<string, { name: string; url: string }[]>;
+const list = sourceGroups.flatMap((g) =>
+  g.keys.map((k) => {
+    if (!all[k]) throw new Error(`Unknown source key ${k}`);
+    return { key: k, entries: all[k], note: g.note };
+  }),
+);
+---
+
+<div class="guide-end">
+  <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
+  <p class="store-line">Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.</p>
+  <AppStoreBadge />
+  <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+</div>
+
+<section class="sources" aria-labelledby="sources-title">
+  <h2 id="sources-title">Sources</h2>
+  <ul>
+    {
+      list.map(({ entries, note }) => (
+        <li>
+          {entries.map((e, i) => (
+            <>
+              {i > 0 && '; and '}
+              <a href={e.url} rel="noopener">{e.name}</a>
+            </>
+          ))}
+          {note && ` (${note})`}
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -18,7 +18,8 @@ the words. This script changes markup, never text:
 - the "By season" sentences become a set of items tagged with the seasons
   each names (fall vata, summer pitta, winter and spring kapha);
 - the first sentence of each guide goes to frontmatter for the home cards
-  and the quiz result.
+  and the quiz result;
+- each "Your daily routine" mention links to /routine/.
 Writes src/content/guides/<slug>.md and src/lib/sources.json.
 """
 import json
@@ -114,6 +115,9 @@ for slug, p in pages.items():
     c = p['content']
     # A line that is only bold is a section heading.
     c = re.sub(r'^\*\*([^*]+)\*\*$', r'## \1', c, flags=re.M)
+    # "Your daily routine" links to the routine page, words unchanged.
+    c = c.replace('## Your daily routine', '## [Your daily routine](/routine/)')
+    c = c.replace('**Your daily routine** follows', '**[Your daily routine](/routine/)** follows')
     # The date line.
     def now(m):
         assert slug in PAIR, slug
@@ -185,5 +189,6 @@ for m in re.finditer(r'^- \*\*([A-Z0-9]+)\*\*: (.+)$', tips_md.read_text(), re.M
 used = {k for p in pages.values() for k in p['sources']}
 missing = used - set(src)
 assert not missing, missing
-(root / 'src/lib/sources.json').write_text(json.dumps({k: src[k] for k in sorted(used)}, indent=2, ensure_ascii=False) + '\n')
+# Every key either file defines, so the stage 2 pages resolve theirs too.
+(root / 'src/lib/sources.json').write_text(json.dumps({k: src[k] for k in sorted(src)}, indent=2, ensure_ascii=False) + '\n')
 print('guides:', ', '.join(sorted(pages)), '| sources used:', len(used))

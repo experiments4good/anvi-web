@@ -1,9 +1,8 @@
 ---
 import '../styles/guides.css';
 import Base from './Base.astro';
-import AppStoreBadge from '../components/AppStoreBadge.astro';
+import PageEnd from '../components/PageEnd.astro';
 import Glyph from '../components/Glyph.astro';
-import sources from '../lib/sources.json';
 
 interface Props {
   title: string;
@@ -21,11 +20,7 @@ const nb = (s: string) => s.replace(/-/g, '\u2011');
 // "Pitta-Kapha (and Kapha-Pitta)": the type is the heading, the reversed
 // order its own smaller line under it.
 const also = heading.match(/\((and [^)]+)\)/)?.[1] ?? null;
-const list = sourceKeys.map((k) => {
-  const entries = (sources as Record<string, { name: string; url: string }[]>)[k];
-  if (!entries) throw new Error(`Unknown source key ${k}`);
-  return { key: k, entries };
-});
+
 ---
 
 <Base title={title} description={description}>
@@ -41,30 +36,7 @@ const list = sourceKeys.map((k) => {
       <slot />
     </div>
 
-    <div class="guide-end">
-      <a class="btn btn-primary" href="/quiz/">Not sure {type} is you? Take the free dosha quiz: 20 questions, no sign-up.</a>
-      <p class="store-line">Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.</p>
-      <AppStoreBadge />
-      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
-    </div>
-
-    <section class="sources" aria-labelledby="sources-title">
-      <h2 id="sources-title">Sources</h2>
-      <ul>
-        {
-          list.map(({ entries }) => (
-            <li>
-              {entries.map((e, i) => (
-                <>
-                  {i > 0 && '; and '}
-                  <a href={e.url} rel="noopener">{e.name}</a>
-                </>
-              ))}
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <PageEnd type={type} sourceGroups={[{ keys: sourceKeys }]} />
   </article>
 </Base>
 

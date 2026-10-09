@@ -17,7 +17,7 @@ Kapha is the dosha of structure and steadiness. Welch lists its qualities as oil
 - Go easy on wheat, white and brown rice, cucumber, sweet potatoes, bananas, avocado, coconut, dates, cow's milk, cheese, ice cream, salt and cold drinks.
 - Stick to three meals, and make dinner your lightest.
 
-## Your daily routine
+## [Your daily routine](/routine/)
 
 <table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Warm sesame oil, with a brisk massage</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
 

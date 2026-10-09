@@ -1,0 +1,291 @@
+{
+  "from": [
+    "web-stage2-2026.md",
+    "seasonal_tips_2026.md"
+  ],
+  "sixTastes": {
+    "title": "The Six Tastes of Ayurveda: Foods, and Which Doshas They Balance | Anvi",
+    "description": "Sweet, sour, salty, pungent, bitter and astringent: what each taste means in Ayurveda, everyday foods for each, and which doshas each one calms or increases.",
+    "heading": "The six tastes",
+    "intro": "Ayurveda sorts food into six tastes: sweet, sour, salty, pungent, bitter and astringent. Each taste calms some doshas and increases others, which is why guidance for your type is often written as tastes to favor. Ayurvedic teacher Gary Gran's advice for a balanced day is to include all six.",
+    "table": {
+      "head": [
+        "Taste",
+        "Everyday examples",
+        "Calms",
+        "Increases"
+      ],
+      "rows": [
+        [
+          "Sweet",
+          "Carrots, corn, watermelon, coconut, rice, wheat, milk",
+          "Vata, Pitta",
+          "Kapha"
+        ],
+        [
+          "Sour",
+          "Lemon, lime, yogurt, cherries, grapefruit, sauerkraut",
+          "Vata",
+          "Pitta, Kapha"
+        ],
+        [
+          "Salty",
+          "Celery, olives, seaweed, miso, cheese",
+          "Vata",
+          "Pitta, Kapha"
+        ],
+        [
+          "Pungent",
+          "Fresh ginger, black pepper, mustard, garlic, cumin, chilies",
+          "Kapha",
+          "Vata, Pitta"
+        ],
+        [
+          "Bitter",
+          "Dark leafy greens, beets, sprouts, turmeric, fenugreek",
+          "Pitta, Kapha",
+          "Vata"
+        ],
+        [
+          "Astringent",
+          "Apples, black-eyed peas, bean sprouts, turnips, apricots",
+          "Pitta, Kapha",
+          "Vata"
+        ]
+      ]
+    },
+    "notes": [
+      "\"Sweet\" in Ayurveda means more than sugar. It covers grains, milk and starchy, nourishing foods, which is why rice and carrots count as sweet."
+    ],
+    "how": "**How to use this:** look up your type's guide for the tastes to favor this season, then use the table to pick foods.",
+    "sourceGroups": [
+      {
+        "keys": [
+          "T3"
+        ],
+        "note": "food examples"
+      },
+      {
+        "keys": [
+          "W-PK",
+          "W-VP",
+          "W-VK",
+          "W-T"
+        ],
+        "note": "which tastes calm or increase each dosha"
+      },
+      {
+        "keys": [
+          "G"
+        ],
+        "note": "all six tastes daily"
+      }
+    ]
+  },
+  "routine": {
+    "title": "Ayurvedic Daily Routine (Dinacharya): 8 Steps from Waking to Bedtime | Anvi",
+    "description": "An Ayurvedic morning-to-night routine in eight steps, with the reason behind each one and how it changes for Vata, Pitta and Kapha. From Ayurvedic practitioners.",
+    "heading": "Your daily routine",
+    "intro": "Eight steps from waking to bedtime, from Ayurvedic practitioners. Three of them, waking, oil massage and movement, change with your dosha and the time of year.",
+    "closing": "Two-dosha and tridoshic types switch between these by the time of year. Your type's guide shows which applies right now."
+  },
+  "seasons": [
+    {
+      "slug": "fall",
+      "dosha": "vata",
+      "title": "Ayurveda in Fall: Vata Season Guidance for Every Dosha | Anvi",
+      "description": "What to eat and how to live in fall, Ayurveda's vata season, for each of the seven dosha types. From Ayurvedic practitioners.",
+      "heading": "Fall",
+      "intro": "Fall (September to November) is vata season in Anvi's calendar: cool, dry and changeable. Here is the season's guidance for each type.",
+      "tips": [
+        {
+          "type": "Vata",
+          "slug": "vata",
+          "tip": "Fall is your season to stay warm and steady. Favor warm, cooked meals with root vegetables, and make lunch your biggest meal. Keep meals, bedtime and wake time at the same times each day, and cut down on overstimulation.",
+          "source": "Kripalu; Templeton"
+        },
+        {
+          "type": "Pitta",
+          "slug": "pitta",
+          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods, coffee and alcohol. Keep portions moderate and make lunch your biggest meal. A thin layer of coconut oil before a lukewarm shower helps keep you cool.",
+          "source": "Kripalu; Hope-Murray; Templeton"
+        },
+        {
+          "type": "Kapha",
+          "slug": "kapha",
+          "tip": "Choose light, warm, dry foods with pungent, bitter and astringent tastes, like mustard, dark leafy greens and black-eyed peas. Spice meals with ginger, black pepper or cumin. Go easy on heavy, oily and cold foods. Get up early and move before 10 a.m.",
+          "source": "Hope-Murray; Mount Madonna; Templeton"
+        },
+        {
+          "type": "Vata-Pitta",
+          "slug": "vata-pitta",
+          "tip": "Favor warm, cooked meals with sweet, sour and salty tastes, like carrots, yogurt and miso, and keep spices mild: coriander, cardamom, cloves or turmeric. Keep meals, sleep and rest at steady times, and make room for real rest.",
+          "source": "Frawley; Gran; Templeton"
+        },
+        {
+          "type": "Vata-Kapha",
+          "slug": "vata-kapha",
+          "tip": "Eat warm food and stay warm. Favor sour, salty and pungent tastes, like lemon, miso and ginger, and spice your food generously with ginger and black pepper. Keep meals and sleep at regular times, and make dinner your lightest meal.",
+          "source": "Frawley; Kripalu; Gran; Templeton"
+        },
+        {
+          "type": "Pitta-Kapha",
+          "slug": "pitta-kapha",
+          "tip": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples, with aromatic spices, not hot ones: ginger, cinnamon, cardamom, turmeric. Go easy on oily, fried and heavy foods, and build meals around fresh green vegetables. Take a brisk walk in the morning.",
+          "source": "Frawley; Kripalu; Hope-Murray; Templeton"
+        },
+        {
+          "type": "Tridoshic",
+          "slug": "tridoshic",
+          "tip": "This season, slow down and stay warm. Keep meals, sleep and rest at regular times, and choose warm, cooked foods like soups and stews. Include all six tastes across the day: sweet (carrots), sour (lemon), salty (olives), pungent (ginger), bitter (dark leafy greens) and astringent (apples).",
+          "source": "Gran; Kripalu; Templeton"
+        }
+      ],
+      "sourceKeys": [
+        "KV",
+        "T1",
+        "KP",
+        "HM",
+        "T3",
+        "MM",
+        "T2",
+        "F",
+        "G",
+        "W-VK",
+        "W-VP",
+        "W-PK"
+      ]
+    },
+    {
+      "slug": "summer",
+      "dosha": "pitta",
+      "title": "Ayurveda in Summer: Pitta Season Guidance for Every Dosha | Anvi",
+      "description": "What to eat and how to live in summer, Ayurveda's pitta season, for each of the seven dosha types. From Ayurvedic practitioners.",
+      "heading": "Summer",
+      "intro": "Summer (June to August) is pitta season in Anvi's calendar: hot and sharp. Here is the season's guidance for each type.",
+      "tips": [
+        {
+          "type": "Vata",
+          "slug": "vata",
+          "tip": "Keep your routine steady and your meals warm and cooked, even in summer. Drink plenty of fluids, at room temperature rather than iced, and stay out of the strongest sun from 10 a.m. to 2 p.m.",
+          "source": "Kripalu; Gran; Maharishi; Templeton"
+        },
+        {
+          "type": "Pitta",
+          "slug": "pitta",
+          "tip": "Summer is your season to stay cool. Stay out of the strongest sun from 10 a.m. to 2 p.m., and favor cooling foods like cucumber, zucchini and mint, with coconut water for the heat. Go easy on salty, fried and spicy foods, coffee and alcohol.",
+          "source": "Templeton; Kripalu"
+        },
+        {
+          "type": "Kapha",
+          "slug": "kapha",
+          "tip": "Get up early and move before 10 a.m., then stay out of the strongest sun. Choose light, warm, dry foods with pungent, bitter and astringent tastes, like ginger, dark leafy greens and black-eyed peas, and drink plenty of fluids in the heat.",
+          "source": "Templeton; Hope-Murray; Gran"
+        },
+        {
+          "type": "Vata-Pitta",
+          "slug": "vata-pitta",
+          "tip": "This season, cool things down with sweet, cooling foods like cucumber, zucchini and summer squash, and keep spices mild. Stay out of the strongest sun from 10 a.m. to 2 p.m., and spend time outdoors in the cooler hours.",
+          "source": "Frawley; Templeton"
+        },
+        {
+          "type": "Vata-Kapha",
+          "slug": "vata-kapha",
+          "tip": "Favor warm meals, even in summer, with sour, salty and pungent tastes, like lemon, miso and ginger. Sip warm or room-temperature drinks instead of iced ones, and drink plenty of fluids. Get up early and move before 10 a.m.",
+          "source": "Frawley; Maharishi; Gran; Templeton"
+        },
+        {
+          "type": "Pitta-Kapha",
+          "slug": "pitta-kapha",
+          "tip": "Favor bitter and astringent tastes, like dark leafy greens, apples and bean sprouts, with aromatic spices, not hot ones: cinnamon, cardamom, turmeric, cloves. Stay out of the strongest sun from 10 a.m. to 2 p.m., and take your walk in the cool of the morning. Go easy on oily, fried and heavy foods.",
+          "source": "Frawley; Templeton; Kripalu; Hope-Murray"
+        },
+        {
+          "type": "Tridoshic",
+          "slug": "tridoshic",
+          "tip": "Stay cool this season. Go easy on spicy and fried foods, eat more fresh fruit and greens, and drink plenty of fluids. Stay out of the strongest sun from 10 a.m. to 2 p.m.",
+          "source": "Gran; Templeton"
+        }
+      ],
+      "sourceKeys": [
+        "KV",
+        "G",
+        "M",
+        "T2",
+        "KP",
+        "HM",
+        "T3",
+        "F",
+        "W-VK",
+        "W-VP",
+        "W-PK"
+      ]
+    },
+    {
+      "slug": "winter-spring",
+      "dosha": "kapha",
+      "title": "Ayurveda in Winter and Spring: Kapha Season Guidance for Every Dosha | Anvi",
+      "description": "What to eat and how to live in winter and spring, Ayurveda's kapha season, for each of the seven dosha types. From Ayurvedic practitioners.",
+      "heading": "Winter and spring",
+      "intro": "Winter and spring (December to May) are kapha season in Anvi's calendar: cool, damp and heavy. Here is the season's guidance for each type.",
+      "tips": [
+        {
+          "type": "Vata",
+          "slug": "vata",
+          "tip": "Stay warm through the colder months. Soups and stews with root vegetables suit this time of year, along with warm drinks like ginger tea. Keep meals, bedtime and wake time at the same times each day.",
+          "source": "Templeton; Mount Madonna; Kripalu"
+        },
+        {
+          "type": "Pitta",
+          "slug": "pitta",
+          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods. Basmati rice with fresh green vegetables makes a steady meal, and fresh greens are good as they come into season. Keep portions moderate.",
+          "source": "Kripalu; Templeton; Hope-Murray"
+        },
+        {
+          "type": "Kapha",
+          "slug": "kapha",
+          "tip": "This is your season to stay light and active. Get up early and move before 10 a.m., with brisk exercise or Sun Salutations. Choose light, warm, dry foods, and go lighter on bread, pasta, rich desserts and dairy.",
+          "source": "Templeton; Kripalu; Hope-Murray; Gran"
+        },
+        {
+          "type": "Vata-Pitta",
+          "slug": "vata-pitta",
+          "tip": "Favor warm, cooked meals with sweet tastes, like carrots and coconut, with soups and stews in the colder months. Keep spices mild, and keep meals, sleep and rest at steady times.",
+          "source": "Frawley; Templeton; Gran"
+        },
+        {
+          "type": "Vata-Kapha",
+          "slug": "vata-kapha",
+          "tip": "Eat warm food and stay warm, favoring pungent tastes, like ginger, mustard and black pepper, and lighter meals. Spice your food generously, and go easy on heavy, oily and cold foods and dairy. Get up early and move before 10 a.m.",
+          "source": "Frawley; Hope-Murray; Gran; Templeton"
+        },
+        {
+          "type": "Pitta-Kapha",
+          "slug": "pitta-kapha",
+          "tip": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples, with aromatic spices, and go lighter on bread, pasta, rich desserts and dairy. Get up early and move before 10 a.m., with a brisk walk or Sun Salutations. Keep portions moderate.",
+          "source": "Frawley; Hope-Murray; Gran; Templeton; Kripalu"
+        },
+        {
+          "type": "Tridoshic",
+          "slug": "tridoshic",
+          "tip": "In early winter, stay warm and favor soups and stews. As spring comes, exercise more, lighten your meals, and go easy on dairy and sweets. Keep meals, sleep and rest at regular times.",
+          "source": "Gran"
+        }
+      ],
+      "sourceKeys": [
+        "T2",
+        "MM",
+        "KV",
+        "KP",
+        "HM",
+        "T3",
+        "KK",
+        "G",
+        "F",
+        "W-VK",
+        "W-VP",
+        "W-PK"
+      ]
+    }
+  ]
+}

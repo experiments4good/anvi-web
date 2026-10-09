@@ -1,0 +1,69 @@
+---
+import Info from '../layouts/Info.astro';
+import GuideCards from '../components/GuideCards.astro';
+import stage2 from '../lib/stage2.json';
+import routine from '../lib/routine-steps.json';
+
+// The page words from ~/anvi/content/web-stage2-2026.md; every step, how-to,
+// reason and source unchanged from the app (anvi-expo src/lib/routine.ts,
+// written to routine-steps.json by scripts/build-routine.ts).
+const p = stage2.routine;
+const DOSHAS = [
+  ['vata', 'Vata'],
+  ['pitta', 'Pitta'],
+  ['kapha', 'Kapha'],
+] as const;
+type Version = { howTo: string; reason: string; source: string };
+const steps = routine.steps.map((s) => {
+  const v = s.versions as Record<string, Version>;
+  const same = (k: keyof Version) => new Set(DOSHAS.map(([d]) => v[d]![k])).size === 1;
+  return { ...s, v, tailored: !(same('howTo') && same('reason') && same('source')), sameReason: same('reason') };
+});
+// The routine's sources are named in the app by teacher; these are the keys
+// for those teachers' sources in the approved source list.
+const sourceGroups = [{ keys: ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM'] }];
+---
+
+<Info title={p.title} description={p.description} heading={p.heading} glyph={[4, 4, 4]} sourceGroups={sourceGroups}>
+  <p>{p.intro}</p>
+  {
+    routine.groups.map((group) => (
+      <section class="routine-group">
+        <h2>{group}</h2>
+        {steps
+          .filter((s) => s.group === group)
+          .map((s) => (
+            <div class="step">
+              <h3>{s.title}</h3>
+              {s.tailored ? (
+                <>
+                  <div class="versions">
+                    {DOSHAS.map(([d, name]) => (
+                      <div class={`version is-${d}`}>
+                        <p class="version-label">
+                          <span class={`dot dot-${d}`} aria-hidden="true" />
+                          {name}
+                        </p>
+                        <p>{s.v[d]!.howTo}</p>
+                        {!s.sameReason && <p class="reason">{s.v[d]!.reason}</p>}
+                        <p class="step-source">Source: {s.v[d]!.source}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {s.sameReason && <p class="reason">{s.v.vata!.reason}</p>}
+                </>
+              ) : (
+                <>
+                  <p>{s.v.vata!.howTo}</p>
+                  <p class="reason">{s.v.vata!.reason}</p>
+                  <p class="step-source">Source: {s.v.vata!.source}</p>
+                </>
+              )}
+            </div>
+          ))}
+      </section>
+    ))
+  }
+  <p class="routine-closing">{p.closing}</p>
+  <GuideCards idPrefix="routine" />
+</Info>

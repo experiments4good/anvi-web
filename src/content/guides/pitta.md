@@ -17,7 +17,7 @@ Pitta is the dosha of heat and transformation. Welch lists its qualities as oily
 - Go easy on garlic, raw onions, hot peppers, raw tomatoes, sour fruits like lemons and grapefruit, hard cheese, fried and very salty foods, coffee and alcohol.
 - Keep portions moderate, and make lunch your biggest meal.
 
-## Your daily routine
+## [Your daily routine](/routine/)
 
 <table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Around sunrise</td><td data-label="Oil massage">Coconut or sunflower oil</td><td data-label="Move">Walking or yoga, in the cooler morning hours</td></tr></tbody></table>
 

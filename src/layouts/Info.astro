@@ -1,0 +1,33 @@
+---
+// The stage 2 pages (six tastes, routine, seasons): the guides' look, a glyph
+// header and the shared ending, with no type of their own.
+import '../styles/guides.css';
+import Base from './Base.astro';
+import Glyph from '../components/Glyph.astro';
+import PageEnd from '../components/PageEnd.astro';
+import type { Triple } from '../lib/glyph';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  /** Drawn in the header: a season's dosha, or an even split. */
+  glyph: Triple;
+  sourceGroups: { keys: string[]; note?: string }[];
+}
+
+const { title, description, heading, glyph, sourceGroups } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <article class="guide page">
+    <header class="guide-head">
+      <Glyph scores={glyph} id="page-glyph" settle />
+      <h1>{heading}</h1>
+    </header>
+    <div class="doc">
+      <slot />
+    </div>
+    <PageEnd sourceGroups={sourceGroups} />
+  </article>
+</Base>

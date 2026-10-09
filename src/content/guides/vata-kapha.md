@@ -17,7 +17,7 @@ Vata and Kapha both lead your constitution. Frawley gives one set of guidance fo
 - Sip warm drinks, not cold ones.
 - In the Kapha months, lighten up: go easy on heavy, oily and cold foods and on dairy, and eat plenty of fresh greens.
 
-## Your daily routine
+## [Your daily routine](/routine/)
 
 <table class="routine-table routine-windows"><thead><tr><td></td><th scope="col" data-balance="vata">Jun 21 to Dec 21 (balancing Vata)</th><th scope="col" data-balance="kapha">Dec 21 to Jun 21 (balancing Kapha)</th></tr></thead><tbody><tr><th scope="row">Wake up</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Around sunrise, at the same time every day</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Before sunrise, by about 6</td></tr><tr><th scope="row">Oil massage</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Warm sesame oil</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Warm sesame oil, with a brisk massage</td></tr><tr><th scope="row">Move</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Gentle exercise like walking or yoga</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
 

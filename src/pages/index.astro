@@ -1,27 +1,11 @@
 ---
 import '../styles/guides.css';
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import Glyph from '../components/Glyph.astro';
+import GuideCards from '../components/GuideCards.astro';
 
 const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
-
-// The seven type guides, in the order the quiz names the types.
-const ORDER = ['vata', 'pitta', 'kapha', 'vata-pitta', 'vata-kapha', 'pitta-kapha', 'tridoshic'];
-const guides = (await getCollection('guides')).sort((a, b) => ORDER.indexOf(a.data.slug) - ORDER.indexOf(b.data.slug));
-// Each type's core advice, as approved for the cards.
-const CORE: Record<string, string> = {
-  vata: 'Stay warm, steady and nourished.',
-  pitta: 'Stay cool and moderate.',
-  kapha: 'Stay light, warm and active.',
-  'vata-pitta': 'Stay grounded and steady.',
-  'vata-kapha': 'Eat warm food and stay warm.',
-  'pitta-kapha': 'Stay dry and light.',
-  tridoshic: 'Follow the season and keep a regular routine.',
-};
-// Non-breaking hyphens, so a two-dosha name never splits at the hyphen.
-const nb = (s: string) => s.replace(/-/g, '\u2011');
 
 // "What Anvi does": two of the App Store screenshots, each with the App Store
 // description's own words for that feature.
@@ -72,23 +56,32 @@ const features = [
 
     <a class="btn btn-primary home-quiz" href="/quiz/">Take the free dosha quiz</a>
 
-    <section class="home-section" aria-labelledby="guides-title">
+    <!-- "This season": the current season's page, by the app's month-based
+         seasons on the visitor's own clock. Without JavaScript, all three. -->
+    <nav class="home-season" aria-label="This season">
+      <a class="season-link" id="season-now" href="/season/fall/" hidden>This season</a>
+      <div class="season-all" id="season-all">
+        <span class="season-all-label">This season</span>
+        <a class="season-link is-vata" href="/season/fall/"><span class="dot dot-vata" aria-hidden="true"></span>Fall</a>
+        <a class="season-link is-pitta" href="/season/summer/"><span class="dot dot-pitta" aria-hidden="true"></span>Summer</a>
+        <a class="season-link is-kapha" href="/season/winter-spring/"><span class="dot dot-kapha" aria-hidden="true"></span>Winter and spring</a>
+      </div>
+    </nav>
+
+    <section class="home-section" id="guides" aria-labelledby="guides-title">
       <h2 id="guides-title">Type guides</h2>
-      <ul class="guide-cards">
-        {
-          guides.map((g) => (
-            <li class="guide-card">
-              <a href={`/dosha/${g.data.slug}/`}>
-                <Glyph type={g.data.type} id={`card-${g.data.slug}`} />
-                <span>
-                  <strong>{nb(g.data.type)}</strong>
-                  <span class="first">{CORE[g.data.slug]}</span>
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <GuideCards idPrefix="card" />
     </section>
   </div>
 </Base>
+
+<script>
+  import { seasonForDate } from '../lib/windows';
+
+  const page = { vata: 'fall', pitta: 'summer', kapha: 'winter-spring' }[seasonForDate(new Date())];
+  const now = document.getElementById('season-now') as HTMLAnchorElement;
+  now.href = `/season/${page}/`;
+  now.classList.add(`is-${seasonForDate(new Date())}`);
+  now.hidden = false;
+  (document.getElementById('season-all') as HTMLElement).hidden = true;
+</script>

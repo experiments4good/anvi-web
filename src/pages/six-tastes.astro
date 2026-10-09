@@ -1,0 +1,37 @@
+---
+import Info from '../layouts/Info.astro';
+import GuideCards from '../components/GuideCards.astro';
+import stage2 from '../lib/stage2.json';
+
+// Text word for word from ~/anvi/content/web-stage2-2026.md, by scripts/build-stage2.py.
+const p = stage2.sixTastes;
+const [head, ...rows] = [p.table.head, ...p.table.rows];
+// "**How to use this:** look up your type's guide ..." with "your type's guide"
+// linking to the home page's guide list.
+const how = p.how.replace(/^\*\*How to use this:\*\* /, '');
+const [beforeLink, afterLink] = how.split("your type's guide");
+---
+
+<Info title={p.title} description={p.description} heading={p.heading} glyph={[4, 4, 4]} sourceGroups={p.sourceGroups}>
+  <p>{p.intro}</p>
+  <table class="routine-table tastes-table">
+    <thead>
+      <tr>{head.map((h) => <th scope="col">{h}</th>)}</tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr>
+            <th scope="row">{r[0]}</th>
+            {r.slice(1).map((c, j) => (
+              <td data-label={head[j + 1]}>{c}</td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  {p.notes.map((n) => <p>{n}</p>)}
+  <p><strong>How to use this:</strong> {beforeLink}<a href="/#guides">your type's guide</a>{afterLink}</p>
+  <GuideCards idPrefix="tastes" />
+</Info>

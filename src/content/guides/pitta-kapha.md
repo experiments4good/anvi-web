@@ -24,7 +24,7 @@ Three established teachers agree on where to start. Dr. Vasant Lad of the Ayurve
 - Go easy on coffee and alcohol, and keep portions moderate.
 - Make lunch your biggest meal and dinner your lightest.
 
-## Your daily routine
+## [Your daily routine](/routine/)
 
 <table class="routine-table routine-windows"><thead><tr><td></td><th scope="col" data-balance="pitta">May 1 to Nov 1 (balancing Pitta)</th><th scope="col" data-balance="kapha">Nov 1 to May 1 (balancing Kapha)</th></tr></thead><tbody><tr><th scope="row">Wake up</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Around sunrise</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Before sunrise, by about 6</td></tr><tr><th scope="row">Oil massage</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Coconut or sunflower oil</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Sesame oil</td></tr><tr><th scope="row">Move</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Walking or yoga, in the cooler morning hours</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Brisk exercise or Sun Salutations, before 10</td></tr></tbody></table>
 

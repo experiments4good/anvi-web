@@ -1,0 +1,48 @@
+---
+import Info from '../../layouts/Info.astro';
+import Glyph from '../../components/Glyph.astro';
+import { proportionsFor } from '../../lib/glyph';
+import stage2 from '../../lib/stage2.json';
+
+// One page per season. The heading and intro are word for word from
+// ~/anvi/content/web-stage2-2026.md; each type's tip and source line are the
+// app's "This season" tips, unchanged, from ~/anvi/content/seasonal_tips_2026.md.
+export function getStaticPaths() {
+  return stage2.seasons.map((s) => ({ params: { slug: s.slug }, props: { season: s } }));
+}
+
+const { season } = Astro.props;
+const others = stage2.seasons.filter((s) => s.slug !== season.slug);
+const nb = (s: string) => s.replace(/-/g, '‑');
+const NAME: Record<string, string> = { vata: 'Vata', pitta: 'Pitta', kapha: 'Kapha' };
+---
+
+<Info title={season.title} description={season.description} heading={season.heading} glyph={proportionsFor(NAME[season.dosha]!)} sourceGroups={[{ keys: season.sourceKeys }]}>
+  <p>{season.intro}</p>
+  <ul class="season-tips">
+    {
+      season.tips.map((t) => (
+        <li class="season-tip">
+          <Glyph type={t.type} id={`tip-${t.slug}`} />
+          <div>
+            <h2>
+              <a href={`/dosha/${t.slug}/`}>{nb(t.type)}</a>
+            </h2>
+            <p>{t.tip}</p>
+            <p class="step-source">Source: {t.source}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <nav class="other-seasons" aria-label="Other seasons">
+    {
+      others.map((o) => (
+        <a class={`season-link is-${o.dosha}`} href={`/season/${o.slug}/`}>
+          <span class={`dot dot-${o.dosha}`} aria-hidden="true" />
+          {o.heading}
+        </a>
+      ))
+    }
+  </nav>
+</Info>

@@ -1,0 +1,186 @@
+{
+  "from": "anvi-expo src/lib/routine.ts",
+  "groups": [
+    "Morning",
+    "Midday",
+    "Evening"
+  ],
+  "steps": [
+    {
+      "id": "wake",
+      "group": "Morning",
+      "title": "Wake up",
+      "versions": {
+        "vata": {
+          "howTo": "Around sunrise, at the same time every day",
+          "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
+          "source": "Templeton; Maharishi; Hope-Murray"
+        },
+        "pitta": {
+          "howTo": "Around sunrise",
+          "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
+          "source": "Templeton; Maharishi"
+        },
+        "kapha": {
+          "howTo": "Before sunrise, by about 6",
+          "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
+          "source": "Templeton; Maharishi"
+        }
+      }
+    },
+    {
+      "id": "tongue",
+      "group": "Morning",
+      "title": "Scrape your tongue",
+      "versions": {
+        "vata": {
+          "howTo": "Back to front, 5–7 strokes, then brush your teeth",
+          "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
+          "source": "Kripalu"
+        },
+        "pitta": {
+          "howTo": "Back to front, 5–7 strokes, then brush your teeth",
+          "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
+          "source": "Kripalu"
+        },
+        "kapha": {
+          "howTo": "Back to front, 5–7 strokes, then brush your teeth",
+          "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
+          "source": "Kripalu"
+        }
+      }
+    },
+    {
+      "id": "water",
+      "group": "Morning",
+      "title": "Warm water",
+      "versions": {
+        "vata": {
+          "howTo": "A cup of warm water before anything else",
+          "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
+          "source": "Kripalu; Maharishi"
+        },
+        "pitta": {
+          "howTo": "A cup of warm water before anything else",
+          "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
+          "source": "Kripalu; Maharishi"
+        },
+        "kapha": {
+          "howTo": "A cup of warm water before anything else",
+          "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
+          "source": "Kripalu; Maharishi"
+        }
+      }
+    },
+    {
+      "id": "oil",
+      "group": "Morning",
+      "title": "Oil massage",
+      "versions": {
+        "vata": {
+          "howTo": "Sesame oil, 10–20 minutes, then shower",
+          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Sesame suits cooler types.",
+          "source": "Maharishi; Kripalu"
+        },
+        "pitta": {
+          "howTo": "Coconut or sunflower oil, 10–20 minutes, then shower",
+          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Coconut and sunflower suit warmer types.",
+          "source": "Maharishi; Kripalu"
+        },
+        "kapha": {
+          "howTo": "Sesame oil, 10–20 minutes, then shower",
+          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Sesame suits cooler types.",
+          "source": "Maharishi; Kripalu"
+        }
+      }
+    },
+    {
+      "id": "move",
+      "group": "Morning",
+      "title": "Move",
+      "versions": {
+        "vata": {
+          "howTo": "Walking or yoga. Morning, ideally between 6 and 10",
+          "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight.",
+          "source": "Maharishi; Kripalu"
+        },
+        "pitta": {
+          "howTo": "Walking or yoga. Morning, ideally between 6 and 10",
+          "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight.",
+          "source": "Maharishi; Kripalu"
+        },
+        "kapha": {
+          "howTo": "Vigorous: brisk exercise or Sun Salutations. Morning, ideally between 6 and 10",
+          "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight.",
+          "source": "Maharishi; Kripalu; Templeton"
+        }
+      }
+    },
+    {
+      "id": "breathe",
+      "group": "Morning",
+      "title": "Breathe and sit",
+      "versions": {
+        "vata": {
+          "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
+          "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
+          "source": "Kripalu; Templeton"
+        },
+        "pitta": {
+          "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
+          "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
+          "source": "Kripalu; Templeton"
+        },
+        "kapha": {
+          "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
+          "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
+          "source": "Kripalu; Templeton"
+        }
+      }
+    },
+    {
+      "id": "meal",
+      "group": "Midday",
+      "title": "Main meal at midday",
+      "versions": {
+        "vata": {
+          "howTo": "Make lunch the biggest meal of the day",
+          "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
+          "source": "Templeton; Maharishi"
+        },
+        "pitta": {
+          "howTo": "Make lunch the biggest meal of the day",
+          "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
+          "source": "Templeton; Maharishi"
+        },
+        "kapha": {
+          "howTo": "Make lunch the biggest meal of the day",
+          "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
+          "source": "Templeton; Maharishi"
+        }
+      }
+    },
+    {
+      "id": "bed",
+      "group": "Evening",
+      "title": "In bed by 10",
+      "versions": {
+        "vata": {
+          "howTo": "Lights out around 10, no later than 11",
+          "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
+          "source": "Templeton; Maharishi"
+        },
+        "pitta": {
+          "howTo": "Lights out around 10, no later than 11",
+          "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
+          "source": "Templeton; Maharishi"
+        },
+        "kapha": {
+          "howTo": "Lights out around 10, no later than 11",
+          "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
+          "source": "Templeton; Maharishi"
+        }
+      }
+    }
+  ]
+}

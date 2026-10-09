@@ -17,7 +17,7 @@ Vata is the dosha of movement. Welch lists its qualities as dry, light, cool, ro
 - Go easy on dry or puffed cereals, raw vegetables, broccoli, kale, raw apples, dried fruit, coffee and iced drinks.
 - Keep your meals at the same times each day, and make lunch your biggest meal.
 
-## Your daily routine
+## [Your daily routine](/routine/)
 
 <table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Around sunrise, at the same time every day</td><td data-label="Oil massage">Warm sesame oil</td><td data-label="Move">Gentle, joint-friendly exercise like walking or yoga</td></tr></tbody></table>
 

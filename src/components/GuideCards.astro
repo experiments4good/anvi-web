@@ -1,0 +1,44 @@
+---
+// The seven type guides as cards: each type's glyph, its name and its core
+// advice, in the order the quiz names the types. Used on the home page, the
+// six tastes page and the routine page.
+import { getCollection } from 'astro:content';
+import Glyph from './Glyph.astro';
+
+interface Props {
+  /** Prefix for the glyph ids, unique on the page. */
+  idPrefix: string;
+}
+
+const { idPrefix } = Astro.props;
+const ORDER = ['vata', 'pitta', 'kapha', 'vata-pitta', 'vata-kapha', 'pitta-kapha', 'tridoshic'];
+const guides = (await getCollection('guides')).sort((a, b) => ORDER.indexOf(a.data.slug) - ORDER.indexOf(b.data.slug));
+// Each type's core advice, as approved for the cards.
+const CORE: Record<string, string> = {
+  vata: 'Stay warm, steady and nourished.',
+  pitta: 'Stay cool and moderate.',
+  kapha: 'Stay light, warm and active.',
+  'vata-pitta': 'Stay grounded and steady.',
+  'vata-kapha': 'Eat warm food and stay warm.',
+  'pitta-kapha': 'Stay dry and light.',
+  tridoshic: 'Follow the season and keep a regular routine.',
+};
+// Non-breaking hyphens, so a two-dosha name never splits at the hyphen.
+const nb = (s: string) => s.replace(/-/g, '‑');
+---
+
+<ul class="guide-cards">
+  {
+    guides.map((g) => (
+      <li class="guide-card">
+        <a href={`/dosha/${g.data.slug}/`}>
+          <Glyph type={g.data.type} id={`${idPrefix}-${g.data.slug}`} />
+          <span>
+            <strong>{nb(g.data.type)}</strong>
+            <span class="first">{CORE[g.data.slug]}</span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
