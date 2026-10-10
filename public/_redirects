@@ -9,3 +9,25 @@
 # Google Search Console verification: serve the file at its .html address,
 # not the extensionless one the asset handling redirects to.
 /google8436bdfad2414050.html /google8436bdfad2414050 200
+
+# Short addresses for the type guides, reversed pairs to their shared guide.
+/vata /dosha/vata/ 301
+/vata/ /dosha/vata/ 301
+/pitta /dosha/pitta/ 301
+/pitta/ /dosha/pitta/ 301
+/kapha /dosha/kapha/ 301
+/kapha/ /dosha/kapha/ 301
+/vata-pitta /dosha/vata-pitta/ 301
+/vata-pitta/ /dosha/vata-pitta/ 301
+/vata-kapha /dosha/vata-kapha/ 301
+/vata-kapha/ /dosha/vata-kapha/ 301
+/pitta-kapha /dosha/pitta-kapha/ 301
+/pitta-kapha/ /dosha/pitta-kapha/ 301
+/tridoshic /dosha/tridoshic/ 301
+/tridoshic/ /dosha/tridoshic/ 301
+/pitta-vata /dosha/vata-pitta/ 301
+/pitta-vata/ /dosha/vata-pitta/ 301
+/kapha-vata /dosha/vata-kapha/ 301
+/kapha-vata/ /dosha/vata-kapha/ 301
+/kapha-pitta /dosha/pitta-kapha/ 301
+/kapha-pitta/ /dosha/pitta-kapha/ 301
