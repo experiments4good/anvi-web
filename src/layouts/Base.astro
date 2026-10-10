@@ -2,6 +2,7 @@
 import '../styles/fonts.css';
 import '../styles/site.css';
 import Mark from '../components/Mark.astro';
+import { IMAGE_HEIGHT, IMAGE_WIDTH, imageAlt, imagePath, sharePages } from '../lib/share';
 
 interface Props {
   title: string;
@@ -18,6 +19,10 @@ interface Props {
 const { title, description, bar = true, appBanner = true } = Astro.props;
 const origin = Astro.site?.origin ?? Astro.url.origin;
 const canonical = new URL(Astro.url.pathname, origin).href;
+// The page's link-preview image (src/pages/og), drawn at build time.
+const share = (await sharePages()).find((p) => p.path === Astro.url.pathname);
+if (!share) throw new Error(`No share image for ${Astro.url.pathname}; add the page to src/lib/share.ts`);
+const image = new URL(imagePath(share.path), origin).href;
 ---
 
 <!doctype html>
@@ -35,6 +40,11 @@ const canonical = new URL(Astro.url.pathname, origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content={String(IMAGE_WIDTH)} />
+    <meta property="og:image:height" content={String(IMAGE_HEIGHT)} />
+    <meta property="og:image:alt" content={imageAlt(share)} />
+    <meta name="twitter:card" content="summary_large_image" />
     {appBanner && <meta name="apple-itunes-app" content="app-id=6811624799" />}
     <link rel="preload" href="/fonts/PlayfairDisplay-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin />

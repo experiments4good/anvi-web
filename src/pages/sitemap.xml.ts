@@ -1,14 +1,12 @@
-// The sitemap: every public page, built with the site. Pages are listed
-// here and from the guides collection, so a new guide is included on its own.
+// The sitemap: every public page, from the same list the link-preview
+// images use (src/lib/share.ts), so a page with an image is always listed.
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 
-import stage2 from '../lib/stage2.json';
+import { sharePages } from '../lib/share';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = (site ?? new URL('https://getanvi.app')).origin;
-  const guides = (await getCollection('guides')).map((g) => `/dosha/${g.data.slug}/`).sort();
-  const paths = ['/', '/quiz/', ...guides, '/six-tastes/', '/routine/', ...stage2.seasons.map((s) => `/season/${s.slug}/`), '/privacy/', '/terms/'];
+  const paths = (await sharePages()).map((p) => p.path);
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

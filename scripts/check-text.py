@@ -196,6 +196,69 @@ for path in ('/six-tastes/', '/routine/'):
     if f'href="{path}"' not in home:
         problems.append(f'/: no link to {path}')
 
+# Link-preview images: the tags on every page, and the words drawn on each
+# image (recorded in the PNG by scripts/build-og.ts) are the page's own
+# heading and the approved quiz line, with no dash.
+import struct
+QUIZ_IMAGE_LINE = 'Take the free dosha quiz at getanvi.app'
+
+
+def png_info(path):
+    b = path.read_bytes()
+    assert b[:8] == b'\x89PNG\r\n\x1a\n', path
+    w, hgt = struct.unpack('>II', b[16:24])
+    texts, i = {}, 8
+    while i < len(b):
+        n = struct.unpack('>I', b[i:i + 4])[0]
+        kind = b[i + 4:i + 8]
+        if kind == b'tEXt':
+            k, _, v = b[i + 8:i + 8 + n].partition(b'\0')
+            texts[k.decode('latin1')] = v.decode('latin1')
+        i += 12 + n
+    return w, hgt, texts
+
+
+for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
+    rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
+    h = Path(f).read_text()
+    tag = lambda prop: (re.search(rf'<meta (?:property|name)="{prop}" content="([^"]*)"', h) or [None, None])[1]
+    image = tag('og:image')
+    canonical = re.search(r'<link rel="canonical" href="([^"]*)"', h).group(1)
+    if not image or not image.startswith('https://getanvi.app/og/') or not image.endswith('.png'):
+        problems.append(f'{rel}: og:image {image}')
+        continue
+    if tag('og:image:width') != '1200' or tag('og:image:height') != '630':
+        problems.append(f'{rel}: og:image size tags')
+    if tag('twitter:card') != 'summary_large_image':
+        problems.append(f'{rel}: twitter:card')
+    if tag('og:url') != canonical or tag('og:type') != 'website' or tag('og:site_name') != 'Anvi':
+        problems.append(f'{rel}: og:url, og:type or og:site_name')
+    if html.unescape(tag('og:description') or '') != html.unescape(re.search(r'<meta name="description" content="([^"]*)"', h).group(1)):
+        problems.append(f'{rel}: og:description is not the meta description')
+    png = dist / image.removeprefix('https://getanvi.app/')
+    if not png.exists():
+        problems.append(f'{rel}: {png.name} missing')
+        continue
+    w, hgt, texts = png_info(png)
+    if (w, hgt) != (1200, 630):
+        problems.append(f'{rel}: image is {w}x{hgt}')
+    lines = texts.get('Description', '').split('\n')
+    h1 = visible(re.search(r'<h1[^>]*>(.*?)</h1>', h, re.S).group(1)).strip()
+    if len(lines) != 2 or lines[0] != h1 or lines[1] != QUIZ_IMAGE_LINE:
+        problems.append(f'{rel}: image text {lines} is not the heading "{h1}" and the quiz line')
+    alt = html.unescape(tag('og:image:alt') or '')
+    if alt != f'{h1}. {QUIZ_IMAGE_LINE}':
+        problems.append(f'{rel}: og:image:alt "{alt}"')
+    if any(c in ''.join(lines) for c in '\u2013\u2014'):
+        problems.append(f'{rel}: dash in the image text')
+    checked += 1
+images = sorted(glob.glob(str(dist / 'og/**/*.png'), recursive=True))
+pages = sorted(glob.glob(str(dist / '**/index.html'), recursive=True))
+if len(images) != len(pages):
+    problems.append(f'{len(images)} images for {len(pages)} pages')
+if (dist / 'og/manifest.json').exists():
+    problems.append('og/manifest.json was published')
+
 # Dashes.
 for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)) + sorted(glob.glob(str(dist / '_astro/*'))):
     rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
