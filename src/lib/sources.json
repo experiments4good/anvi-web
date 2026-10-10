@@ -1,8 +1,20 @@
 {
+  "AD": [
+    {
+      "name": "The Ayurvedic Institute, The Daily Routine",
+      "url": "https://ayurveda.com/the-daily-routine/"
+    }
+  ],
   "BB": [
     {
       "name": "Banyan Botanicals, Balance Vata with Lifestyle Practices",
       "url": "https://www.banyanbotanicals.com/pages/ayurvedic-lifestyle-vata-pacifying"
+    }
+  ],
+  "BK": [
+    {
+      "name": "Banyan Botanicals, Kapha Balancing Daily Routine",
+      "url": "https://www.banyanbotanicals.com/pages/ayurvedic-kapha-daily-routine"
     }
   ],
   "BV": [
