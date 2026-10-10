@@ -139,7 +139,7 @@ need(text, [p for p in re.split(r'\n\s*\n', b[b.index('### '):].split('\n', 1)[1
 need(text, re.search(r'Below the steps: "([^"]+)"', b).group(1), '/routine/ closing')
 if h.count('class="guide-card"') != 7:
     problems.append('/routine/: seven guide cards')
-ending(h, text, ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G'], '/routine/')
+ending(h, text, ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G', 'VS', 'BV', 'BB'], '/routine/')
 
 # Routine steps: identical to the app, and on the page exactly.
 committed = (root / 'src/lib/routine-steps.json').read_text()

@@ -1,4 +1,16 @@
 {
+  "BB": [
+    {
+      "name": "Banyan Botanicals, Balance Vata with Lifestyle Practices",
+      "url": "https://www.banyanbotanicals.com/pages/ayurvedic-lifestyle-vata-pacifying"
+    }
+  ],
+  "BV": [
+    {
+      "name": "Beatrice Voss (CAP), Vata, Pitta, Kapha: Understanding Ayurvedic Body Types, The Ayurvedic Institute",
+      "url": "https://ayurveda.com/blog/discovering-your-ayurvedic-body-type/"
+    }
+  ],
   "DN": [
     {
       "name": "Dr. Ameen Nalakath, Ayurveda on Sleep Timing, TDU",
@@ -85,6 +97,12 @@
     {
       "name": "Kathryn Templeton, Ayurveda's Six Tastes, Yoga International",
       "url": "https://yogainternational.com/article/view/ayurvedas-six-tastes-a-personal-prescription-for-your-healthy-body"
+    }
+  ],
+  "VS": [
+    {
+      "name": "Vamadeva Shastri (David Frawley), The Ayurvedic Effects of Asana Practice, American Institute of Vedic Studies",
+      "url": "https://www.vedanet.com/the-ayurvedic-effects-of-asana-practice/"
     }
   ],
   "W-PK": [
