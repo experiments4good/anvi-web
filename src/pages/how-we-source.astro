@@ -1,9 +1,9 @@
 ---
 // How we source: the page text as approved October 11, 2026, word for word.
 // The list is every source kept by the October 10 source audit
-// (~/anvi/content/source-audit-2026-10-10.md, "Sources kept"), one entry per
-// teacher or school, with the credential and affiliation as that file states
-// them, linking to the same source pages the guides link to
+// (~/anvi/content/source-audit-2026-10-10.md, "Sources kept", with its
+// October 11 note), one entry per teacher or school, with the credential and
+// affiliation as that file states them, linking to the same source pages the guides link to
 // (src/lib/sources.json). Linked only from the home page's How we source band.
 import Base from '../layouts/Base.astro';
 import sources from '../lib/sources.json';
@@ -12,13 +12,13 @@ import { NAMA_DIRECTORY } from '../lib/nama';
 const all = sources as Record<string, { name: string; url: string }[]>;
 
 const KEPT: { who: string; keys: string[] }[] = [
-  { who: 'Usha and Dr. Vasant Lad (BAMS, MASc), Ayurvedic Institute', keys: ['L'] },
-  { who: 'Dr. David Frawley (Vamadeva Shastri), American Institute of Vedic Studies', keys: ['F', 'VS'] },
-  { who: 'Dr. Claudia Welch, written for Banyan Botanicals', keys: ['W-VP', 'W-VK', 'W-PK', 'W-T'] },
+  { who: 'Dr. Vasant Lad (BAMS, MASc) and Usha Lad, The Ayurvedic Institute', keys: ['L'] },
+  { who: 'Dr. David Frawley, D.Litt. (Pandit Vamadeva Shastri), founder and director of the American Institute of Vedic Studies, which teaches Ayurveda', keys: ['F', 'VS'] },
+  { who: 'Dr. Claudia Welch, Doctor of Oriental Medicine, Ayurvedic practitioner and educator, who has served on the teaching faculty of The Ayurvedic Institute and the Kripalu School of Ayurveda (written for Banyan Botanicals)', keys: ['W-VP', 'W-VK', 'W-PK', 'W-T'] },
   { who: 'Kathryn Templeton, NAMA-registered Ayurvedic practitioner', keys: ['T1', 'T2', 'T3'] },
   { who: 'Erin Casperson, Ayurvedic Health Counselor, director of the Kripalu School of Ayurveda', keys: ['KP'] },
-  { who: 'Kripalu School of Ayurveda', keys: ['KA'] },
-  { who: 'The Ayurvedic Institute', keys: ['AD'] },
+  { who: 'Kripalu School of Ayurveda (Ayurvedic school)', keys: ['KA'] },
+  { who: 'The Ayurvedic Institute (Ayurvedic school)', keys: ['AD'] },
   { who: 'Beatrice Voss, CAP, The Ayurvedic Institute', keys: ['BV'] },
   { who: 'Angela Hope-Murray, MSc (Ayur), registered Ayurvedic practitioner', keys: ['HM'] },
   { who: 'Rebecca Adams, Ayurvedic Health Counselor, Mount Madonna', keys: ['MM'] },
@@ -51,7 +51,7 @@ const DESCRIPTION =
 
       <h2>Who we draw on</h2>
       <p>
-        Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, or leadership of an established Ayurvedic school.
+        Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, leadership of an established Ayurvedic school, or a place on the teaching faculty of one. Where a source is a school, the school itself is the source.
       </p>
       <ul>
         {

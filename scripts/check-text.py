@@ -246,7 +246,7 @@ for s_ in (
     "How we source Anvi's guidance",
     HOW_DESCRIPTION,
     'Who we draw on',
-    'Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, or leadership of an established Ayurvedic school.',
+    'Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, leadership of an established Ayurvedic school, or a place on the teaching faculty of one. Where a source is a school, the school itself is the source.',
     'Where teachers disagree',
     "When respected teachers give different advice, the guide gives both views instead of choosing one. For example, for Kapha's daily oil massage, Kripalu and Dr. Claudia Welch suggest sesame oil, and the Ayurvedic Institute suggests sunflower or mustard oil.",
     'How the app uses the guides',
@@ -259,13 +259,13 @@ for s_ in (
 ):
     need(how_text, s_, '/how-we-source/')
 for who, keys in (
-    ('Usha and Dr. Vasant Lad (BAMS, MASc), Ayurvedic Institute', ['L']),
-    ('Dr. David Frawley (Vamadeva Shastri), American Institute of Vedic Studies', ['F', 'VS']),
-    ('Dr. Claudia Welch, written for Banyan Botanicals', ['W-VP', 'W-VK', 'W-PK', 'W-T']),
+    ('Dr. Vasant Lad (BAMS, MASc) and Usha Lad, The Ayurvedic Institute', ['L']),
+    ('Dr. David Frawley, D.Litt. (Pandit Vamadeva Shastri), founder and director of the American Institute of Vedic Studies, which teaches Ayurveda', ['F', 'VS']),
+    ('Dr. Claudia Welch, Doctor of Oriental Medicine, Ayurvedic practitioner and educator, who has served on the teaching faculty of The Ayurvedic Institute and the Kripalu School of Ayurveda (written for Banyan Botanicals)', ['W-VP', 'W-VK', 'W-PK', 'W-T']),
     ('Kathryn Templeton, NAMA-registered Ayurvedic practitioner', ['T1', 'T2', 'T3']),
     ('Erin Casperson, Ayurvedic Health Counselor, director of the Kripalu School of Ayurveda', ['KP']),
-    ('Kripalu School of Ayurveda', ['KA']),
-    ('The Ayurvedic Institute', ['AD']),
+    ('Kripalu School of Ayurveda (Ayurvedic school)', ['KA']),
+    ('The Ayurvedic Institute (Ayurvedic school)', ['AD']),
     ('Beatrice Voss, CAP, The Ayurvedic Institute', ['BV']),
     ('Angela Hope-Murray, MSc (Ayur), registered Ayurvedic practitioner', ['HM']),
     ('Rebecca Adams, Ayurvedic Health Counselor, Mount Madonna', ['MM']),
