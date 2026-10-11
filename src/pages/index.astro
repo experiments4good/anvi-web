@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import Glyph from '../components/Glyph.astro';
 import GuideCards from '../components/GuideCards.astro';
+import { NAMA_DIRECTORY } from '../lib/nama';
 
 const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
 
@@ -161,7 +162,7 @@ const sources = [
       <div class="h-wrap">
         <h2 id="source-title">How we source</h2>
         <p>
-          Every guide is checked against multiple established Ayurvedic teachers. Where they disagree, the page says so, and every page lists its sources. For guidance for your own body, we encourage you to work with a NAMA-certified Ayurvedic practitioner.
+          Every guide is checked against multiple established Ayurvedic teachers. Where they disagree, the page says so, and every page lists its sources. For guidance for your own body, we encourage you to work with a <a href={NAMA_DIRECTORY}>NAMA-certified Ayurvedic practitioner</a>.
         </p>
       </div>
     </section>

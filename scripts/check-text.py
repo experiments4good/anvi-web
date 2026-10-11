@@ -30,6 +30,8 @@ checked = 0
 
 def visible(h):
     h = re.sub(r'<script.*?</script>|<style.*?</style>', ' ', h, flags=re.S)
+    # A link sits inside the sentence: its tags add no space ("practitioner</a>.").
+    h = re.sub(r'</?a\b[^>]*>', '', h)
     t = html.unescape(re.sub(r'<[^>]+>', ' ', h)).replace('’', "'").replace('‑', '-').replace('“', '"').replace('”', '"')
     return re.sub(r'\s+', ' ', t)
 
@@ -388,6 +390,17 @@ for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)) + sorted
     raw = Path(f).read_text(errors='ignore')
     for m in re.finditer('[\u2013\u2014]', raw):
         problems.append(f'{rel}: dash in "{raw[max(0, m.start() - 12): m.end() + 12]}"')
+
+# Every "NAMA-certified Ayurvedic practitioner" on the site links to NAMA's practitioner directory.
+NAMA = 'https://ayurveda.memberclicks.net/directory-find-a-professional#/'
+for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
+    rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
+    h = Path(f).read_text()
+    total = h.count('NAMA-certified Ayurvedic practitioner')
+    linked = len(re.findall(r'<a href="' + re.escape(NAMA) + r'"[^>]*>NAMA-certified Ayurvedic practitioner</a>', h))
+    checked += total
+    if total != linked:
+        problems.append(f'{rel}: {total - linked} of {total} "NAMA-certified Ayurvedic practitioner" not linked to NAMA')
 
 print(f'checked {checked} strings')
 for p in problems:

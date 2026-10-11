@@ -347,6 +347,19 @@
   max-width: 780px;
 }
 
+.h-source a {
+  color: var(--surface);
+  text-decoration-color: color-mix(in srgb, var(--surface) 60%, transparent);
+}
+
+.h-source a:hover {
+  text-decoration-color: var(--surface);
+}
+
+.h-source a:focus-visible {
+  outline-color: var(--surface);
+}
+
 .h-source p {
   max-width: 780px;
   margin: 20px 0 0;

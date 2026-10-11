@@ -12,7 +12,7 @@ week: {"food": "Include all six tastes across the day: sweet (carrots), sour (le
 
 Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution. Lad notes this is the least common result. Gran's advice is to follow the season and keep a regular routine. Welch agrees on the seasons: Vata in late fall and early winter, Pitta in late spring and summer, Kapha in late winter and spring. As with every type, if one dosha is clearly out of balance right now, balance that one first (Lad).
 
-Banyan gives different advice when more than one dosha feels out of balance at once: start with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
+Banyan gives different advice when more than one dosha feels out of balance at once: start with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A [NAMA-certified Ayurvedic practitioner](https://ayurveda.memberclicks.net/directory-find-a-professional#/) can tell you which to work on first.
 
 ## Food
 

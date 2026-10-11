@@ -181,6 +181,9 @@ for slug, p in pages.items():
     c = re.sub(r'^\*\*Mind and mood:\*\* (.+)$', lambda m: f'<p id="mind-and-mood"><strong>Mind and mood:</strong> {inline(m.group(1))}</p>', c, flags=re.M)
     c = c.replace('<p class="season-intro">', '<p class="season-intro" id="by-season">')
     c = re.sub(r'^\*\*\[Your daily routine\]\(/routine/\)\*\* (.+)$', lambda m: f'<p id="your-daily-routine"><strong><a href="/routine/">Your daily routine</a></strong> {inline(m.group(1))}</p>', c, flags=re.M)
+    # "NAMA-certified Ayurvedic practitioner" links to NAMA's practitioner
+    # directory (src/lib/nama.ts), words unchanged.
+    c = c.replace('NAMA-certified Ayurvedic practitioner', '[NAMA-certified Ayurvedic practitioner](https://ayurveda.memberclicks.net/directory-find-a-professional#/)')
     # "What to balance right now" sits in its own card.
     c, n = re.subn(r'^(## What to balance right now\n\n[^\n]+)\n', r'<div class="now-card">\n\n\1\n\n</div>\n', c, flags=re.M)
     assert n <= 1

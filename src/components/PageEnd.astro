@@ -3,6 +3,7 @@
 // Store line and badge, the wellness line, and the linked sources.
 import AppStoreBadge from './AppStoreBadge.astro';
 import sources from '../lib/sources.json';
+import { NAMA_DIRECTORY } from '../lib/nama';
 
 interface Props {
   /** On a type guide, the type the quiz button names. */
@@ -36,14 +37,14 @@ const list = sourceGroups.flatMap((g) =>
         <p class="store-line">{storeLine}</p>
         <AppStoreBadge />
       </div>
-      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a <a href={NAMA_DIRECTORY}>NAMA-certified Ayurvedic practitioner</a>.</p>
     </div>
   ) : (
     <div class="guide-end">
       <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
       <p class="store-line">{storeLine}</p>
       <AppStoreBadge />
-      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a <a href={NAMA_DIRECTORY}>NAMA-certified Ayurvedic practitioner</a>.</p>
     </div>
   )
 }
