@@ -4,7 +4,7 @@ type: "Tridoshic"
 title: "Tridoshic: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're tridoshic, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Tridoshic"
-sources: ["W-T", "L", "T1", "T2", "T3", "AD", "VS", "BV", "HM", "KA", "MM"]
+sources: ["W-T", "L", "T1", "T2", "T3", "AD", "VS", "BV", "HM", "KA", "MM", "W-PK"]
 first: "Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution."
 toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "sources", "label": "Sources"}]
 week: {"food": "Include all six tastes across the day: sweet (carrots), sour (lemon), salty (olives), pungent (ginger), bitter (dark leafy greens) and astringent (apples).", "mind": null, "wake": {"vata": "Around sunrise, at the same time every day", "pitta": "Around sunrise", "kapha": "Before sunrise, by about 6"}}

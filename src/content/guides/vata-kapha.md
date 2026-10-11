@@ -4,7 +4,7 @@ type: "Vata-Kapha"
 title: "Vata-Kapha Dosha: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're Vata-Kapha or Kapha-Vata, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Vata-Kapha (and Kapha-Vata)"
-sources: ["F", "L", "W-VK", "T1", "T2", "T3", "HM", "AD", "VS", "BV", "KA"]
+sources: ["F", "L", "W-VK", "T1", "T2", "T3", "HM", "AD", "VS", "BV", "KA", "W-PK"]
 first: "Vata and Kapha both lead your constitution."
 toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "sources", "label": "Sources"}]
 week: {"food": "Favor warm, cooked food with sour, salty and pungent tastes, like lemon, miso and ginger.", "mind": "Frawley advises staying close to people who support you and building a sense of warmth.", "wake": {"vata": "Around sunrise, at the same time every day", "kapha": "Before sunrise, by about 6"}}
