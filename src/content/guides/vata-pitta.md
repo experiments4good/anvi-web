@@ -12,7 +12,7 @@ week: {"food": {"vata": "In the Vata months: warm, cooked meals with sweet, sour
 
 Vata and Pitta both lead your constitution. Frawley gives one set of guidance for the pair, whichever is named first. What the two share is lightness, so his core advice is to stay grounded and steady. First balance whichever dosha is out of balance right now (Lad, Frawley). Otherwise go by the time of year: Frawley balances Pitta from about March 21 to September 21, and Vata from about September 21 to March 21. Welch's seasons line up: Vata in fall and winter, Pitta in spring and summer. <em class="now" data-pair="vata-pitta" hidden>Right now that means balancing Vata, through Mar 20.</em>
 
-If more than one dosha feels out of balance at once, teachers differ on where to start. Frawley advises working on whichever is most out of balance right now, and following the seasons when none stands out. Banyan suggests starting with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
+Banyan gives different advice when more than one dosha feels out of balance at once: start with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
 
 ## Food
 

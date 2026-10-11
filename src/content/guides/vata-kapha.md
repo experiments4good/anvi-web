@@ -12,7 +12,7 @@ week: {"food": "Favor warm, cooked food with sour, salty and pungent tastes, lik
 
 Vata and Kapha both lead your constitution. Frawley gives one set of guidance for the pair, whichever is named first. What the two share is cold, so his core advice is to eat warm food and stay warm. First balance whichever dosha is out of balance right now (Lad, Frawley). Otherwise go by the time of year: Frawley balances Vata from about June 21 to December 21, and Kapha from about December 21 to June 21. Welch's seasons overlap in winter: Vata in fall and winter, Kapha in winter and spring. <em class="now" data-pair="vata-kapha" hidden>Right now that means balancing Vata, through Dec 21.</em>
 
-If more than one dosha feels out of balance at once, teachers differ on where to start. Frawley advises working on whichever is most out of balance right now, and following the seasons when none stands out. Banyan suggests starting with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
+Banyan gives different advice when more than one dosha feels out of balance at once: start with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
 
 ## Food
 

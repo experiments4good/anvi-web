@@ -4,7 +4,7 @@ type: "Tridoshic"
 title: "Tridoshic: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're tridoshic, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Tridoshic"
-sources: ["G", "W-T", "L", "KV", "T1", "T2", "T3", "BK", "AD", "VS", "BV", "BB", "F", "KB-VK", "KB-T"]
+sources: ["G", "W-T", "L", "KV", "T1", "T2", "T3", "BK", "AD", "VS", "BV", "BB", "KB-VK", "KB-T"]
 first: "Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution."
 toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "sources", "label": "Sources"}]
 week: {"food": "Include all six tastes across the day: sweet (carrots), sour (lemon), salty (olives), pungent (ginger), bitter (dark leafy greens) and astringent (apples).", "mind": null, "wake": {"vata": "Around sunrise, at the same time every day", "pitta": "Around sunrise", "kapha": "Before sunrise, by about 6"}}
@@ -12,7 +12,7 @@ week: {"food": "Include all six tastes across the day: sweet (carrots), sour (le
 
 Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution. Lad notes this is the least common result. Gran's advice is to follow the season and keep a regular routine. Welch agrees on the seasons: Vata in late fall and early winter, Pitta in late spring and summer, Kapha in late winter and spring. As with every type, if one dosha is clearly out of balance right now, balance that one first (Lad).
 
-If more than one dosha feels out of balance at once, teachers differ on where to start. Frawley advises working on whichever is most out of balance right now, and following the seasons when none stands out. Banyan suggests starting with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
+Banyan gives different advice when more than one dosha feels out of balance at once: start with Vata, through gentle movement, easy-to-digest food and a steady routine, until you can see a practitioner. A NAMA-certified Ayurvedic practitioner can tell you which to work on first.
 
 ## Food
 
