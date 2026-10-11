@@ -1,0 +1,96 @@
+---
+// How we source: the page text as approved October 11, 2026, word for word.
+// The list is every source kept by the October 10 source audit
+// (~/anvi/content/source-audit-2026-10-10.md, "Sources kept"), one entry per
+// teacher or school, with the credential and affiliation as that file states
+// them, linking to the same source pages the guides link to
+// (src/lib/sources.json). Linked only from the home page's How we source band.
+import Base from '../layouts/Base.astro';
+import sources from '../lib/sources.json';
+import { NAMA_DIRECTORY } from '../lib/nama';
+
+const all = sources as Record<string, { name: string; url: string }[]>;
+
+const KEPT: { who: string; keys: string[] }[] = [
+  { who: 'Usha and Dr. Vasant Lad (BAMS, MASc), Ayurvedic Institute', keys: ['L'] },
+  { who: 'Dr. David Frawley (Vamadeva Shastri), American Institute of Vedic Studies', keys: ['F', 'VS'] },
+  { who: 'Dr. Claudia Welch, written for Banyan Botanicals', keys: ['W-VP', 'W-VK', 'W-PK', 'W-T'] },
+  { who: 'Kathryn Templeton, NAMA-registered Ayurvedic practitioner', keys: ['T1', 'T2', 'T3'] },
+  { who: 'Erin Casperson, Ayurvedic Health Counselor, director of the Kripalu School of Ayurveda', keys: ['KP'] },
+  { who: 'Kripalu School of Ayurveda', keys: ['KA'] },
+  { who: 'The Ayurvedic Institute', keys: ['AD'] },
+  { who: 'Beatrice Voss, CAP, The Ayurvedic Institute', keys: ['BV'] },
+  { who: 'Angela Hope-Murray, MSc (Ayur), registered Ayurvedic practitioner', keys: ['HM'] },
+  { who: 'Rebecca Adams, Ayurvedic Health Counselor, Mount Madonna', keys: ['MM'] },
+];
+
+// Each source page by its title: its name in sources.json without the author
+// before the first comma ("Kathryn Templeton, The Ayurvedic Clock, Yoga
+// International" is "The Ayurvedic Clock, Yoga International").
+const list = KEPT.map(({ who, keys }) => ({
+  who,
+  pages: keys.flatMap((k) => {
+    if (!all[k]) throw new Error(`Unknown source key ${k}`);
+    return all[k].map((e) => ({ title: e.name.slice(e.name.indexOf(', ') + 2), url: e.url }));
+  }),
+}));
+
+const DESCRIPTION =
+  "Anvi's dosha guides are built from the published teaching of Ayurvedic practitioners and schools. We check each piece of guidance against multiple sources before it goes into a guide.";
+---
+
+<Base title="How we source Anvi's guidance | Anvi" description={DESCRIPTION}>
+  <article class="legal">
+    <header>
+      <h1>How we source Anvi's guidance</h1>
+    </header>
+    <div class="doc">
+      <p>
+        Anvi's dosha guides are built from the published teaching of Ayurvedic practitioners and schools. We check each piece of guidance against multiple sources before it goes into a guide.
+      </p>
+
+      <h2>Who we draw on</h2>
+      <p>
+        Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, or leadership of an established Ayurvedic school.
+      </p>
+      <ul>
+        {
+          list.map(({ who, pages }) => (
+            <li>
+              {who}:{' '}
+              {pages.map((p, i) => (
+                <>
+                  {i > 0 && '; '}
+                  <a href={p.url} rel="noopener">{p.title}</a>
+                </>
+              ))}
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Where teachers disagree</h2>
+      <p>
+        When respected teachers give different advice, the guide gives both views instead of choosing one. For example, for Kapha's daily oil massage, Kripalu and Dr. Claudia Welch suggest sesame oil, and the Ayurvedic Institute suggests sunflower or mustard oil.
+      </p>
+
+      <h2>How the app uses the guides</h2>
+      <p>
+        The Anvi app's chat and menu scan are written by AI, working from the guide for your dosha type. When you ask Anvi where its advice comes from, the app lists the guide lines the answer drew on and the sources behind each one. An AI reply can occasionally include a general Ayurvedic suggestion that isn't in your guide. The guide pages on this site are the sourced reference.
+      </p>
+      <p>
+        If you've told Anvi about an allergy or diet restriction, every food reply reminds you to check ingredients yourself. Anvi can't see inside a restaurant kitchen, so always confirm with your server before you order.
+      </p>
+
+      <h2>Anvi is not medical advice</h2>
+      <p>
+        Anvi offers general wellness guidance. To learn your constitution for certain, or for any health concern, see a qualified practitioner. You can find one in the <a href={NAMA_DIRECTORY}>NAMA directory</a>.
+      </p>
+
+      <h2>Corrections</h2>
+      <p>
+        If you think something in a guide is wrong, or a source is misrepresented, email <a href="mailto:support@getanvi.app">support@getanvi.app</a>. We'll check it against the sources and correct it.
+      </p>
+    </div>
+  </article>
+</Base>

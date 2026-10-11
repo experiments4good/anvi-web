@@ -49,7 +49,7 @@ def need(text, s, where):
 
 
 def meta(h, title, description, where):
-    if re.search(r'<title>(.*?)</title>', h).group(1) != html.escape(title, quote=False):
+    if html.unescape(re.search(r'<title>(.*?)</title>', h).group(1)) != title:
         problems.append(f'{where}: title')
     if html.unescape(re.search(r'<meta name="description" content="(.*?)"', h).group(1)) != description:
         problems.append(f'{where}: description')
@@ -232,6 +232,63 @@ need(visible(home), 'This season', '/')
 for path in ('/six-tastes/', '/routine/'):
     if f'href="{path}"' not in home:
         problems.append(f'/: no link to {path}')
+
+# /how-we-source/: the approved page text word for word (October 11, 2026),
+# every source kept by ~/anvi/content/source-audit-2026-10-10.md with the
+# credential and affiliation that file gives, each linked as the guides link
+# it, and one link to the page, from the home page's How we source band.
+how = page('/how-we-source/')
+NAMA_URL = re.search(r"NAMA_DIRECTORY = '([^']+)'", (root / 'src/lib/nama.ts').read_text()).group(1)
+how_text = visible(how)
+HOW_DESCRIPTION = "Anvi's dosha guides are built from the published teaching of Ayurvedic practitioners and schools. We check each piece of guidance against multiple sources before it goes into a guide."
+meta(how, "How we source Anvi's guidance | Anvi", HOW_DESCRIPTION, '/how-we-source/')
+for s_ in (
+    "How we source Anvi's guidance",
+    HOW_DESCRIPTION,
+    'Who we draw on',
+    'Every source we use holds a recognized Ayurvedic credential, as stated on their own bio or school page. That means certification or registration with the National Ayurvedic Medical Association (NAMA), a degree in Ayurvedic medicine, or leadership of an established Ayurvedic school.',
+    'Where teachers disagree',
+    "When respected teachers give different advice, the guide gives both views instead of choosing one. For example, for Kapha's daily oil massage, Kripalu and Dr. Claudia Welch suggest sesame oil, and the Ayurvedic Institute suggests sunflower or mustard oil.",
+    'How the app uses the guides',
+    "The Anvi app's chat and menu scan are written by AI, working from the guide for your dosha type. When you ask Anvi where its advice comes from, the app lists the guide lines the answer drew on and the sources behind each one. An AI reply can occasionally include a general Ayurvedic suggestion that isn't in your guide. The guide pages on this site are the sourced reference.",
+    "If you've told Anvi about an allergy or diet restriction, every food reply reminds you to check ingredients yourself. Anvi can't see inside a restaurant kitchen, so always confirm with your server before you order.",
+    'Anvi is not medical advice',
+    'Anvi offers general wellness guidance. To learn your constitution for certain, or for any health concern, see a qualified practitioner. You can find one in the NAMA directory.',
+    'Corrections',
+    "If you think something in a guide is wrong, or a source is misrepresented, email support@getanvi.app. We'll check it against the sources and correct it.",
+):
+    need(how_text, s_, '/how-we-source/')
+for who, keys in (
+    ('Usha and Dr. Vasant Lad (BAMS, MASc), Ayurvedic Institute', ['L']),
+    ('Dr. David Frawley (Vamadeva Shastri), American Institute of Vedic Studies', ['F', 'VS']),
+    ('Dr. Claudia Welch, written for Banyan Botanicals', ['W-VP', 'W-VK', 'W-PK', 'W-T']),
+    ('Kathryn Templeton, NAMA-registered Ayurvedic practitioner', ['T1', 'T2', 'T3']),
+    ('Erin Casperson, Ayurvedic Health Counselor, director of the Kripalu School of Ayurveda', ['KP']),
+    ('Kripalu School of Ayurveda', ['KA']),
+    ('The Ayurvedic Institute', ['AD']),
+    ('Beatrice Voss, CAP, The Ayurvedic Institute', ['BV']),
+    ('Angela Hope-Murray, MSc (Ayur), registered Ayurvedic practitioner', ['HM']),
+    ('Rebecca Adams, Ayurvedic Health Counselor, Mount Madonna', ['MM']),
+):
+    need(how_text, who + ':', '/how-we-source/ source')
+    for k in keys:
+        for e in sources[k]:
+            checked += 1
+            if f'href="{e["url"]}"' not in how:
+                problems.append(f'/how-we-source/: {k} not linked: {e["url"]}')
+checked += 2
+if f'href="{NAMA_URL}"' not in how:
+    problems.append('/how-we-source/: NAMA directory not linked')
+if '<a href="mailto:support@getanvi.app">support@getanvi.app</a>' not in how.split('<footer')[0]:
+    problems.append('/how-we-source/: support@getanvi.app not a mailto link in the page text')
+linking = sorted('/' + str(Path(f).relative_to(dist)).replace('index.html', '')
+                 for f in glob.glob(str(dist / '**/index.html'), recursive=True)
+                 if 'href="/how-we-source/"' in Path(f).read_text())
+checked += 1
+if linking != ['/']:
+    problems.append(f'/how-we-source/: linked from {linking}, expected only the home page')
+if not re.search(r'<h2 id="source-title"><a href="/how-we-source/">How we source</a></h2>', home):
+    problems.append('/: How we source band does not link to /how-we-source/')
 
 # The home page's words, from the approved mockup (design-mockup/Main.dc.html,
 # kept out of the repository) and the site: the quiz page's intro, the App

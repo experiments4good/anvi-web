@@ -34,6 +34,7 @@ export async function sharePages(): Promise<SharePage[]> {
     ...guides.map((g) => ({ path: `/dosha/${g.data.slug}/`, heading: g.data.type, glyph: proportionsFor(g.data.type) })),
     { path: '/six-tastes/', heading: stage2.sixTastes.heading, glyph: BALANCED },
     { path: '/routine/', heading: stage2.routine.heading, glyph: BALANCED },
+    { path: '/how-we-source/', heading: "How we source Anvi's guidance", glyph: BALANCED },
     // A season page's header draws that season's dosha; its image does the same.
     ...stage2.seasons.map((s) => ({ path: `/season/${s.slug}/`, heading: s.heading, glyph: proportionsFor(SEASON_DOSHA[s.dosha]!) })),
     { path: '/privacy/', heading: legal['privacy']!, glyph: BALANCED },
