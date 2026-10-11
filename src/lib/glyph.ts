@@ -3,8 +3,9 @@
 // palette, each sized so its area is proportional to its dosha's share,
 // laid out on a triangle, centred on their area-weighted centroid, scaled to
 // 85% of the disc, drawn translucently on a white disc with the same fixed
-// highlight and rim shadow. The app's dosha chip and idle drift are not
-// ported; the page adds one settle on load in CSS instead.
+// highlight and rim shadow. The app's dosha chip is not ported. Each shape
+// carries data-i (its dosha) so src/scripts/glyph-motion.ts can drift it as
+// the app's idle motion does; the page adds one settle on load in CSS.
 
 // The app's glyph-only palette (not the theme tokens), and its fill alpha.
 export const GLYPH_COLORS = ['#766AA1', '#A47446', '#287775'] as const;
@@ -104,7 +105,7 @@ export function glyphSvg(scores: Triple, { id, label, settle = false }: GlyphOpt
         2.5,
         -Math.PI / 2 + (i * 2 * Math.PI) / 3 + 0.35 + 0.22 * i,
       );
-      return `<path d="${d}" fill="${GLYPH_COLORS[i]}" fill-opacity="${FILL_ALPHA}"/>`;
+      return `<path data-i="${i}" d="${d}" fill="${GLYPH_COLORS[i]}" fill-opacity="${FILL_ALPHA}"/>`;
     })
     .join('');
   const a11y = label ? `role="img" aria-label="${label}"` : 'aria-hidden="true" focusable="false"';

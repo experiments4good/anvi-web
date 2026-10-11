@@ -196,6 +196,73 @@ for path in ('/six-tastes/', '/routine/'):
     if f'href="{path}"' not in home:
         problems.append(f'/: no link to {path}')
 
+# The home page's words, from the approved mockup (design-mockup/Main.dc.html,
+# kept out of the repository) and the site: the quiz page's intro, the App
+# Store description's feature lines and the guide cards' core advice.
+HOME = [
+    'Free dosha quiz · 20 questions · No sign-up required',
+    'Discover your dosha',
+    'Twenty questions about your body, digestion, skin and hair, sleep, energy, temperament, and stress. Then get guidance shaped to your constitution and the season.',
+    'Start the quiz',
+    'Browse the dosha guides',
+    'What is Ayurveda?',
+    'Ayurveda is a traditional system of health from India. In Sanskrit the name means "the science of life." It teaches that each person is born with their own makeup, and that daily habits, food and the time of year can keep that makeup in balance. Ayurvedic teacher Dr. David Frawley calls it a behavioral medicine: how you live each day shapes your health.',
+    "What's a dosha?",
+    "Ayurveda describes three doshas, Vata, Pitta and Kapha, as the biological forces of air, fire and water in the body. The Ayurvedic Institute calls Vata the energy of movement, Pitta the energy of digestion and metabolism, and Kapha the energy of lubrication. Everyone has all three in different amounts. The mix you're born with is your constitution, called prakriti in Sanskrit. Your balance day to day can shift with the seasons and with your life.",
+    'How it works',
+    'Take the free quiz', '20 questions, no sign-up. Your answers stay in your browser.',
+    'Read your guide', 'What to eat, how to plan your day and what to change each season, from Ayurvedic practitioners.',
+    'Get daily help in the Anvi app', 'A daily routine to check off, a tip at the time you choose, and what to order when you eat out.',
+    "Anvi's suggestions", 'From a real menu scan, for a Pitta-Kapha type',
+    'Scan a menu', 'Anvi reads it, recommends two or three dishes that suit your dosha and says why, points out what to skip, and tells you what to ask for when you order, such as no cream or a milder version.',
+    'Chat with Anvi', 'Ask about food, sleep, digestion, stress, and daily routine, and get answers in plain language that account for the dosha result you got.',
+    'Dosha guides', 'Not sure what your dosha is? Take the quiz.',
+    'The six tastes', 'Which tastes calm or increase each dosha', 'Your daily routine',
+    'How we source',
+    'Every guide is checked against multiple established Ayurvedic teachers. Where they disagree, the page says so, and every page lists its sources. For guidance for your own body, we encourage you to work with a NAMA-certified Ayurvedic practitioner.',
+]
+home_text = visible(home)
+for s in HOME:
+    need(home_text, s, '/ home')
+for name, url in (
+    ('Banyan Botanicals, Introduction to Ayurveda', 'https://www.banyanbotanicals.com/pages/ayurvedic-intro-to-ayurveda'),
+    ('American Institute of Vedic Studies, Online Ayurveda Courses (FAQ)', 'https://www.vedanet.com/online-ayurveda-courses/'),
+    ('The Ayurvedic Institute, What is Ayurveda? A Brief Introduction and Guide', 'https://ayurveda.com/ayurveda-a-brief-introduction-and-guide/'),
+):
+    need(home_text, name, '/ home source')
+    if f'href="{url}"' not in home:
+        problems.append(f'/: source not linked: {url}')
+for img in ('/screens/scan-a-menu-dish.jpg', '/screens/chat-with-anvi-breakfast.jpg'):
+    if f'src="{img}"' not in home:
+        problems.append(f'/: missing {img}')
+if 'download-on-the-app-store-black.svg' not in home:
+    problems.append('/: App Store badge')
+if home.count('class="guide-card"') != 7:
+    problems.append('/: seven guide cards')
+
+# The header and footer on every page: the same links, in the same words.
+NAV = [('/', 'Anvi'), ('/#guides', 'Guides'), ('/six-tastes/', 'Six tastes'), ('/routine/', 'Daily routine'), ('/quiz/', 'Take the quiz')]
+FOOT = [('/privacy', 'Privacy'), ('/terms', 'Terms'), ('mailto:support@getanvi.app', 'support@getanvi.app')]
+for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
+    rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
+    h = Path(f).read_text()
+    head = re.search(r'<header class="site-head">(.*?)</header>', h, re.S)
+    foot = re.search(r'<footer class="foot">(.*?)</footer>', h, re.S)
+    if not head or not foot:
+        problems.append(f'{rel}: header or footer missing')
+        continue
+    for links, part, where in ((NAV, head.group(1), 'header'), (FOOT, foot.group(1), 'footer')):
+        for href, words in links:
+            checked += 1
+            if not re.search(rf'<a [^>]*href="{re.escape(href)}"[^>]*>(?:(?!</a>).)*{re.escape(words)}', part, re.S):
+                problems.append(f'{rel}: {where} link "{words}"')
+    checked += 1
+    if 'id="nav-season"' not in head.group(1) or 'This season' not in head.group(1):
+        problems.append(f'{rel}: header season link')
+    if 'aria-controls="site-nav"' not in head.group(1):
+        problems.append(f'{rel}: menu button')
+    need(visible(foot.group(1)), '© 2026 Utopian Visions, LLC', f'{rel} footer')
+
 # Link-preview images: the tags on every page, and the words drawn on each
 # image (recorded in the PNG by scripts/build-og.ts) are the page's own
 # heading and the approved quiz line, with no dash.

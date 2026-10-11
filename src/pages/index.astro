@@ -1,5 +1,6 @@
 ---
 import '../styles/guides.css';
+import '../styles/home.css';
 import Base from '../layouts/Base.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import Glyph from '../components/Glyph.astro';
@@ -7,74 +8,173 @@ import GuideCards from '../components/GuideCards.astro';
 
 const description = 'Anvi is an Ayurvedic wellness companion. Find your dosha and get daily guidance shaped to your body and the season.';
 
-// "What Anvi does": two of the App Store screenshots, each with the App Store
-// description's own words for that feature.
-const features = [
-  {
-    title: 'Scan a menu',
-    text: 'Anvi reads it, recommends two or three dishes that suit your dosha and says why, points out what to skip, and tells you what to ask for when you order, such as no cream or a milder version.',
-    image: '/screens/scan-a-menu.jpg',
-    alt: "Anvi's suggestions for a restaurant menu, in the app",
-  },
-  {
-    title: 'Chat with Anvi',
-    text: 'Ask about food, sleep, digestion, stress, and daily routine, and get answers in plain language that account for the dosha result you got.',
-    image: '/screens/chat-with-anvi.jpg',
-    alt: 'A conversation with Anvi about breakfast, in the app',
-  },
+// The home page as the approved mockup lays it out (Main and HomePhone,
+// October 2026). The words are the mockup's or already on the site: the quiz
+// intro is the quiz page's, the two feature lines are the App Store
+// description's, and the guide cards are the cards used on every page.
+const steps = [
+  { title: 'Take the free quiz', text: '20 questions, no sign-up. Your answers stay in your browser.' },
+  { title: 'Read your guide', text: 'What to eat, how to plan your day and what to change each season, from Ayurvedic practitioners.' },
+  { title: 'Get daily help in the Anvi app', text: 'A daily routine to check off, a tip at the time you choose, and what to order when you eat out.' },
+];
+
+// The two "What is" cards' sources.
+const sources = [
+  { name: 'Banyan Botanicals, Introduction to Ayurveda', url: 'https://www.banyanbotanicals.com/pages/ayurvedic-intro-to-ayurveda' },
+  { name: 'American Institute of Vedic Studies, Online Ayurveda Courses (FAQ)', url: 'https://www.vedanet.com/online-ayurveda-courses/' },
+  { name: 'The Ayurvedic Institute, What is Ayurveda? A Brief Introduction and Guide', url: 'https://ayurveda.com/ayurveda-a-brief-introduction-and-guide/' },
 ];
 ---
 
-<Base title="Anvi" description={description} bar={false}>
-  <div class="page">
-    <section class="home-hero">
-      <Glyph scores={[4, 4, 4]} id="home-glyph" settle />
-      <div>
-        <h1>Anvi</h1>
-        <p class="tagline">Your Ayurvedic wellness companion</p>
-        <p class="about">Find your dosha, then get daily guidance shaped to your constitution and the season.</p>
-        <AppStoreBadge />
+<Base title="Anvi" description={description}>
+  <div class="home">
+    <section class="h-hero">
+      <div class="h-wrap h-hero-grid">
+        <div class="h-hero-text">
+          <p class="h-kicker">Free dosha quiz · 20 questions · No sign-up required</p>
+          <h1>Discover your dosha</h1>
+          <p class="h-lead">
+            Twenty questions about your body, digestion, skin and hair, sleep, energy, temperament, and stress. Then get guidance shaped to your constitution and the season.
+          </p>
+          <div class="h-actions">
+            <a class="h-btn" href="/quiz/">Start the quiz</a>
+            <a class="h-browse" href="#guides">Browse the dosha guides</a>
+          </div>
+        </div>
+        <div class="h-hero-glyph">
+          <Glyph scores={[4, 4, 4]} id="home-glyph" label="The Anvi glyph: Vata, Pitta and Kapha in balance" settle />
+        </div>
       </div>
     </section>
 
-    <section class="home-section" aria-labelledby="does-title">
-      <h2 id="does-title">What Anvi does</h2>
-      <ul class="features">
+    <section class="h-white">
+      <div class="h-wrap h-intro">
+        <div class="h-card">
+          <h2>What is Ayurveda?</h2>
+          <p>
+            Ayurveda is a traditional system of health from India. In Sanskrit the name means “the science of life.” It teaches that each person is born with their own makeup, and that daily habits, food and the time of year can keep that makeup in balance. Ayurvedic teacher Dr. David Frawley calls it a behavioral medicine: how you live each day shapes your health.
+          </p>
+        </div>
+        <div class="h-card">
+          <h2>What's a dosha?</h2>
+          <p>
+            Ayurveda describes three doshas, Vata, Pitta and Kapha, as the biological forces of air, fire and water in the body. The Ayurvedic Institute calls Vata the energy of movement, Pitta the energy of digestion and metabolism, and Kapha the energy of lubrication. Everyone has all three in different amounts. The mix you're born with is your constitution, called prakriti in Sanskrit. Your balance day to day can shift with the seasons and with your life.
+          </p>
+        </div>
+      </div>
+
+      <div class="h-wrap h-how">
+        <h2>How it works</h2>
+        <ol class="h-steps">
+          {
+            steps.map((s, i) => (
+              <li>
+                <span class="h-num" aria-hidden="true">{i + 1}</span>
+                <h3>
+                  <span class="h-num-inline">{i + 1}. </span>
+                  {s.title}
+                </h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="h-features">
+      <div class="h-wrap h-feature">
+        <div class="h-shot">
+          <p class="h-shot-label">Anvi's suggestions</p>
+          <p class="h-shot-note">From a real menu scan, for a Pitta-Kapha type</p>
+          <img
+            src="/screens/scan-a-menu-dish.jpg"
+            alt="Anvi's suggestion of Chicken Piccata from a restaurant menu, in the app: the lemon suits pitta, it is a lean protein that won't aggravate kapha, and ask them to go light on the butter."
+            width="544"
+            height="336"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="h-feature-text">
+          <h2>Scan a menu</h2>
+          <p>
+            Anvi reads it, recommends two or three dishes that suit your dosha and says why, points out what to skip, and tells you what to ask for when you order, such as no cream or a milder version.
+          </p>
+        </div>
+      </div>
+
+      <div class="h-wrap h-feature is-flipped">
+        <div class="h-feature-text">
+          <h2>Chat with Anvi</h2>
+          <p>
+            Ask about food, sleep, digestion, stress, and daily routine, and get answers in plain language that account for the dosha result you got.
+          </p>
+          <AppStoreBadge />
+        </div>
+        <div class="h-shot">
+          <img
+            src="/screens/chat-with-anvi-breakfast.jpg"
+            alt="A question to Anvi in the app, what's a good breakfast for me on a cold morning, and its answer: warm stewed apples or pears with cinnamon and a handful of soaked almonds."
+            width="560"
+            height="586"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="h-guides" id="guides" aria-labelledby="guides-title">
+      <div class="h-wrap">
+        <div class="h-guides-head">
+          <h2 id="guides-title">Dosha guides</h2>
+          <a href="/quiz/">Not sure what your dosha is? Take the quiz.</a>
+        </div>
+        <GuideCards idPrefix="card" home>
+          <li class="guide-card h-tastes">
+            <a href="/six-tastes/">
+              <strong>The six tastes</strong>
+              <span class="first">Which tastes calm or increase each dosha</span>
+            </a>
+          </li>
+        </GuideCards>
+
+        <!-- "This season": the current season's page, by the app's month-based
+             seasons on the visitor's own clock. Without JavaScript, all three. -->
+        <nav class="h-more" aria-label="This season">
+          <a class="season-link" id="season-now" href="/season/fall/" hidden>This season: Fall</a>
+          <div class="season-all" id="season-all">
+            <span class="season-all-label">This season</span>
+            <a class="season-link is-vata" href="/season/fall/"><span class="dot dot-vata" aria-hidden="true"></span>Fall</a>
+            <a class="season-link is-pitta" href="/season/summer/"><span class="dot dot-pitta" aria-hidden="true"></span>Summer</a>
+            <a class="season-link is-kapha" href="/season/winter-spring/"><span class="dot dot-kapha" aria-hidden="true"></span>Winter and spring</a>
+          </div>
+          <a class="season-link" href="/routine/">Your daily routine</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="h-source" aria-labelledby="source-title">
+      <div class="h-wrap">
+        <h2 id="source-title">How we source</h2>
+        <p>
+          Every guide is checked against multiple established Ayurvedic teachers. Where they disagree, the page says so, and every page lists its sources. For guidance for your own body, we encourage you to work with a NAMA-certified Ayurvedic practitioner.
+        </p>
+      </div>
+    </section>
+
+    <section class="h-wrap sources h-sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources</h2>
+      <ul>
         {
-          features.map((f) => (
-            <li class="feature">
-              <img src={f.image} alt={f.alt} width="598" height="1300" loading="lazy" decoding="async" />
-              <div>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
-              </div>
+          sources.map((s) => (
+            <li>
+              <a href={s.url} rel="noopener">{s.name}</a>
             </li>
           ))
         }
       </ul>
-    </section>
-
-    <a class="btn btn-primary home-quiz" href="/quiz/">Take the free dosha quiz</a>
-
-    <!-- "This season": the current season's page, by the app's month-based
-         seasons on the visitor's own clock. Without JavaScript, all three. -->
-    <nav class="home-season" aria-label="This season">
-      <a class="season-link" id="season-now" href="/season/fall/" hidden>This season: Fall</a>
-      <div class="season-all" id="season-all">
-        <span class="season-all-label">This season</span>
-        <a class="season-link is-vata" href="/season/fall/"><span class="dot dot-vata" aria-hidden="true"></span>Fall</a>
-        <a class="season-link is-pitta" href="/season/summer/"><span class="dot dot-pitta" aria-hidden="true"></span>Summer</a>
-        <a class="season-link is-kapha" href="/season/winter-spring/"><span class="dot dot-kapha" aria-hidden="true"></span>Winter and spring</a>
-      </div>
-    </nav>
-
-    <section class="home-section" id="guides" aria-labelledby="guides-title">
-      <h2 id="guides-title">Type guides</h2>
-      <GuideCards idPrefix="card" />
-      <nav class="home-more" aria-label="More guides">
-        <a class="season-link" href="/six-tastes/">The six tastes</a>
-        <a class="season-link" href="/routine/">Your daily routine</a>
-      </nav>
     </section>
   </div>
 </Base>

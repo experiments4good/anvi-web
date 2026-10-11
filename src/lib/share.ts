@@ -29,7 +29,7 @@ export async function sharePages(): Promise<SharePage[]> {
   const guides = (await getCollection('guides')).sort((a, b) => ORDER.indexOf(a.data.slug) - ORDER.indexOf(b.data.slug));
   const legal = Object.fromEntries((await getCollection('legal')).map((e) => [e.id, e.data.title]));
   return [
-    { path: '/', heading: 'Anvi', glyph: BALANCED },
+    { path: '/', heading: 'Discover your dosha', glyph: BALANCED },
     { path: '/quiz/', heading: 'Discover your dosha', glyph: BALANCED },
     ...guides.map((g) => ({ path: `/dosha/${g.data.slug}/`, heading: g.data.type, glyph: proportionsFor(g.data.type) })),
     { path: '/six-tastes/', heading: stage2.sixTastes.heading, glyph: BALANCED },

@@ -8,9 +8,11 @@ import Glyph from './Glyph.astro';
 interface Props {
   /** Prefix for the glyph ids, unique on the page. */
   idPrefix: string;
+  /** The home page's grid: four across on a computer, and room for a last card it adds. */
+  home?: boolean;
 }
 
-const { idPrefix } = Astro.props;
+const { idPrefix, home = false } = Astro.props;
 const ORDER = ['vata', 'pitta', 'kapha', 'vata-pitta', 'vata-kapha', 'pitta-kapha', 'tridoshic'];
 const guides = (await getCollection('guides')).sort((a, b) => ORDER.indexOf(a.data.slug) - ORDER.indexOf(b.data.slug));
 // Each type's core advice, as approved for the cards.
@@ -27,7 +29,7 @@ const CORE: Record<string, string> = {
 const nb = (s: string) => s.replace(/-/g, '‑');
 ---
 
-<ul class="guide-cards">
+<ul class:list={['guide-cards', { 'is-home': home }]}>
   {
     guides.map((g) => (
       <li class="guide-card">
@@ -41,4 +43,5 @@ const nb = (s: string) => s.replace(/-/g, '‑');
       </li>
     ))
   }
+  <slot />
 </ul>

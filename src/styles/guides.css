@@ -102,115 +102,7 @@
   padding: 0 var(--page);
 }
 
-/* ---- Home ---- */
-
-.home-hero {
-  padding-top: 48px;
-  display: grid;
-  gap: 28px;
-  justify-items: start;
-}
-
-.home-hero .glyph-disc {
-  --glyph: 168px;
-}
-
-.home-hero h1 {
-  font: var(--display);
-  letter-spacing: -0.01em;
-}
-
-.home-hero .tagline {
-  font: var(--title);
-  color: var(--primary);
-  margin: 8px 0 0;
-}
-
-.home-hero .about {
-  margin: 16px 0 0;
-  max-width: 40ch;
-}
-
-.home-hero .store-badge {
-  margin-top: 24px;
-}
-
-@media (min-width: 640px) {
-  .home-hero {
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 36px;
-    padding-top: 72px;
-  }
-}
-
-.home-section {
-  margin-top: 56px;
-}
-
-.home-section h2 {
-  font: var(--headline);
-  margin: 0 0 20px;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 32px;
-}
-
-.feature {
-  display: grid;
-  gap: 16px;
-}
-
-/* On a phone: the screenshot large and centred, its words underneath. */
-.feature img {
-  width: 100%;
-  max-width: 260px;
-  height: auto;
-  justify-self: center;
-  border-radius: 22px;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--line);
-}
-
-.feature h3 {
-  font: var(--title);
-  margin: 0 0 6px;
-}
-
-.feature p {
-  font: var(--small);
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .feature {
-    grid-template-columns: 180px 1fr;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .feature img {
-    width: 180px;
-    border-radius: 18px;
-  }
-
-  .feature:nth-child(even) {
-    grid-template-columns: 1fr 180px;
-  }
-
-  .feature:nth-child(even) img {
-    order: 2;
-  }
-}
-
-.home-quiz {
-  margin-top: 56px;
-}
+/* ---- Guide cards (home, six tastes, routine) ---- */
 
 .guide-cards {
   list-style: none;
@@ -816,14 +708,6 @@
   border-color: transparent;
 }
 
-.home-season {
-  margin-top: 20px;
-}
-
-.home-season [hidden] {
-  display: none !important;
-}
-
 .season-all {
   display: flex;
   flex-wrap: wrap;
@@ -962,11 +846,4 @@
 
 .guide .doc .guide-card a {
   text-decoration: none;
-}
-
-.home-more {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
 }
