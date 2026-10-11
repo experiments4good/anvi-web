@@ -58,7 +58,10 @@ def inline(t):
     return t
 
 
-def html_table(block):
+def html_table(block, note=None):
+    """A routine table as labelled HTML. A note ("Teachers differ on Kapha's oil: ...",
+    the line under the table in the approved text) goes inside the Oil massage cell for
+    Kapha, under its value."""
     lines = [l.strip() for l in block.strip().splitlines()]
     cells = [[c.strip() for c in l.strip('|').split('|')] for l in lines]
     head, rows = cells[0], cells[2:]
@@ -68,14 +71,20 @@ def html_table(block):
         return f' data-balance="{m.group(1).lower()}"' if m else ''
     th = ''.join(f'<th scope="col"{balance(h)}>{esc(h)}</th>' if h else '<td></td>' for h in head)
     body = ''
+    placed = []
     for r in rows:
         tds = ''
         for j, c in enumerate(r):
             if row_headers and j == 0:
                 tds += f'<th scope="row">{esc(c)}</th>'
             else:
-                tds += f'<td data-label="{esc(head[j])}"{balance(head[j])}>{esc(c)}</td>'
+                oil = (r[0] == 'Oil massage' and 'balancing Kapha' in head[j]) if row_headers else head[j] == 'Oil massage'
+                extra = f'<span class="cell-note">{inline(note)}</span>' if note and oil else ''
+                if extra:
+                    placed.append(1)
+                tds += f'<td data-label="{esc(head[j])}"{balance(head[j])}>{esc(c)}{extra}</td>'
         body += f'<tr>{tds}</tr>'
+    assert not note or len(placed) == 1, note
     kind = 'windows' if row_headers else 'single'
     return f'<table class="routine-table routine-{kind}"><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table>'
 
@@ -104,10 +113,9 @@ PAIR = {'vata-pitta': 'vata-pitta', 'vata-kapha': 'vata-kapha', 'pitta-kapha': '
 
 def routine_table(slug):
     """A single-dosha guide's routine table, from its approved Markdown, as labelled HTML,
-    with the note under it when the guide has one (Kapha's oil, since October 10, 2026)."""
+    with its note in the Oil massage cell when it has one (Kapha's oil, since October 10, 2026)."""
     m = re.search(r'(\| Wake up \| Oil massage \| Move \|\n\| --- \| --- \| --- \|\n\|[^\n]+\|)(?:\n\n(Teachers differ[^\n]+))?', pages[slug]['raw'])
-    note = f'\n<p>{inline(m.group(2))}</p>' if m.group(2) else ''
-    return html_table(m.group(1)) + note
+    return html_table(m.group(1), m.group(2))
 
 
 for p in pages.values():
@@ -125,7 +133,8 @@ for slug, p in pages.items():
         assert slug in PAIR, slug
         return f'<em class="now" data-pair="{PAIR[slug]}" hidden>{m.group(1)}</em>'
     # Tables, as labelled HTML.
-    c = re.sub(r'(?:^\|.*\|\n?)+', lambda m: html_table(m.group(0)) + '\n', c, flags=re.M)
+    # A "Teachers differ" line right under a table moves into the table's Oil massage cell.
+    c = re.sub(r'((?:^\|.*\|\n?)+)(?:\n(Teachers differ[^\n]+)\n?)?', lambda m: html_table(m.group(1), m.group(2)) + '\n', c, flags=re.M)
     # "**By season:** a. b. c." becomes the season set, one sentence each.
     def by_season(m):
         sentences = re.split(r'(?<=\.)\s+(?=[A-Z])', m.group(1).strip())

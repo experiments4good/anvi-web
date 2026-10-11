@@ -4,7 +4,7 @@ type: "Vata"
 title: "Vata Dosha: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're Vata, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Vata"
-sources: ["KV", "KA", "L", "W-VP", "W-VK", "T1", "T2", "M", "HM"]
+sources: ["KV", "KA", "L", "W-VP", "W-VK", "T1", "T2", "M", "HM", "VS", "BV", "BB"]
 first: "Vata is the dosha of movement."
 ---
 
@@ -19,7 +19,7 @@ Vata is the dosha of movement. Welch lists its qualities as dry, light, cool, ro
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Around sunrise, at the same time every day</td><td data-label="Oil massage">Warm sesame oil</td><td data-label="Move">Gentle, joint-friendly exercise like walking or yoga</td></tr></tbody></table>
+<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Around sunrise, at the same time every day</td><td data-label="Oil massage">Warm sesame oil</td><td data-label="Move">Gentle: walking or slow yoga, at about half your effort</td></tr></tbody></table>
 
 **Mind and mood:** Keep the same bedtime and wake time. Pause between activities, and cut down on overstimulation.
 

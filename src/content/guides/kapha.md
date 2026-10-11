@@ -19,9 +19,7 @@ Kapha is the dosha of structure and steadiness. Welch lists its qualities as oil
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Sesame or sunflower oil</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
-
-Teachers differ for kapha: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.
+<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
 
 **Mind and mood:** Find something that motivates you to move, and get going early.
 

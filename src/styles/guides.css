@@ -408,6 +408,14 @@
   font-weight: 600;
 }
 
+/* A note on one value, inside its cell, under the value (Kapha's oil). */
+.guide .doc td .cell-note {
+  display: block;
+  margin-top: 6px;
+  font: var(--small);
+  color: var(--body);
+}
+
 .guide .doc th[data-balance='vata'],
 .guide .doc td[data-balance='vata'] {
   box-shadow: inset 0 3px 0 var(--vata);

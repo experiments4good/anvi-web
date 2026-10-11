@@ -4,7 +4,7 @@ type: "Vata-Kapha"
 title: "Vata-Kapha Dosha: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're Vata-Kapha or Kapha-Vata, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Vata-Kapha (and Kapha-Vata)"
-sources: ["F", "L", "W-VK", "KV", "KK", "T1", "T2", "T3", "HM", "BK", "AD"]
+sources: ["F", "L", "W-VK", "KV", "KK", "T1", "T2", "T3", "HM", "BK", "AD", "VS", "BV", "BB"]
 first: "Vata and Kapha both lead your constitution."
 ---
 
@@ -19,8 +19,6 @@ Vata and Kapha both lead your constitution. Frawley gives one set of guidance fo
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-windows"><thead><tr><td></td><th scope="col" data-balance="vata">Jun 21 to Dec 21 (balancing Vata)</th><th scope="col" data-balance="kapha">Dec 21 to Jun 21 (balancing Kapha)</th></tr></thead><tbody><tr><th scope="row">Wake up</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Around sunrise, at the same time every day</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Before sunrise, by about 6</td></tr><tr><th scope="row">Oil massage</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Warm sesame oil</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Sesame or sunflower oil</td></tr><tr><th scope="row">Move</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Gentle exercise like walking or yoga</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
-
-Teachers differ for kapha: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.
+<table class="routine-table routine-windows"><thead><tr><td></td><th scope="col" data-balance="vata">Jun 21 to Dec 21 (balancing Vata)</th><th scope="col" data-balance="kapha">Dec 21 to Jun 21 (balancing Kapha)</th></tr></thead><tbody><tr><th scope="row">Wake up</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Around sunrise, at the same time every day</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Before sunrise, by about 6</td></tr><tr><th scope="row">Oil massage</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Warm sesame oil</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></td></tr><tr><th scope="row">Move</th><td data-label="Jun 21 to Dec 21 (balancing Vata)" data-balance="vata">Gentle: walking or slow yoga, at about half your effort</td><td data-label="Dec 21 to Jun 21 (balancing Kapha)" data-balance="kapha">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
 
 **Mind and mood:** Frawley advises staying close to people who support you and building a sense of warmth.
