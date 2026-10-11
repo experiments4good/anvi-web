@@ -31,5 +31,5 @@ Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution. We
 </div>
 <div class="season-routine is-kapha" data-season="kapha">
 <p class="season-label"><span class="dot dot-kapha" aria-hidden="true"></span>The Kapha routine in winter and spring</p>
-<div class="routine-cards routine-single"><div class="routine-card"><h3>Wake up</h3><p class="what">Before sunrise, by about 6</p></div><div class="routine-card"><h3>Oil massage</h3><p class="what">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu suggests sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div><div class="routine-card"><h3>Move</h3><p class="what">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</p></div></div>
+<div class="routine-cards routine-single"><div class="routine-card"><h3>Wake up</h3><p class="what">Before sunrise, by about 6</p></div><div class="routine-card"><h3>Oil massage</h3><p class="what">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Welch suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div><div class="routine-card"><h3>Move</h3><p class="what">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</p></div></div>
 </div>

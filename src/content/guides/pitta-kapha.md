@@ -7,7 +7,7 @@ heading: "Pitta-Kapha (and Kapha-Pitta)"
 sources: ["F", "KP", "T1", "T2", "T3", "HM", "L", "W-PK", "AD", "KA"]
 first: "Pitta and Kapha both lead your constitution."
 toc: [{"id": "what-to-balance-right-now", "label": "What to balance right now"}, {"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "by-season", "label": "By season"}, {"id": "sources", "label": "Sources"}]
-week: {"food": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples.", "mind": "Hold plans and outcomes loosely. Frawley advises this type to stay detached and avoid over-involvement.", "wake": {"pitta": "Around sunrise", "kapha": "Before sunrise, by about 6"}}
+week: {"food": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples.", "mind": "Hold plans and outcomes loosely. Frawley advises this type to stay detached, uninvolved and non-possessive.", "wake": {"pitta": "Around sunrise", "kapha": "Before sunrise, by about 6"}}
 ---
 
 Pitta and Kapha both lead your constitution. Ayurvedic teacher Dr. David Frawley describes two-dosha types as having both doshas in roughly equal amounts, and he gives one set of guidance for each pair, so it applies whichever dosha is named first. He describes Pitta as determined and Kapha as steady. What the two share is an oily, damp quality, so the core advice for this type is to stay dry and light.
@@ -32,11 +32,11 @@ Three established teachers agree on where to start. Dr. Vasant Lad of the Ayurve
 
 ## [Your daily routine](/routine/)
 
-<div class="routine-cards routine-windows"><div class="routine-card"><h3>Wake up</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Around sunrise</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Before sunrise, by about 6</p></div></div><div class="routine-card"><h3>Oil massage</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Coconut or sunflower oil</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Sesame or sunflower oil<span class="cell-note">Teachers differ on Kapha's oil: Kripalu suggests sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div></div><div class="routine-card"><h3>Move</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Walking or yoga, in the cooler morning hours</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Brisk exercise or Sun Salutations, before 10</p></div></div></div>
+<div class="routine-cards routine-windows"><div class="routine-card"><h3>Wake up</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Around sunrise</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Before sunrise, by about 6</p></div></div><div class="routine-card"><h3>Oil massage</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Coconut or sunflower oil</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Sesame or sunflower oil<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Welch suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div></div><div class="routine-card"><h3>Move</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Walking or yoga, in the cooler morning hours</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Brisk exercise or Sun Salutations, before 10</p></div></div></div>
 
 ## Mind and mood
 
-- Hold plans and outcomes loosely. Frawley advises this type to stay detached and avoid over-involvement.
+- Hold plans and outcomes loosely. Frawley advises this type to stay detached, uninvolved and non-possessive.
 - If you're upset, pause before you eat.
 
 ## By season
