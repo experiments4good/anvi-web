@@ -103,9 +103,11 @@ PAIR = {'vata-pitta': 'vata-pitta', 'vata-kapha': 'vata-kapha', 'pitta-kapha': '
 
 
 def routine_table(slug):
-    """A single-dosha guide's routine table, from its approved Markdown, as labelled HTML."""
-    m = re.search(r'(\| Wake up \| Oil massage \| Move \|\n\| --- \| --- \| --- \|\n\|[^\n]+\|)', pages[slug]['raw'])
-    return html_table(m.group(1))
+    """A single-dosha guide's routine table, from its approved Markdown, as labelled HTML,
+    with the note under it when the guide has one (Kapha's oil, since October 10, 2026)."""
+    m = re.search(r'(\| Wake up \| Oil massage \| Move \|\n\| --- \| --- \| --- \|\n\|[^\n]+\|)(?:\n\n(Teachers differ[^\n]+))?', pages[slug]['raw'])
+    note = f'\n<p>{inline(m.group(2))}</p>' if m.group(2) else ''
+    return html_table(m.group(1)) + note
 
 
 for p in pages.values():

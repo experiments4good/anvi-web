@@ -4,7 +4,7 @@ type: "Tridoshic"
 title: "Tridoshic: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're tridoshic, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Tridoshic"
-sources: ["G", "W-T", "L", "KV", "T1", "T2", "T3"]
+sources: ["G", "W-T", "L", "KV", "T1", "T2", "T3", "BK", "AD"]
 first: "Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution."
 ---
 
@@ -29,5 +29,6 @@ Tridoshic means Vata, Pitta and Kapha are roughly equal in your constitution. La
 </div>
 <div class="season-routine is-kapha" data-season="kapha">
 <p class="season-label"><span class="dot dot-kapha" aria-hidden="true"></span>The Kapha routine in winter and spring</p>
-<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Warm sesame oil, with a brisk massage</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
+<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Sesame or sunflower oil</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
+<p>Teachers differ for kapha: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</p>
 </div>

@@ -4,7 +4,7 @@ type: "Kapha"
 title: "Kapha Dosha: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're Kapha, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Kapha"
-sources: ["KK", "L", "W-VK", "T1", "T2", "HM", "MM"]
+sources: ["KK", "L", "W-VK", "T1", "T2", "HM", "MM", "BK", "AD"]
 first: "Kapha is the dosha of structure and steadiness."
 ---
 
@@ -19,7 +19,9 @@ Kapha is the dosha of structure and steadiness. Welch lists its qualities as oil
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Warm sesame oil, with a brisk massage</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
+<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Sesame or sunflower oil</td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
+
+Teachers differ for kapha: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.
 
 **Mind and mood:** Find something that motivates you to move, and get going early.
 
