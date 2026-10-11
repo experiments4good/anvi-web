@@ -258,8 +258,8 @@ for name, url in (
 for img in ('/screens/scan-a-menu-dish.jpg', '/screens/chat-with-anvi-breakfast.jpg'):
     if f'src="{img}"' not in home:
         problems.append(f'/: missing {img}')
-if 'download-on-the-app-store-black.svg' not in home:
-    problems.append('/: App Store badge')
+if home.count('download-on-the-app-store-black.svg') != 3:
+    problems.append('/: three App Store badges (hero, How it works, Chat with Anvi)')
 if home.count('class="guide-card"') != 7:
     problems.append('/: seven guide cards')
 

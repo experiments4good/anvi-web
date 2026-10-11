@@ -83,7 +83,10 @@
   filter: brightness(0.95);
 }
 
-/* Apple's badge, unaltered, at Apple's minimum on-screen height or more. */
+/* Apple's badge, unaltered, at Apple's minimum on-screen height or more:
+   48px, and 54px on a phone. Apple asks for clear space of a quarter of the
+   badge's height (12px, 13.5px on a phone); every place the badge sits leaves
+   at least 14px around it. */
 .store-badge {
   display: inline-block;
   line-height: 0;
@@ -93,6 +96,12 @@
 .store-badge img {
   height: 48px;
   width: auto;
+}
+
+@media (max-width: 820px) {
+  .store-badge img {
+    height: 54px;
+  }
 }
 
 /* Shared page column. */

@@ -40,6 +40,7 @@ const sources = [
             <a class="h-btn" href="/quiz/">Start the quiz</a>
             <a class="h-browse" href="#guides">Browse the dosha guides</a>
           </div>
+          <div class="h-store"><AppStoreBadge /></div>
         </div>
         <div class="h-hero-glyph">
           <Glyph scores={[4, 4, 4]} id="home-glyph" label="The Anvi glyph: Vata, Pitta and Kapha in balance" settle />
@@ -75,6 +76,7 @@ const sources = [
                   {s.title}
                 </h3>
                 <p>{s.text}</p>
+                {i === 2 && <AppStoreBadge />}
               </li>
             ))
           }

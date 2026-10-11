@@ -101,6 +101,12 @@ const image = new URL(imagePath(share.path), origin).href;
       const button = head.querySelector('.menu-btn') as HTMLButtonElement;
       const nav = document.getElementById('site-nav') as HTMLElement;
       head.classList.add('has-menu');
+      // The header's height while closed, for in-page links (site.css
+      // scroll-padding-top), kept current as the width changes.
+      const measure = () => {
+        if (!nav.classList.contains('open')) document.documentElement.style.setProperty('--head-h', `${head.offsetHeight}px`);
+      };
+      new ResizeObserver(measure).observe(head);
       button.hidden = false;
       const setOpen = (open: boolean) => {
         button.setAttribute('aria-expanded', String(open));
