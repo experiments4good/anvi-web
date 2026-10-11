@@ -11,9 +11,11 @@ interface Props {
   sourceGroups: { keys: string[]; note?: string }[];
   /** True on /routine/, whose App Store line speaks of "this routine". */
   routine?: boolean;
+  /** The type guides' ending: the App Store line and badge in a teal band before Sources. */
+  band?: boolean;
 }
 
-const { type, sourceGroups, routine = false } = Astro.props;
+const { type, sourceGroups, routine = false, band = false } = Astro.props;
 const storeLine = routine
   ? 'Get this every day: Anvi gives you this routine to check off, a daily tip at the time you choose, and what to order when you eat out.'
   : 'Anvi gives you guidance like this every day: a daily routine to check off, a tip at the time you choose, and what to order when you eat out.';
@@ -26,14 +28,27 @@ const list = sourceGroups.flatMap((g) =>
 );
 ---
 
-<div class="guide-end">
-  <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
-  <p class="store-line">{storeLine}</p>
-  <AppStoreBadge />
-  <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
-</div>
+{
+  band ? (
+    <div class="guide-end is-band">
+      <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
+      <div class="store-band">
+        <p class="store-line">{storeLine}</p>
+        <AppStoreBadge />
+      </div>
+      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+    </div>
+  ) : (
+    <div class="guide-end">
+      <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
+      <p class="store-line">{storeLine}</p>
+      <AppStoreBadge />
+      <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a NAMA-certified Ayurvedic practitioner.</p>
+    </div>
+  )
+}
 
-<section class="sources" aria-labelledby="sources-title">
+<section class="sources" id={band ? 'sources' : undefined} aria-labelledby="sources-title">
   <h2 id="sources-title">Sources</h2>
   <ul>
     {

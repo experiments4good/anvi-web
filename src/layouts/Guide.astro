@@ -1,5 +1,6 @@
 ---
 import '../styles/guides.css';
+import '../styles/guide-page.css';
 import Base from './Base.astro';
 import PageEnd from '../components/PageEnd.astro';
 import Glyph from '../components/Glyph.astro';
@@ -12,9 +13,11 @@ interface Props {
   type: string;
   /** Source keys in the order the approved text lists them. */
   sourceKeys: string[];
+  /** "On this page": the sections this guide has, by id. */
+  toc: { id: string; label: string }[];
 }
 
-const { title, description, heading, type, sourceKeys } = Astro.props;
+const { title, description, heading, type, sourceKeys, toc } = Astro.props;
 // Non-breaking hyphens, so a two-dosha name never splits at the hyphen.
 const nb = (s: string) => s.replace(/-/g, '\u2011');
 // "Pitta-Kapha (and Kapha-Pitta)": the type is the heading, the reversed
@@ -24,20 +27,36 @@ const also = heading.match(/\((and [^)]+)\)/)?.[1] ?? null;
 ---
 
 <Base title={title} description={description}>
-  <article class="guide page">
-    <header class="guide-head">
-      <Glyph type={type} id="guide-glyph" settle />
-      <div>
-        <h1>{nb(type)}</h1>
-        {also && <p class="also">{nb(also)}</p>}
-      </div>
-    </header>
-    <div class="doc">
-      <slot />
-    </div>
+  <!-- As the approved mockup (Guide): the sage band behind the top, the
+       breadcrumb, a side column with the glyph and "On this page" (above the
+       title on a phone), and the guide in the main column. -->
+  <div class="gp">
+    <div class="gp-wrap">
+      <p class="gp-crumbs"><a href="/#guides">Guides</a> / {nb(type)}</p>
+      <div class="gp-layout">
+        <aside class="gp-side">
+          <Glyph type={type} id="guide-glyph" settle />
+          <nav class="gp-toc" aria-labelledby="toc-title">
+            <p id="toc-title">On this page</p>
+            <ul>
+              {toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}
+            </ul>
+          </nav>
+        </aside>
+        <article class="guide gp-main">
+          <header class="guide-head">
+            <h1>{nb(type)}</h1>
+            {also && <p class="also">{nb(also)}</p>}
+          </header>
+          <div class="doc">
+            <slot />
+          </div>
 
-    <PageEnd type={type} sourceGroups={[{ keys: sourceKeys }]} />
-  </article>
+          <PageEnd type={type} sourceGroups={[{ keys: sourceKeys }]} band />
+        </article>
+      </div>
+    </div>
+  </div>
 </Base>
 
 <script>

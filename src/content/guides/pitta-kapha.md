@@ -6,13 +6,19 @@ description: "What to eat, how to plan your day and what to change each season i
 heading: "Pitta-Kapha (and Kapha-Pitta)"
 sources: ["F", "KP", "KK", "T1", "T2", "T3", "HM", "G", "L", "W-PK", "BK", "AD"]
 first: "Pitta and Kapha both lead your constitution."
+toc: [{"id": "what-to-balance-right-now", "label": "What to balance right now"}, {"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "by-season", "label": "By season"}, {"id": "sources", "label": "Sources"}]
+week: {"food": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples.", "mind": "Hold plans and outcomes loosely. Frawley advises this type to stay detached and avoid over-involvement.", "wake": {"pitta": "Around sunrise", "kapha": "Before sunrise, by about 6"}}
 ---
 
 Pitta and Kapha both lead your constitution. Ayurvedic teacher Dr. David Frawley describes two-dosha types as having both doshas in roughly equal amounts, and he gives one set of guidance for each pair, so it applies whichever dosha is named first. He describes Pitta as determined and Kapha as steady. What the two share is an oily, damp quality, so the core advice for this type is to stay dry and light.
 
+<div class="now-card">
+
 ## What to balance right now
 
 Three established teachers agree on where to start. Dr. Vasant Lad of the Ayurvedic Institute and Dr. David Frawley both say to first balance whichever dosha is out of balance right now. When neither one stands out, Frawley and Dr. Claudia Welch both say to go by the time of year. Frawley balances Pitta from about May 1 to November 1 and Kapha from about November 1 to May 1. <em class="now" data-pair="pitta-kapha" hidden>Right now that means balancing Pitta, through Nov 1.</em>
+
+</div>
 
 ## Food
 
@@ -26,7 +32,7 @@ Three established teachers agree on where to start. Dr. Vasant Lad of the Ayurve
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-windows"><thead><tr><td></td><th scope="col" data-balance="pitta">May 1 to Nov 1 (balancing Pitta)</th><th scope="col" data-balance="kapha">Nov 1 to May 1 (balancing Kapha)</th></tr></thead><tbody><tr><th scope="row">Wake up</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Around sunrise</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Before sunrise, by about 6</td></tr><tr><th scope="row">Oil massage</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Coconut or sunflower oil</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Sesame or sunflower oil<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></td></tr><tr><th scope="row">Move</th><td data-label="May 1 to Nov 1 (balancing Pitta)" data-balance="pitta">Walking or yoga, in the cooler morning hours</td><td data-label="Nov 1 to May 1 (balancing Kapha)" data-balance="kapha">Brisk exercise or Sun Salutations, before 10</td></tr></tbody></table>
+<div class="routine-cards routine-windows"><div class="routine-card"><h3>Wake up</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Around sunrise</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Before sunrise, by about 6</p></div></div><div class="routine-card"><h3>Oil massage</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Coconut or sunflower oil</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Sesame or sunflower oil<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div></div><div class="routine-card"><h3>Move</h3><div class="routine-when" data-balance="pitta"><p class="when">May 1 to Nov 1 (balancing Pitta)</p><p class="what">Walking or yoga, in the cooler morning hours</p></div><div class="routine-when" data-balance="kapha"><p class="when">Nov 1 to May 1 (balancing Kapha)</p><p class="what">Brisk exercise or Sun Salutations, before 10</p></div></div></div>
 
 ## Mind and mood
 

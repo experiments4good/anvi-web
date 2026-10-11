@@ -6,6 +6,8 @@ description: "What to eat, how to plan your day and what to change each season i
 heading: "Kapha"
 sources: ["KK", "L", "W-VK", "T1", "T2", "HM", "MM", "BK", "AD"]
 first: "Kapha is the dosha of structure and steadiness."
+toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "by-season", "label": "By season"}, {"id": "sources", "label": "Sources"}]
+week: {"food": "Favor light, warm, dry foods with pungent, bitter and astringent tastes, in moderate portions.", "mind": "Find something that motivates you to move, and get going early.", "wake": {"kapha": "Before sunrise, by about 6"}}
 ---
 
 Kapha is the dosha of structure and steadiness. Welch lists its qualities as oily, cool, heavy, slow, smooth, soft and stable, so the advice for Kapha is to stay light, warm and active. Welch puts it plainly: activity is one of the best medicines for Kapha. If another dosha is clearly out of balance right now, Lad's advice is to balance that one first.
@@ -19,9 +21,9 @@ Kapha is the dosha of structure and steadiness. Welch lists its qualities as oil
 
 ## [Your daily routine](/routine/)
 
-<table class="routine-table routine-single"><thead><tr><th scope="col">Wake up</th><th scope="col">Oil massage</th><th scope="col">Move</th></tr></thead><tbody><tr><td data-label="Wake up">Before sunrise, by about 6</td><td data-label="Oil massage">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></td><td data-label="Move">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</td></tr></tbody></table>
+<div class="routine-cards routine-single"><div class="routine-card"><h3>Wake up</h3><p class="what">Before sunrise, by about 6</p></div><div class="routine-card"><h3>Oil massage</h3><p class="what">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div><div class="routine-card"><h3>Move</h3><p class="what">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</p></div></div>
 
-**Mind and mood:** Find something that motivates you to move, and get going early.
+<p id="mind-and-mood"><strong>Mind and mood:</strong> Find something that motivates you to move, and get going early.</p>
 
-<p class="season-intro"><strong>By season:</strong></p>
+<p class="season-intro" id="by-season"><strong>By season:</strong></p>
 <ul class="seasons"><li class="season is-kapha"><span class="dots" aria-hidden="true"><span class="dot dot-kapha"></span></span><span>Winter and spring are your season to stay light and active.</span></li><li class="season is-pitta"><span class="dots" aria-hidden="true"><span class="dot dot-pitta"></span></span><span>In summer, move early and stay out of the strongest sun.</span></li><li class="season is-vata"><span class="dots" aria-hidden="true"><span class="dot dot-vata"></span></span><span>In fall, favor light, warm, dry foods spiced with ginger, black pepper or cumin.</span></li></ul>

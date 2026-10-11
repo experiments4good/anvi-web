@@ -100,6 +100,29 @@ for path, body in zip(secs[1::2], secs[2::2]):
     ending(h, text, [s.strip() for s in re.search(r'^Sources: (.+)$', body, re.M).group(1).split(',')], path)
     if 'href="/routine/"' not in h:
         problems.append(f'{path}: "Your daily routine" not linked to /routine/')
+    # The guide layout: breadcrumb, "On this page" links that each reach a
+    # section on the page, and "Start this week" lines found word for word in
+    # this guide's approved text.
+    slug = path.split('/')[-1]
+    fm = dict(re.findall(r'^(\w+): (.+)$', (root / f'src/content/guides/{slug}.md').read_text().split('---')[1], re.M))
+    need(text, 'Guides / ', f'{path} breadcrumb')
+    if 'href="/#guides">Guides</a>' not in h:
+        problems.append(f'{path}: breadcrumb not linked to the guide list')
+    need(text, 'On this page', path)
+    for t in json.loads(fm['toc']):
+        checked += 1
+        if f'href="#{t["id"]}"' not in h or not re.search(rf'\bid="{re.escape(t["id"])}"', h):
+            problems.append(f'{path}: "On this page" link {t["id"]} does not reach a section')
+    plain = re.sub(r'\*+', '', body)
+    week = json.loads(fm['week'])
+    for line in [week['food'], week['mind'], *week['wake'].values()]:
+        if line is None:
+            continue
+        checked += 1
+        if slug == 'tridoshic' and line in week['wake'].values():
+            continue  # the season's single-type routine, checked on those guides
+        if line not in plain:
+            problems.append(f'{path}: "Start this week" line not in the guide: "{line[:60]}"')
 
 # Stage 2 approved text.
 stage2 = (content / 'web-stage2-2026.md').read_text()
@@ -239,6 +262,25 @@ if 'download-on-the-app-store-black.svg' not in home:
     problems.append('/: App Store badge')
 if home.count('class="guide-card"') != 7:
     problems.append('/: seven guide cards')
+
+# The quiz result: the mockup's words, and each type's lines as its guide has them.
+quiz = page('/quiz/')
+quiz_text = visible(quiz)
+for s_ in ('Your dosha', 'Read your guide', 'Share', 'Your constitution breakdown', 'Start this week', 'See your full guide',
+           'Get your daily routine, tips and menu help in the Anvi app', 'This quiz is for educational purposes only and does not constitute medical advice.',
+           'Retake the quiz'):
+    need(quiz_text, s_, '/quiz/ result')
+if 'download-on-the-app-store-black.svg' not in quiz:
+    problems.append('/quiz/: App Store badge')
+data = json.loads(html.unescape(re.search(r'<script type="application/json" id="guide-data">(.*?)</script>', quiz, re.S).group(1)))
+for f in sorted(glob.glob(str(root / 'src/content/guides/*.md'))):
+    fm = dict(re.findall(r'^(\w+): (.+)$', Path(f).read_text().split('---')[1], re.M))
+    slug = json.loads(fm['slug'])
+    checked += 1
+    if data.get(slug, {}).get('week') != json.loads(fm['week']):
+        problems.append(f'/quiz/: {slug} "Start this week" lines differ from the guide')
+    if data.get(slug, {}).get('core') not in visible(home):
+        problems.append(f'/quiz/: {slug} core advice is not the guide card line')
 
 # The header and footer on every page: the same links, in the same words.
 NAV = [('/', 'Anvi'), ('/#guides', 'Guides'), ('/six-tastes/', 'Six tastes'), ('/routine/', 'Daily routine'), ('/quiz/', 'Take the quiz')]

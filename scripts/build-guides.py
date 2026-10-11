@@ -59,9 +59,10 @@ def inline(t):
 
 
 def html_table(block, note=None):
-    """A routine table as labelled HTML. A note ("Teachers differ on Kapha's oil: ...",
-    the line under the table in the approved text) goes inside the Oil massage cell for
-    Kapha, under its value."""
+    """A routine table as three cards, Wake up, Oil massage and Move, each with
+    its value, or with one labelled row per date window. A note ("Teachers differ
+    on Kapha's oil: ...", the line under the table in the approved text) goes
+    inside the Oil massage card, under the Kapha value."""
     lines = [l.strip() for l in block.strip().splitlines()]
     cells = [[c.strip() for c in l.strip('|').split('|')] for l in lines]
     head, rows = cells[0], cells[2:]
@@ -69,24 +70,52 @@ def html_table(block, note=None):
     def balance(h):
         m = re.search(r'balancing (Vata|Pitta|Kapha)', h)
         return f' data-balance="{m.group(1).lower()}"' if m else ''
-    th = ''.join(f'<th scope="col"{balance(h)}>{esc(h)}</th>' if h else '<td></td>' for h in head)
-    body = ''
+    if row_headers:
+        steps = [(r[0], [(head[j], r[j]) for j in range(1, len(r))]) for r in rows]
+    else:
+        assert len(rows) == 1, block
+        steps = [(head[j], [(None, rows[0][j])]) for j in range(len(head))]
     placed = []
-    for r in rows:
-        tds = ''
-        for j, c in enumerate(r):
-            if row_headers and j == 0:
-                tds += f'<th scope="row">{esc(c)}</th>'
-            else:
-                oil = (r[0] == 'Oil massage' and 'balancing Kapha' in head[j]) if row_headers else head[j] == 'Oil massage'
-                extra = f'<span class="cell-note">{inline(note)}</span>' if note and oil else ''
-                if extra:
-                    placed.append(1)
-                tds += f'<td data-label="{esc(head[j])}"{balance(head[j])}>{esc(c)}{extra}</td>'
-        body += f'<tr>{tds}</tr>'
+    cards = ''
+    for step, values in steps:
+        inner = ''
+        for when, value in values:
+            oil = step == 'Oil massage' and (when is None or 'balancing Kapha' in when)
+            extra = f'<span class="cell-note">{inline(note)}</span>' if note and oil else ''
+            if extra:
+                placed.append(1)
+            what = f'<p class="what">{esc(value)}{extra}</p>'
+            inner += f'<div class="routine-when"{balance(when)}><p class="when">{esc(when)}</p>{what}</div>' if when else what
+        cards += f'<div class="routine-card"><h3>{esc(step)}</h3>{inner}</div>'
     assert not note or len(placed) == 1, note
     kind = 'windows' if row_headers else 'single'
-    return f'<table class="routine-table routine-{kind}"><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table>'
+    return f'<div class="routine-cards routine-{kind}">{cards}</div>'
+
+
+def wake_lines(slug):
+    """The Wake up line of a guide's routine table: {"vata": ...} for a single type,
+    one per balanced dosha for a two-dosha type."""
+    raw = pages[slug]['raw']
+    table = re.search(r'((?:^\|.*\|\n?)+)', raw, re.M).group(1)
+    cells = [[c.strip() for c in l.strip().strip('|').split('|')] for l in table.strip().splitlines()]
+    head, rows = cells[0], cells[2:]
+    if head[0] == '':
+        row = next(r for r in rows if r[0] == 'Wake up')
+        return {re.search(r'balancing (\w+)', head[j]).group(1).lower(): row[j] for j in range(1, len(head))}
+    return {slug: rows[0][head.index('Wake up')]}
+
+
+def week_lines(slug):
+    """The result page's "Start this week" lines, word for word from the guide: its
+    first Food line, its Wake up line for each window, its first Mind and mood line."""
+    raw = pages[slug]['raw']
+    food = re.search(r'^\*\*Food\*\*\n\n- (.+)$', raw, re.M).group(1)
+    mind = re.search(r'^\*\*Mind and mood:\*\* (.+)$', raw, re.M) or re.search(r'^\*\*Mind and mood\*\*\n\n- (.+)$', raw, re.M)
+    if slug == 'tridoshic':
+        wake = {d: wake_lines(d)[d] for d in ('vata', 'pitta', 'kapha')}
+    else:
+        wake = wake_lines(slug)
+    return {'food': food.replace('**', ''), 'mind': mind.group(1).replace('**', '') if mind else None, 'wake': wake}
 
 
 def seasons_of(sentence):
@@ -140,6 +169,13 @@ for slug, p in pages.items():
         sentences = re.split(r'(?<=\.)\s+(?=[A-Z])', m.group(1).strip())
         return '<p class="season-intro"><strong>By season:</strong></p>\n' + season_list(sentences)
     c = re.sub(r'^\*\*By season:\*\* (.+)$', by_season, c, flags=re.M)
+    # The one-paragraph sections carry an id, for the "On this page" list.
+    c = re.sub(r'^\*\*Mind and mood:\*\* (.+)$', lambda m: f'<p id="mind-and-mood"><strong>Mind and mood:</strong> {inline(m.group(1))}</p>', c, flags=re.M)
+    c = c.replace('<p class="season-intro">', '<p class="season-intro" id="by-season">')
+    c = re.sub(r'^\*\*\[Your daily routine\]\(/routine/\)\*\* (.+)$', lambda m: f'<p id="your-daily-routine"><strong><a href="/routine/">Your daily routine</a></strong> {inline(m.group(1))}</p>', c, flags=re.M)
+    # "What to balance right now" sits in its own card.
+    c, n = re.subn(r'^(## What to balance right now\n\n[^\n]+)\n', r'<div class="now-card">\n\n\1\n\n</div>\n', c, flags=re.M)
+    assert n <= 1
     # A "By season" bullet list ("- **Fall:** ...") becomes the same set.
     def season_bullets(m):
         items = [l[2:] for l in m.group(0).strip().splitlines()]
@@ -162,6 +198,16 @@ for slug, p in pages.items():
         )
         c = c.rstrip() + '\n\n' + html
     p['content'] = c
+    # "On this page": the sections this guide has, in page order, by their ids
+    # (Astro gives each Markdown heading the slug of its words).
+    toc = [
+        ('what-to-balance-right-now', 'What to balance right now', '## What to balance right now' in c),
+        ('food', 'Food', '## Food' in c),
+        ('your-daily-routine', 'Your daily routine', '## [Your daily routine]' in c or 'id="your-daily-routine"' in c),
+        ('mind-and-mood', 'Mind and mood', '## Mind and mood' in c or 'id="mind-and-mood"' in c),
+        ('by-season', 'By season', '## By season' in c or 'id="by-season"' in c),
+        ('sources', 'Sources', True),
+    ]
     type_name = p['heading'].split(' (')[0]
     first = re.match(r'(.+?\.)(?:\s|$)', p['content'].strip()).group(1)
     fm = {
@@ -172,6 +218,8 @@ for slug, p in pages.items():
         'heading': p['heading'],
         'sources': p['sources'],
         'first': first,
+        'toc': [{'id': i, 'label': l} for i, l, has in toc if has],
+        'week': week_lines(slug),
     }
     front = '\n'.join(f'{k}: {json.dumps(v, ensure_ascii=False)}' for k, v in fm.items())
     (out_dir / f'{slug}.md').write_text(f'---\n{front}\n---\n\n{c}\n')

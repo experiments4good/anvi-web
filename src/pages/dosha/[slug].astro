@@ -13,6 +13,6 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Guide title={entry.data.title} description={entry.data.description} heading={entry.data.heading} type={entry.data.type} sourceKeys={entry.data.sources}>
+<Guide title={entry.data.title} description={entry.data.description} heading={entry.data.heading} type={entry.data.type} sourceKeys={entry.data.sources} toc={entry.data.toc}>
   <Content />
 </Guide>

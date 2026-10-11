@@ -23,6 +23,15 @@ const guides = defineCollection({
     heading: z.string(),
     sources: z.array(z.string()),
     first: z.string(),
+    /** "On this page": the sections the guide has, by id, in page order. */
+    toc: z.array(z.object({ id: z.string(), label: z.string() })),
+    /** The quiz result's "Start this week" lines, word for word from the guide. */
+    week: z.object({
+      food: z.string(),
+      mind: z.string().nullable(),
+      /** The Wake up line by the dosha being balanced (Tridoshic: by season). */
+      wake: z.record(z.string(), z.string()),
+    }),
   }),
 });
 
