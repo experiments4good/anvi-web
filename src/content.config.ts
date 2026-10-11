@@ -27,7 +27,8 @@ const guides = defineCollection({
     toc: z.array(z.object({ id: z.string(), label: z.string() })),
     /** The quiz result's "Start this week" lines, word for word from the guide. */
     week: z.object({
-      food: z.string(),
+      /** One line, or one per balanced dosha when the guide gives one per window. */
+      food: z.union([z.string(), z.record(z.string(), z.string())]),
       mind: z.string().nullable(),
       /** The Wake up line by the dosha being balanced (Tridoshic: by season). */
       wake: z.record(z.string(), z.string()),

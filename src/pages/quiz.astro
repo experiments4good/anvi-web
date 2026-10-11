@@ -102,7 +102,7 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
   const intro = $('intro');
   const ask = $('ask');
   const result = $('result');
-  type Week = { food: string; mind: string | null; wake: Record<string, string> };
+  type Week = { food: string | Record<string, string>; mind: string | null; wake: Record<string, string> };
   const guides = JSON.parse($('guide-data').textContent ?? '{}') as Record<string, { core: string; week: Week }>;
   const PAIR: Record<string, Pair> = {
     'Vata-Pitta': 'vata-pitta',
@@ -216,9 +216,10 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
     } else {
       preview.hidden = true;
     }
-    // "Start this week": the guide's first Food line, its Wake up line for the
-    // dosha it balances today (Tridoshic: by the season), its first Mind and
-    // mood line. Tridoshic's guide has no Mind and mood section.
+    // "Start this week": the guide's first Food line (Vata-Pitta: its line for
+    // the window in force, as "Right now"), its Wake up line for the dosha it
+    // balances today (Tridoshic: by the season), its first Mind and mood line.
+    // Tridoshic's guide has no Mind and mood section.
     const focus = pair ? balancedFor(pair, today) : slug === 'tridoshic' ? seasonForDate(today) : slug;
     const card = (title: string, text: string, label?: string) => {
       const div = document.createElement('div');
@@ -237,7 +238,8 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
       div.append(p);
       return div;
     };
-    const cards = [card('Food', guide.week.food), card('Routine', guide.week.wake[focus]!, 'Wake up')];
+    const food = typeof guide.week.food === 'string' ? guide.week.food : guide.week.food[focus]!;
+    const cards = [card('Food', food), card('Routine', guide.week.wake[focus]!, 'Wake up')];
     if (guide.week.mind) cards.push(card('Mind and mood', guide.week.mind));
     $('week').replaceChildren(...cards);
     $<HTMLAnchorElement>('week-link').href = path;

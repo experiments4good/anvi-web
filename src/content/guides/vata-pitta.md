@@ -7,7 +7,7 @@ heading: "Vata-Pitta (and Pitta-Vata)"
 sources: ["F", "L", "W-VP", "KV", "KP", "T1", "T2", "T3", "G", "VS", "BV", "BB"]
 first: "Vata and Pitta both lead your constitution."
 toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "sources", "label": "Sources"}]
-week: {"food": "In the Vata months: warm, cooked meals with sweet, sour and salty tastes, like carrots, yogurt and miso.", "mind": "Frawley advises time close to nature and real rest and relaxation. Keep meals, sleep and rest at steady times.", "wake": {"vata": "Around sunrise, at the same time every day", "pitta": "Around sunrise"}}
+week: {"food": {"vata": "In the Vata months: warm, cooked meals with sweet, sour and salty tastes, like carrots, yogurt and miso.", "pitta": "In the Pitta months: sweet, cooling foods like cucumber, zucchini and summer squash."}, "mind": "Frawley advises time close to nature and real rest and relaxation. Keep meals, sleep and rest at steady times.", "wake": {"vata": "Around sunrise, at the same time every day", "pitta": "Around sunrise"}}
 ---
 
 Vata and Pitta both lead your constitution. Frawley gives one set of guidance for the pair, whichever is named first. What the two share is lightness, so his core advice is to stay grounded and steady. First balance whichever dosha is out of balance right now (Lad, Frawley). Otherwise go by the time of year: Frawley balances Pitta from about March 21 to September 21, and Vata from about September 21 to March 21. Welch's seasons line up: Vata in fall and winter, Pitta in spring and summer. <em class="now" data-pair="vata-pitta" hidden>Right now that means balancing Vata, through Mar 20.</em>

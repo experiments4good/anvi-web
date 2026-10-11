@@ -107,15 +107,23 @@ def wake_lines(slug):
 
 def week_lines(slug):
     """The result page's "Start this week" lines, word for word from the guide: its
-    first Food line, its Wake up line for each window, its first Mind and mood line."""
+    first Food line (or its line for each window), its Wake up line for each
+    window, its first Mind and mood line."""
     raw = pages[slug]['raw']
     food = re.search(r'^\*\*Food\*\*\n\n- (.+)$', raw, re.M).group(1)
+    # A two-dosha guide whose Food list has an "In the <Dosha> months:" line for
+    # each of its doshas gets the line for the window in force (Vata-Pitta).
+    if slug in PAIR:
+        months = {m.group(2).lower(): m.group(1) for m in re.finditer(r'^- (In the (Vata|Pitta|Kapha) months: .+)$', raw, re.M)}
+        if set(months) == set(slug.split('-')):
+            food = months
     mind = re.search(r'^\*\*Mind and mood:\*\* (.+)$', raw, re.M) or re.search(r'^\*\*Mind and mood\*\*\n\n- (.+)$', raw, re.M)
     if slug == 'tridoshic':
         wake = {d: wake_lines(d)[d] for d in ('vata', 'pitta', 'kapha')}
     else:
         wake = wake_lines(slug)
-    return {'food': food.replace('**', ''), 'mind': mind.group(1).replace('**', '') if mind else None, 'wake': wake}
+    strip = lambda t: {k: v.replace('**', '') for k, v in t.items()} if isinstance(t, dict) else t.replace('**', '')
+    return {'food': strip(food), 'mind': mind.group(1).replace('**', '') if mind else None, 'wake': wake}
 
 
 def seasons_of(sentence):

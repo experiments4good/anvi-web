@@ -115,7 +115,19 @@ for path, body in zip(secs[1::2], secs[2::2]):
             problems.append(f'{path}: "On this page" link {t["id"]} does not reach a section')
     plain = re.sub(r'\*+', '', body)
     week = json.loads(fm['week'])
-    for line in [week['food'], week['mind'], *week['wake'].values()]:
+    food = week['food']
+    if isinstance(food, dict):
+        # One Food line per window: each names its own dosha's months.
+        if set(food) != set(slug.split('-')):
+            problems.append(f'{path}: Food lines for {sorted(food)}, not this type\'s two windows')
+        for dosha, line in food.items():
+            checked += 1
+            if not line.startswith(f'In the {dosha.capitalize()} months:'):
+                problems.append(f'{path}: {dosha} window Food line is not its months line: "{line[:60]}"')
+        food = list(food.values())
+    else:
+        food = [food]
+    for line in [*food, week['mind'], *week['wake'].values()]:
         if line is None:
             continue
         checked += 1
