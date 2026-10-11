@@ -176,7 +176,7 @@ need(text, [p for p in re.split(r'\n\s*\n', b[b.index('### '):].split('\n', 1)[1
 need(text, re.search(r'Below the steps: "([^"]+)"', b).group(1), '/routine/ closing')
 if h.count('class="guide-card"') != 7:
     problems.append('/routine/: seven guide cards')
-ending(h, text, ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G', 'VS', 'BV', 'BB', 'BK', 'AD'], '/routine/')
+ending(h, text, ['T1', 'T2', 'KP', 'KA', 'HM', 'F', 'VS', 'BV', 'AD'], '/routine/')
 
 # Routine steps: identical to the app, and on the page exactly.
 committed = (root / 'src/lib/routine-steps.json').read_text()
@@ -401,6 +401,22 @@ for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
     checked += total
     if total != linked:
         problems.append(f'{rel}: {total - linked} of {total} "NAMA-certified Ayurvedic practitioner" not linked to NAMA')
+
+# The source audit (~/anvi/content/source-audit-2026-10-10.md): no page names
+# or links a removed source.
+REMOVED_URLS = ['kripalu.org/resources/tips-balancing-vata', 'tips-balancing-kapha', 'yogachicago.com', 'Ideal_Daily_Routine_According_to_Maharishi',
+                'tdu.edu.in', 'ayurvedic-lifestyle-vata-pacifying', 'ayurvedic-kapha-daily-routine', 'ask-banyan-vata-kapha-imbalance', 'ask-banyan-tridoshic-imbalance',
+                'ayurveda.com/?p=7372']
+REMOVED_NAMES = ['Gary Gran', 'Gran;', 'Maharishi', 'Nalakath', 'Kendra Brown', 'Kripalu and Banyan']
+for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
+    rel = '/' + str(Path(f).relative_to(dist)).replace('index.html', '')
+    if rel in ('/privacy/', '/terms/'):
+        continue
+    h = Path(f).read_text()
+    for u in REMOVED_URLS + REMOVED_NAMES:
+        checked += 1
+        if u in h:
+            problems.append(f'{rel}: still names or links removed source "{u}"')
 
 print(f'checked {checked} strings')
 for p in problems:

@@ -4,7 +4,7 @@ type: "Kapha"
 title: "Kapha Dosha: Diet, Daily Routine and Seasonal Guide | Anvi"
 description: "What to eat, how to plan your day and what to change each season if you're Kapha, from Ayurvedic practitioners. Free dosha quiz."
 heading: "Kapha"
-sources: ["KK", "L", "W-VK", "T1", "T2", "HM", "MM", "BK", "AD"]
+sources: ["L", "W-VK", "T1", "T2", "HM", "MM", "AD", "BV", "KA", "W-PK"]
 first: "Kapha is the dosha of structure and steadiness."
 toc: [{"id": "food", "label": "Food"}, {"id": "your-daily-routine", "label": "Your daily routine"}, {"id": "mind-and-mood", "label": "Mind and mood"}, {"id": "by-season", "label": "By season"}, {"id": "sources", "label": "Sources"}]
 week: {"food": "Favor light, warm, dry foods with pungent, bitter and astringent tastes, in moderate portions.", "mind": "Find something that motivates you to move, and get going early.", "wake": {"kapha": "Before sunrise, by about 6"}}
@@ -21,7 +21,7 @@ Kapha is the dosha of structure and steadiness. Welch lists its qualities as oil
 
 ## [Your daily routine](/routine/)
 
-<div class="routine-cards routine-single"><div class="routine-card"><h3>Wake up</h3><p class="what">Before sunrise, by about 6</p></div><div class="routine-card"><h3>Oil massage</h3><p class="what">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div><div class="routine-card"><h3>Move</h3><p class="what">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</p></div></div>
+<div class="routine-cards routine-single"><div class="routine-card"><h3>Wake up</h3><p class="what">Before sunrise, by about 6</p></div><div class="routine-card"><h3>Oil massage</h3><p class="what">Sesame or sunflower oil, with a brisk massage<span class="cell-note">Teachers differ on Kapha's oil: Kripalu suggests sesame; the Ayurvedic Institute suggests sunflower or mustard.</span></p></div><div class="routine-card"><h3>Move</h3><p class="what">Vigorous: a brisk walk, a bike ride or Sun Salutations, before 10</p></div></div>
 
 <p id="mind-and-mood"><strong>Mind and mood:</strong> Find something that motivates you to move, and get going early.</p>
 

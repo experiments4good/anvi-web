@@ -17,7 +17,7 @@ Pitta is the dosha of heat and transformation. Welch lists its qualities as oily
 - Favor fresh, cooling foods with sweet, bitter and astringent tastes.
 - Good choices, from Lad's chart: basmati rice, barley, quinoa; asparagus, broccoli, cabbage, cucumber, leafy greens and cilantro; sweet apples, coconut, melons, watermelon and pomegranates; milk and ghee. Cooling spices: cumin, coriander, fennel, fresh ginger, mint and turmeric.
 - Go easy on garlic, raw onions, hot peppers, raw tomatoes, sour fruits like lemons and grapefruit, hard cheese, fried and very salty foods, coffee and alcohol.
-- Keep portions moderate, and make lunch your biggest meal.
+- Make lunch your biggest meal.
 
 ## [Your daily routine](/routine/)
 
@@ -26,4 +26,4 @@ Pitta is the dosha of heat and transformation. Welch lists its qualities as oily
 <p id="mind-and-mood"><strong>Mind and mood:</strong> Welch advises Pitta to let go of the urge to control outcomes. If you're upset, pause before you eat.</p>
 
 <p class="season-intro" id="by-season"><strong>By season:</strong></p>
-<ul class="seasons"><li class="season is-pitta"><span class="dots" aria-hidden="true"><span class="dot dot-pitta"></span></span><span>Summer is your season to stay cool: stay out of the sun from 10 a.m. to 2 p.m. and favor cucumber, zucchini and mint.</span></li><li class="season"><span class="dots" aria-hidden="true"><span class="dot dot-vata"></span><span class="dot dot-kapha"></span></span><span>In fall, winter and spring, keep to sweet, bitter and astringent tastes and moderate portions.</span></li></ul>
+<ul class="seasons"><li class="season is-pitta"><span class="dots" aria-hidden="true"><span class="dot dot-pitta"></span></span><span>Summer is your season to stay cool: stay out of the sun from 10 a.m. to 2 p.m. and favor cucumber, zucchini and mint.</span></li><li class="season"><span class="dots" aria-hidden="true"><span class="dot dot-vata"></span><span class="dot dot-kapha"></span></span><span>In fall, winter and spring, keep to sweet, bitter and astringent tastes.</span></li></ul>

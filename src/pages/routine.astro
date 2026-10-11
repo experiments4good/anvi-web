@@ -21,11 +21,12 @@ const steps = routine.steps.map((s) => {
 });
 // The routine's sources are named in the app by teacher; these are the keys
 // for those teachers' sources in the approved source list. T2 is Templeton's
-// seasonal guide, the source of Kapha's brisk morning exercise. F and G are
-// the date windows two-dosha types switch by, and the tridoshic rule. VS, BV
-// and BB are Vata's gentler move (Frawley, the Ayurvedic Institute, Banyan).
-// BK and AD are Kapha's oil (Banyan; the Ayurvedic Institute).
-const sourceGroups = [{ keys: ['T1', 'T2', 'M', 'KV', 'KP', 'KK', 'KA', 'HM', 'F', 'G', 'VS', 'BV', 'BB', 'BK', 'AD'] }];
+// seasonal guide, the source of Kapha's brisk morning exercise. F is the date
+// windows two-dosha types switch by. KA and KP are Kripalu's oil and Pitta
+// pages, VS Frawley's asana page, BV Beatrice Voss on Pitta's moderate
+// exercise, and AD the Ayurvedic Institute's daily routine (tongue, breathing,
+// Vata and Kapha exercise, Kapha's oil). Source audit, October 10, 2026.
+const sourceGroups = [{ keys: ['T1', 'T2', 'KP', 'KA', 'HM', 'F', 'VS', 'BV', 'AD'] }];
 ---
 
 <Info title={p.title} description={p.description} heading={p.heading} glyph={[4, 4, 4]} sourceGroups={sourceGroups} routine>

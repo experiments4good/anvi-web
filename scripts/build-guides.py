@@ -248,7 +248,7 @@ for m in re.finditer(r'^- ([A-Z0-9-]+): (.+)$', links, re.M):
         name, url = part.rsplit(': http', 1)
         entries.append({'name': name.strip(), 'url': 'http' + url.strip()})
     src[key] = entries
-shared = re.search(r'^- KV, KP[^:]*: use the names', links, re.M)
+shared = re.search(r'^- [A-Z0-9, -]+: use the names', links, re.M)
 assert shared
 for m in re.finditer(r'^- \*\*([A-Z0-9]+)\*\*: (.+)$', tips_md.read_text(), re.M):
     key = m.group(1)

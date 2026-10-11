@@ -14,17 +14,17 @@
         "vata": {
           "howTo": "Around sunrise, at the same time every day",
           "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
-          "source": "Templeton; Maharishi; Hope-Murray"
+          "source": "Templeton; Hope-Murray"
         },
         "pitta": {
           "howTo": "Around sunrise",
           "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         },
         "kapha": {
           "howTo": "Before sunrise, by about 6",
           "reason": "Before sunrise is vata time, when the mind is clearest and most alert. Sleeping past about 6 runs into kapha time, which brings heaviness and dullness.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         }
       }
     },
@@ -34,19 +34,19 @@
       "title": "Scrape your tongue",
       "versions": {
         "vata": {
-          "howTo": "Back to front, 5 to 7 strokes, then brush your teeth",
+          "howTo": "Back to front, 7 to 14 strokes, then brush your teeth",
           "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
-          "source": "Kripalu"
+          "source": "Ayurvedic Institute"
         },
         "pitta": {
-          "howTo": "Back to front, 5 to 7 strokes, then brush your teeth",
+          "howTo": "Back to front, 7 to 14 strokes, then brush your teeth",
           "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
-          "source": "Kripalu"
+          "source": "Ayurvedic Institute"
         },
         "kapha": {
-          "howTo": "Back to front, 5 to 7 strokes, then brush your teeth",
+          "howTo": "Back to front, 7 to 14 strokes, then brush your teeth",
           "reason": "Your body clears waste while you sleep, and some of it collects on your tongue. Brushing doesn't remove it. Scraping also cuts down on odor-causing bacteria.",
-          "source": "Kripalu"
+          "source": "Ayurvedic Institute"
         }
       }
     },
@@ -58,17 +58,17 @@
         "vata": {
           "howTo": "A cup of warm water before anything else",
           "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
-          "source": "Kripalu; Maharishi"
+          "source": "Kripalu"
         },
         "pitta": {
           "howTo": "A cup of warm water before anything else",
           "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
-          "source": "Kripalu; Maharishi"
+          "source": "Kripalu"
         },
         "kapha": {
           "howTo": "A cup of warm water before anything else",
           "reason": "Warm water first thing helps your body finish the cleansing it does overnight, and it gets your bowels moving.",
-          "source": "Kripalu; Maharishi"
+          "source": "Kripalu"
         }
       }
     },
@@ -79,18 +79,18 @@
       "versions": {
         "vata": {
           "howTo": "Sesame oil, 10 to 20 minutes, then shower",
-          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Sesame suits cooler types.",
-          "source": "Maharishi; Kripalu"
+          "reason": "It softens and nourishes the skin, and helps clear out impurities. Sesame suits cooler types.",
+          "source": "Kripalu"
         },
         "pitta": {
           "howTo": "Coconut or sunflower oil, 10 to 20 minutes, then shower",
-          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Coconut and sunflower suit warmer types.",
-          "source": "Maharishi; Kripalu"
+          "reason": "It softens and nourishes the skin, and helps clear out impurities. Coconut and sunflower suit warmer types.",
+          "source": "Kripalu"
         },
         "kapha": {
           "howTo": "Sesame or sunflower oil, 10 to 20 minutes, then shower",
-          "reason": "It improves circulation, softens and nourishes the skin, and helps clear out impurities. Teachers differ for kapha: Kripalu and Banyan suggest sesame; the Ayurvedic Institute suggests sunflower or mustard.",
-          "source": "Maharishi; Kripalu; Banyan; Ayurvedic Institute"
+          "reason": "It softens and nourishes the skin, and helps clear out impurities. Teachers differ for kapha: Kripalu suggests sesame; the Ayurvedic Institute suggests sunflower or mustard.",
+          "source": "Kripalu; Ayurvedic Institute"
         }
       }
     },
@@ -102,17 +102,17 @@
         "vata": {
           "howTo": "Gentle: walking or slow yoga, at about half your effort. Morning, ideally between 6 and 10",
           "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight. Vata tires easily, so pushing hard can leave you depleted.",
-          "source": "Maharishi; Kripalu; Frawley; Ayurvedic Institute; Banyan"
+          "source": "Templeton; Kripalu; Frawley; Ayurvedic Institute"
         },
         "pitta": {
           "howTo": "Walking or yoga. Morning, ideally between 6 and 10",
           "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight.",
-          "source": "Maharishi; Kripalu"
+          "source": "Templeton; Kripalu; Beatrice Voss"
         },
         "kapha": {
           "howTo": "Vigorous: brisk exercise or Sun Salutations. Morning, ideally between 6 and 10",
           "reason": "6 to 10 a.m. is kapha time, when your body is strongest. Moving then clears the sluggishness that builds up overnight.",
-          "source": "Maharishi; Kripalu; Templeton"
+          "source": "Templeton; Kripalu; Ayurvedic Institute"
         }
       }
     },
@@ -124,17 +124,17 @@
         "vata": {
           "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
           "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
-          "source": "Kripalu; Templeton"
+          "source": "Ayurvedic Institute; Templeton"
         },
         "pitta": {
           "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
           "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
-          "source": "Kripalu; Templeton"
+          "source": "Ayurvedic Institute; Templeton"
         },
         "kapha": {
           "howTo": "A few minutes of slow breathing, then a few minutes of quiet sitting",
           "reason": "A few quiet minutes reset your mind before the day starts. The hour before sunrise is especially good for this.",
-          "source": "Kripalu; Templeton"
+          "source": "Ayurvedic Institute; Templeton"
         }
       }
     },
@@ -146,17 +146,17 @@
         "vata": {
           "howTo": "Make lunch the biggest meal of the day",
           "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         },
         "pitta": {
           "howTo": "Make lunch the biggest meal of the day",
           "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         },
         "kapha": {
           "howTo": "Make lunch the biggest meal of the day",
           "reason": "Digestion is strongest in pitta time, 10 a.m. to 2 p.m. Eating heavy later is harder on digestion, so keep supper light.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         }
       }
     },
@@ -168,17 +168,17 @@
         "vata": {
           "howTo": "Lights out around 10, no later than 11",
           "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         },
         "pitta": {
           "howTo": "Lights out around 10, no later than 11",
           "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         },
         "kapha": {
           "howTo": "Lights out around 10, no later than 11",
           "reason": "From 10 p.m. to 2 a.m. your body digests and repairs. Staying up through it can bring a second wind that keeps you awake.",
-          "source": "Templeton; Maharishi"
+          "source": "Templeton"
         }
       }
     }

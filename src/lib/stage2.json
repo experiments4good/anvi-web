@@ -7,7 +7,7 @@
     "title": "The Six Tastes of Ayurveda: Foods, and Which Doshas They Balance | Anvi",
     "description": "Sweet, sour, salty, pungent, bitter and astringent: what each taste means in Ayurveda, everyday foods for each, and which doshas each one calms or increases.",
     "heading": "The six tastes",
-    "intro": "Ayurveda sorts food into six tastes: sweet, sour, salty, pungent, bitter and astringent. Each taste calms some doshas and increases others, which is why guidance for your type is often written as tastes to favor. Ayurvedic teacher Gary Gran's advice for a balanced day is to include all six.",
+    "intro": "Ayurveda sorts food into six tastes: sweet, sour, salty, pungent, bitter and astringent. Each taste calms some doshas and increases others, which is why guidance for your type is often written as tastes to favor. Ayurvedic practitioner Kathryn Templeton's advice for a balanced day is to include all six.",
     "table": {
       "head": [
         "Taste",
@@ -63,7 +63,7 @@
         "keys": [
           "T3"
         ],
-        "note": "food examples"
+        "note": "food examples, all six tastes daily"
       },
       {
         "keys": [
@@ -73,12 +73,6 @@
           "W-T"
         ],
         "note": "which tastes calm or increase each dosha"
-      },
-      {
-        "keys": [
-          "G"
-        ],
-        "note": "all six tastes daily"
       }
     ]
   },
@@ -101,14 +95,14 @@
         {
           "type": "Vata",
           "slug": "vata",
-          "tip": "Fall is your season to stay warm and steady. Favor warm, cooked meals with root vegetables, and make lunch your biggest meal. Keep meals, bedtime and wake time at the same times each day, and cut down on overstimulation.",
-          "source": "Kripalu; Templeton"
+          "tip": "Fall is your season to stay warm and steady. Favor warm, cooked meals with root vegetables, and make lunch your biggest meal. Keep meals, bedtime and wake time at the same times each day, and give yourself quiet, calm time.",
+          "source": "Welch; Lad; Mount Madonna; Templeton"
         },
         {
           "type": "Pitta",
           "slug": "pitta",
-          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods, coffee and alcohol. Keep portions moderate and make lunch your biggest meal. A thin layer of coconut oil before a lukewarm shower helps keep you cool.",
-          "source": "Kripalu; Hope-Murray; Templeton"
+          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods, coffee and alcohol. Make lunch your biggest meal, and take a barefoot walk in the dewy grass at dawn. A thin layer of coconut oil before a lukewarm shower helps keep you cool.",
+          "source": "Kripalu; Templeton"
         },
         {
           "type": "Kapha",
@@ -120,13 +114,13 @@
           "type": "Vata-Pitta",
           "slug": "vata-pitta",
           "tip": "Favor warm, cooked meals with sweet, sour and salty tastes, like carrots, yogurt and miso, and keep spices mild: coriander, cardamom, cloves or turmeric. Keep meals, sleep and rest at steady times, and make room for real rest.",
-          "source": "Frawley; Gran; Templeton"
+          "source": "Frawley; Welch; Templeton"
         },
         {
           "type": "Vata-Kapha",
           "slug": "vata-kapha",
           "tip": "Eat warm food and stay warm. Favor sour, salty and pungent tastes, like lemon, miso and ginger, and spice your food generously with ginger and black pepper. Keep meals and sleep at regular times, and make dinner your lightest meal.",
-          "source": "Frawley; Kripalu; Gran; Templeton"
+          "source": "Frawley; Welch; Templeton"
         },
         {
           "type": "Pitta-Kapha",
@@ -138,21 +132,21 @@
           "type": "Tridoshic",
           "slug": "tridoshic",
           "tip": "This season, slow down and stay warm. Keep meals, sleep and rest at regular times, and choose warm, cooked foods like soups and stews. Include all six tastes across the day: sweet (carrots), sour (lemon), salty (olives), pungent (ginger), bitter (dark leafy greens) and astringent (apples).",
-          "source": "Gran; Kripalu; Templeton"
+          "source": "Welch; Templeton"
         }
       ],
       "sourceKeys": [
-        "KV",
+        "W-VP",
+        "L",
+        "MM",
         "T1",
         "KP",
-        "HM",
         "T3",
-        "MM",
+        "HM",
         "T2",
         "F",
-        "G",
         "W-VK",
-        "W-VP",
+        "W-T",
         "W-PK"
       ]
     },
@@ -167,8 +161,8 @@
         {
           "type": "Vata",
           "slug": "vata",
-          "tip": "Keep your routine steady and your meals warm and cooked, even in summer. Drink plenty of fluids, at room temperature rather than iced, and stay out of the strongest sun from 10 a.m. to 2 p.m.",
-          "source": "Kripalu; Gran; Maharishi; Templeton"
+          "tip": "Keep your routine steady and your meals warm and cooked, even in summer. Coconut water is a good drink for the heat; sip water at room temperature rather than iced, and stay out of the strongest sun from 10 a.m. to 2 p.m.",
+          "source": "Welch; Templeton; Kripalu; Lad"
         },
         {
           "type": "Pitta",
@@ -179,8 +173,8 @@
         {
           "type": "Kapha",
           "slug": "kapha",
-          "tip": "Get up early and move before 10 a.m., then stay out of the strongest sun. Choose light, warm, dry foods with pungent, bitter and astringent tastes, like ginger, dark leafy greens and black-eyed peas, and drink plenty of fluids in the heat.",
-          "source": "Templeton; Hope-Murray; Gran"
+          "tip": "Get up early and move before 10 a.m., then stay out of the strongest sun. Choose light, warm, dry foods with pungent, bitter and astringent tastes, like ginger, dark leafy greens and black-eyed peas, with coconut water for the heat.",
+          "source": "Templeton; Hope-Murray; Kripalu"
         },
         {
           "type": "Vata-Pitta",
@@ -191,8 +185,8 @@
         {
           "type": "Vata-Kapha",
           "slug": "vata-kapha",
-          "tip": "Favor warm meals, even in summer, with sour, salty and pungent tastes, like lemon, miso and ginger. Sip warm or room-temperature drinks instead of iced ones, and drink plenty of fluids. Get up early and move before 10 a.m.",
-          "source": "Frawley; Maharishi; Gran; Templeton"
+          "tip": "Favor warm meals, even in summer, with sour, salty and pungent tastes, like lemon, miso and ginger. Sip warm or room-temperature drinks instead of iced ones, and try coconut water for the heat. Get up early and move before 10 a.m.",
+          "source": "Frawley; Lad; Templeton; Kripalu"
         },
         {
           "type": "Pitta-Kapha",
@@ -203,21 +197,20 @@
         {
           "type": "Tridoshic",
           "slug": "tridoshic",
-          "tip": "Stay cool this season. Go easy on spicy and fried foods, eat more fresh fruit and greens, and drink plenty of fluids. Stay out of the strongest sun from 10 a.m. to 2 p.m.",
-          "source": "Gran; Templeton"
+          "tip": "Stay cool this season. Go easy on spicy and fried foods, eat more fresh fruit and greens, and favor cooling foods like cucumber, zucchini, summer squash and mint. Stay out of the strongest sun from 10 a.m. to 2 p.m.",
+          "source": "Welch; Templeton"
         }
       ],
       "sourceKeys": [
-        "KV",
-        "G",
-        "M",
+        "W-VP",
         "T2",
         "KP",
+        "L",
         "HM",
         "T3",
         "F",
+        "W-T",
         "W-VK",
-        "W-VP",
         "W-PK"
       ]
     },
@@ -233,58 +226,58 @@
           "type": "Vata",
           "slug": "vata",
           "tip": "Stay warm through the colder months. Soups and stews with root vegetables suit this time of year, along with warm drinks like ginger tea. Keep meals, bedtime and wake time at the same times each day.",
-          "source": "Templeton; Mount Madonna; Kripalu"
+          "source": "Templeton; Mount Madonna; Welch"
         },
         {
           "type": "Pitta",
           "slug": "pitta",
-          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods. Basmati rice with fresh green vegetables makes a steady meal, and fresh greens are good as they come into season. Keep portions moderate.",
-          "source": "Kripalu; Templeton; Hope-Murray"
+          "tip": "Favor sweet, bitter and astringent tastes, like coconut, dark leafy greens and apples, and go easy on very salty, fried and spicy foods. Basmati rice with fresh green vegetables makes a steady meal, and fresh greens are good as they come into season. Take a barefoot walk in the dewy grass at dawn.",
+          "source": "Kripalu; Templeton"
         },
         {
           "type": "Kapha",
           "slug": "kapha",
           "tip": "This is your season to stay light and active. Get up early and move before 10 a.m., with brisk exercise or Sun Salutations. Choose light, warm, dry foods, and go lighter on bread, pasta, rich desserts and dairy.",
-          "source": "Templeton; Kripalu; Hope-Murray; Gran"
+          "source": "Templeton; Beatrice Voss; Hope-Murray; Lad"
         },
         {
           "type": "Vata-Pitta",
           "slug": "vata-pitta",
           "tip": "Favor warm, cooked meals with sweet tastes, like carrots and coconut, with soups and stews in the colder months. Keep spices mild, and keep meals, sleep and rest at steady times.",
-          "source": "Frawley; Templeton; Gran"
+          "source": "Frawley; Templeton; Welch"
         },
         {
           "type": "Vata-Kapha",
           "slug": "vata-kapha",
           "tip": "Eat warm food and stay warm, favoring pungent tastes, like ginger, mustard and black pepper, and lighter meals. Spice your food generously, and go easy on heavy, oily and cold foods and dairy. Get up early and move before 10 a.m.",
-          "source": "Frawley; Hope-Murray; Gran; Templeton"
+          "source": "Frawley; Hope-Murray; Lad; Templeton"
         },
         {
           "type": "Pitta-Kapha",
           "slug": "pitta-kapha",
           "tip": "Favor pungent, bitter and astringent tastes, like cumin, dark leafy greens and apples, with aromatic spices, and go lighter on bread, pasta, rich desserts and dairy. Get up early and move before 10 a.m., with a brisk walk or Sun Salutations. Keep portions moderate.",
-          "source": "Frawley; Hope-Murray; Gran; Templeton; Kripalu"
+          "source": "Frawley; Hope-Murray; Lad; Templeton; Beatrice Voss; Welch"
         },
         {
           "type": "Tridoshic",
           "slug": "tridoshic",
           "tip": "In early winter, stay warm and favor soups and stews. As spring comes, exercise more, lighten your meals, and go easy on dairy and sweets. Keep meals, sleep and rest at regular times.",
-          "source": "Gran"
+          "source": "Welch; Templeton; Lad"
         }
       ],
       "sourceKeys": [
         "T2",
         "MM",
-        "KV",
-        "KP",
-        "HM",
-        "T3",
-        "KK",
-        "G",
-        "F",
-        "W-VK",
         "W-VP",
-        "W-PK"
+        "KP",
+        "T3",
+        "BV",
+        "HM",
+        "L",
+        "F",
+        "W-PK",
+        "W-T",
+        "W-VK"
       ]
     }
   ]
