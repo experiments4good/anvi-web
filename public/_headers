@@ -1,0 +1,4 @@
+# Apple fetches this for the app's associated domain (open.getanvi.app). It
+# has no extension, so name its type; it is served as is, with no redirect.
+/.well-known/apple-app-site-association
+  Content-Type: application/json

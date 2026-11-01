@@ -71,3 +71,30 @@ export function guidePath(label: string): string {
   };
   return `/dosha/${pairs[label] ?? label.toLowerCase()}/`;
 }
+
+/**
+ * The link that opens a result in the app: open.getanvi.app is the app's
+ * associated domain (public/.well-known/apple-app-site-association), so with
+ * the app installed iOS opens it there; without it, /app/result/ explains.
+ */
+export const OPEN_APP_ORIGIN = 'https://open.getanvi.app';
+
+export function openAppUrl({ vata, pitta, kapha }: Scores): string {
+  return `${OPEN_APP_ORIGIN}/app/result?v=${vata}&p=${pitta}&k=${kapha}`;
+}
+
+/**
+ * Scores from the link's v, p and k, checked as the app checks them: each a
+ * whole number from 0 to 20, the three adding up to 20. Null otherwise.
+ */
+export function scoresFromParams(params: URLSearchParams): Scores | null {
+  const read = (key: string) => {
+    const raw = params.get(key);
+    return raw !== null && /^\d{1,2}$/.test(raw) ? Number(raw) : NaN;
+  };
+  const s = { vata: read('v'), pitta: read('p'), kapha: read('k') };
+  const all = [s.vata, s.pitta, s.kapha];
+  if (all.some((n) => !Number.isInteger(n) || n < 0 || n > QUIZ_QUESTION_COUNT)) return null;
+  if (s.vata + s.pitta + s.kapha !== QUIZ_QUESTION_COUNT) return null;
+  return s;
+}

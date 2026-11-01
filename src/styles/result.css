@@ -268,6 +268,30 @@
   outline-color: var(--surface);
 }
 
+.r-app-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+/* On teal: a light button, as Share is on the sage band. */
+.r-open {
+  border-color: var(--surface);
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.r-open:hover {
+  border-color: var(--kapha-soft);
+  background: var(--kapha-soft);
+}
+
+.r-open:focus-visible {
+  outline: 2px solid var(--surface);
+  outline-offset: 3px;
+}
+
 .r .disclaimer {
   margin: 20px 0 0;
   font: var(--small);

@@ -1,4 +1,4 @@
-// The sitemap: every public page, from the same list the link-preview
+// The sitemap: every public page but the unlisted ones, from the same list the link-preview
 // images use (src/lib/share.ts), so a page with an image is always listed.
 import type { APIRoute } from 'astro';
 
@@ -6,7 +6,7 @@ import { sharePages } from '../lib/share';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = (site ?? new URL('https://getanvi.app')).origin;
-  const paths = (await sharePages()).map((p) => p.path);
+  const paths = (await sharePages()).filter((p) => !p.unlisted).map((p) => p.path);
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

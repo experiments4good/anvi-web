@@ -15,7 +15,15 @@
   // replaced the registrar parking record and issued the certificate the
   // domain did not have before (Sept 13, 2026). The workers.dev hostname
   // still serves the same site.
-  "routes": [{ "pattern": "getanvi.app", "custom_domain": true }],
+  //
+  // open.getanvi.app is the app's associated domain for the quiz's "Open in
+  // the Anvi app" link: it serves the same Worker, so its
+  // /.well-known/apple-app-site-association is the site's, and its
+  // /app/result page sends a visitor without the app on to getanvi.app.
+  "routes": [
+    { "pattern": "getanvi.app", "custom_domain": true },
+    { "pattern": "open.getanvi.app", "custom_domain": true }
+  ],
 
   // "main" and "assets" are deliberately absent. The Cloudflare Vite plugin
   // writes dist/server/wrangler.json at build time with the entry point and

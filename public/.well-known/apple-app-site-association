@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["NZL6XS8CKX.com.utopianvisions.anvi"],
+        "components": [{ "/": "/app/result" }]
+      }
+    ]
+  }
+}

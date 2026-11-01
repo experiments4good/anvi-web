@@ -1,0 +1,105 @@
+---
+// Where the quiz's "Open in the Anvi app" link lands when the app is not
+// installed (with it installed, iOS opens the app instead; see
+// public/.well-known/apple-app-site-association). The link is
+// https://open.getanvi.app/app/result?v=<vata>&p=<pitta>&k=<kapha>. On
+// open.getanvi.app this page moves to the same address on getanvi.app, so
+// the button here is a link to another domain and opens the app once it is
+// installed. Everything below is filled in from the address, in the browser.
+import '../../styles/guides.css';
+import '../../styles/result.css';
+import Base from '../../layouts/Base.astro';
+import AppStoreBadge from '../../components/AppStoreBadge.astro';
+
+const title = 'Your dosha | Anvi';
+const description = 'Open your Anvi dosha quiz result in the Anvi app.';
+---
+
+<Base title={title} description={description}>
+  <script is:inline>
+    if (location.hostname === 'open.getanvi.app') location.replace('https://getanvi.app' + location.pathname + location.search);
+  </script>
+  <div class="r">
+    <section class="r-top">
+      <div class="r-wrap r-top-grid">
+        <div class="r-glyph"><span class="glyph-disc" id="result-glyph"></span></div>
+        <div>
+          <h1 class="result-label">Your dosha</h1>
+          <div id="valid" hidden>
+            <p class="result-name" id="result-name"></p>
+            <div class="r-open-steps">
+              <AppStoreBadge />
+              <p>After installing, come back here and tap <strong>Open in the Anvi app</strong>.</p>
+              <a class="r-btn" id="open-app" href="/app/result/">Open in the Anvi app</a>
+              <p id="manual"></p>
+            </div>
+          </div>
+          <p class="r-core" id="invalid" hidden><a href="/quiz/">Take the free dosha quiz</a></p>
+          <noscript><p class="r-core"><a href="/quiz/">Take the free dosha quiz</a></p></noscript>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Reads the scores from the address and nothing else: no storage, no
+  // network calls.
+  import { glyphSvg } from '../../lib/glyph';
+  import { openAppUrl, resultLabel, scoresFromParams } from '../../lib/scoring';
+
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const scores = scoresFromParams(new URLSearchParams(location.search));
+  if (!scores) {
+    $('invalid').hidden = false;
+  } else {
+    const label = resultLabel(scores);
+    $('result-glyph').innerHTML = glyphSvg([scores.vata, scores.pitta, scores.kapha], { id: 'result-glyph-svg', settle: true });
+    // A non-breaking hyphen, so a two-dosha name never splits across lines.
+    $('result-name').textContent = label.replace('-', '\u2011');
+    $<HTMLAnchorElement>('open-app').href = openAppUrl(scores);
+    // The app's own words: its "Do you know your dosha?" choices, and
+    // Manual entry's Primary and Secondary dosha (optional, so a single
+    // type picks one). Tridoshic is not offered there, so the quiz.
+    const strong = (text: string) => {
+      const s = document.createElement('strong');
+      s.textContent = text;
+      return s;
+    };
+    const [primary, secondary] = label.split('-');
+    $('manual').replaceChildren(
+      ...(label === 'Tridoshic'
+        ? ['Or in the app, choose ', strong("I'm not sure yet"), ' and take the 3-minute quiz.']
+        : ['Or in the app, choose ', strong('I already know my dosha'), ' and pick ', strong(primary!), ...(secondary ? [', then ', strong(secondary)] : []), '.']),
+    );
+    $('valid').hidden = false;
+  }
+</script>
+
+<style>
+  /* The type in the quiz result's serif; here "Your dosha" is the heading. */
+  .result-name {
+    font-family: var(--serif);
+    font-weight: 600;
+  }
+
+  .r-open-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 28px;
+    font: 400 1.125rem / 1.5 var(--sans);
+    color: var(--body);
+  }
+
+  .r-open-steps p {
+    margin: 0;
+  }
+
+  @media (max-width: 820px) {
+    .r-open-steps {
+      align-items: center;
+    }
+  }
+</style>

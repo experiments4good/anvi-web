@@ -19,6 +19,8 @@ export interface SharePage {
   /** The page's own heading, as its H1 reads (two-dosha guides: the type). */
   heading: string;
   glyph: Triple;
+  /** Kept out of the sitemap and search: a page made for one visitor's link. */
+  unlisted?: boolean;
 }
 
 const BALANCED: Triple = [4, 4, 4];
@@ -40,6 +42,8 @@ export async function sharePages(): Promise<SharePage[]> {
     { path: '/privacy/', heading: legal['privacy']!, glyph: BALANCED },
     { path: '/terms/', heading: legal['terms']!, glyph: BALANCED },
     { path: '/delete-account/', heading: legal['delete-account']!, glyph: BALANCED },
+    // Where the quiz's "Open in the Anvi app" lands when the app is not installed.
+    { path: '/app/result/', heading: 'Your dosha', glyph: BALANCED, unlisted: true },
   ];
 }
 
