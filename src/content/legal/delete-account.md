@@ -31,6 +31,7 @@ Your account is deleted right away, and this cannot be undone. If you signed in 
 - **Request logs.** Our hosting provider, Supabase, keeps a record of each request the app made, including your IP address and, for signed-in requests, your account ID. These are deleted automatically within 7 days.
 - **AI usage records.** For each reply or menu scan, we keep a record of which feature was used, its size and its cost, so we can track our costs. These records hold no message text, and your account ID is removed from them when you delete your account.
 - **Messages and menu photos already sent to Anthropic** to generate replies. Anthropic deletes them within 30 days. If its safety systems flag a request under its usage policy, it keeps the request for up to 2 years and its safety classification scores for up to 7 years.
+- **Usage events** (app version 1.1 and later) carry a random ID made on your phone, not your account, so they can't be found and deleted with it. They are deleted after 180 days.
 - **Purchase records.** Apple, Google and RevenueCat keep their own records of any purchase under their policies.
 
 ## If you no longer have the app
