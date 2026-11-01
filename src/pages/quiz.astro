@@ -246,6 +246,9 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
     $<HTMLAnchorElement>('guide-link').href = path;
     $('share-note').hidden = true;
     show(result);
+    // Its own path, so Web Analytics counts finished quizzes. A reload of it
+    // redirects to /quiz/ (public/_redirects).
+    history.pushState(null, '', '/quiz/result/');
     $('result-name').focus({ preventScroll: true });
   }
 
@@ -254,9 +257,23 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
     orders = QUIZ.map(() => shuffled());
     current = 0;
     renderQuestion();
+    // Its own path, so Web Analytics counts started quizzes. A reload of it
+    // redirects to /quiz/ (public/_redirects).
+    history.pushState(null, '', '/quiz/start/');
   }
   $('start').addEventListener('click', begin);
   $('retake').addEventListener('click', begin);
+
+  // Back and Forward between the quiz's paths show the matching screen; a path
+  // with nothing to show yet falls back to the intro.
+  window.addEventListener('popstate', () => {
+    const at = location.pathname;
+    if (at === '/quiz/start/' && orders.length) renderQuestion();
+    else if (at === '/quiz/result/' && label) {
+      show(result);
+      $('result-name').focus({ preventScroll: true });
+    } else show(intro);
+  });
 
   $('back').addEventListener('click', () => {
     if (current === 0) show(intro);

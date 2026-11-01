@@ -6,6 +6,11 @@
 /dosha/kapha-pitta /dosha/pitta-kapha/ 301
 /dosha/kapha-pitta/ /dosha/pitta-kapha/ 301
 
+# The quiz's start and result paths exist only for Web Analytics page views;
+# a reload or a visit lands on the quiz itself.
+/quiz/start/ /quiz/ 302
+/quiz/result/ /quiz/ 302
+
 # Google Search Console verification: serve the file at its .html address,
 # not the extensionless one the asset handling redirects to.
 /google8436bdfad2414050.html /google8436bdfad2414050 200
