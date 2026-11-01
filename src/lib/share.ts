@@ -39,6 +39,7 @@ export async function sharePages(): Promise<SharePage[]> {
     ...stage2.seasons.map((s) => ({ path: `/season/${s.slug}/`, heading: s.heading, glyph: proportionsFor(SEASON_DOSHA[s.dosha]!) })),
     { path: '/privacy/', heading: legal['privacy']!, glyph: BALANCED },
     { path: '/terms/', heading: legal['terms']!, glyph: BALANCED },
+    { path: '/delete-account/', heading: legal['delete-account']!, glyph: BALANCED },
   ];
 }
 

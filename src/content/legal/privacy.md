@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-updated: 2026-10-02
+updated: 2026-11-01
 ---
 
 Anvi is an Ayurvedic wellness app published by Utopian Visions LLC ("Anvi," "we," "us"). This policy explains what we collect, why, how we use it, and the control you have over it. It is written to describe what the app actually does, not to keep our options open.
@@ -19,15 +19,15 @@ Anvi is intended for adults. It is available in the United States and Canada. Do
 
 **Information you give us:**
 - **Account information:** your name and email address when you create an account. If you sign in with Apple or Google, we receive a unique identifier and, on your first Apple sign-in only, the name you choose to share. If you use Apple's Hide My Email, we receive only the relay address.
-- **Your wellness profile:** your dosha (constitution) result, your quiz answers, and any wellness goals and dietary preferences you enter.
+- **Your wellness profile:** your dosha (constitution) result, your quiz scores, and any wellness goals and dietary preferences you enter.
 - **Your conversations:** the messages you send to Anvi and the replies it generates, so your conversation has continuity.
-- **Menu photos:** if you use the menu scanner, the photo you take or choose is sent to Anthropic's Claude API so it can read the menu and suggest dishes. We do not store the photo. The suggestions are saved to your conversation. Anthropic deletes API inputs within 30 days, or keeps them for up to 2 years if its safety systems flag a request as violating its usage policy, and does not use them to train its models.
+- **Menu photos:** if you use the menu scanner, the photo you take or choose is sent to Anthropic's Claude API so it can read the menu and suggest dishes. We do not store the photo. The suggestions are saved to your conversation. Anthropic deletes API inputs and outputs within 30 days. If its safety systems flag a request under its usage policy, it keeps the inputs and outputs for up to 2 years and its safety classification scores for up to 7 years. It does not train its models on them.
 
 **Information created as you use the app:**
 - **Usage counts** needed to run the service, such as how many messages you have used in a day or how many menu scans you have used in the current 30-day period, and your subscription status.
-- **Basic technical data** such as error logs, used to keep the app working.
+- **Request logs.** When the app talks to our servers, our hosting provider, Supabase, records each request: your IP address, the approximate location derived from it (city, region and country), your network provider, your device and app information sent with the request, and the address the app requested. Records of sign-ins and of requests made while you are signed in also include your account ID. We use these logs to run the service, fix problems and protect it from abuse. They are deleted automatically after 7 days.
 
-**What we do not collect:** we do not collect your precise location, we do not track you across other apps or websites, and we do not use advertising identifiers.
+**What we do not collect:** we do not collect your precise location, we do not track you across other apps or websites, and we do not use advertising identifiers. Our website, getanvi.app, uses Cloudflare Web Analytics, which sets no cookies and collects no personal information; it counts page views so we can see which pages are used.
 
 ## 3. Where your information is stored and processed
 
@@ -53,14 +53,14 @@ Some of what you enter (for example a dietary restriction, or something you tell
 
 ## 6. Your choices and controls
 
-- **Delete your account.** In the app, go to the You tab and tap "Delete account." This permanently removes your profile, your dosha result, your wellness goals and dietary preferences, and your entire conversation with Anvi from our database. If you signed in with Apple, deleting your account also revokes Anvi's access to your Apple ID. Deletion is not reversible.
+- **Delete your account.** In the app, go to the You tab and tap "Delete account." This permanently removes your profile, your dosha result, your wellness goals and dietary preferences, and your entire conversation with Anvi from our database. If you signed in with Apple, deleting your account also revokes Anvi's access to your Apple ID. Deletion is not reversible. Request logs from before you deleted your account are deleted within 7 days. Step-by-step instructions, and how to ask us by email if you no longer have the app, are at [getanvi.app/delete-account](/delete-account/).
 - **Edit your information.** You can change your name, goals, dietary preferences, and retake the quiz from the You tab at any time.
 - **Sign in with Apple, before this policy.** If you signed in with Apple before token revocation shipped and want to remove Anvi's access, you can do so at any time in your device's Settings under your Apple ID, "Sign in with Apple."
 - **Contact us** at the email in Section 11 to ask about the information we hold or to request deletion if you cannot reach the in-app option.
 
 ## 7. How long we keep your information
 
-We keep your information for as long as your account exists. When you delete your account, we permanently delete your associated data from our database. We may retain a minimal record where the law requires it, for example to meet tax or accounting obligations tied to a purchase, and store or payment providers keep their own transaction records under their policies.
+We keep your information for as long as your account exists, with one exception: request logs are deleted after 7 days whether or not you keep your account. When you delete your account, we permanently delete your associated data from our database. We may retain a minimal record where the law requires it, for example to meet tax or accounting obligations tied to a purchase, and store or payment providers keep their own transaction records under their policies.
 
 ## 8. Security
 
@@ -78,7 +78,7 @@ If we change this policy we will update the date above and, for significant chan
 
 Utopian Visions LLC  
 PO Box 3036, Chattanooga, TN 37404  
-Email: privacy@getanvi.app
+Email: privacy@utopianvisions.com
 
 ---
 
