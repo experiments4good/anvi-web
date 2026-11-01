@@ -60,7 +60,7 @@ Some of what you enter (for example a dietary restriction, or something you tell
 
 ## 7. How long we keep your information
 
-We keep your information for as long as your account exists, with one exception: request logs are deleted after 7 days whether or not you keep your account. When you delete your account, we permanently delete your associated data from our database. We may retain a minimal record where the law requires it, for example to meet tax or accounting obligations tied to a purchase, and store or payment providers keep their own transaction records under their policies.
+We keep your information for as long as your account exists, with one exception: request logs are deleted after 7 days whether or not you keep your account. When you delete your account, we permanently delete your associated data from our database. Store and payment providers keep their own transaction records under their policies.
 
 ## 8. Security
 
