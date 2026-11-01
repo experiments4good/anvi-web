@@ -81,7 +81,12 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
     <section class="r-wrap r-end">
       <div class="r-app">
         <h2>Get your daily routine, tips and menu help in the Anvi app</h2>
-        <AppStoreBadge />
+        <div class="r-app-links">
+          <AppStoreBadge />
+          <!-- Carries the scores to the app. Nothing leaves the page until
+               this is tapped; the href is only set at the result. -->
+          <a class="r-btn r-open" id="open-app" href="/app/result/">Open in the Anvi app</a>
+        </div>
       </div>
       <p class="disclaimer">This quiz is for educational purposes only and does not constitute medical advice.</p>
       <button class="r-retake" id="retake" type="button">Retake the quiz</button>
@@ -95,7 +100,7 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
   // answers live in this page's memory and are gone when it closes.
   import { glyphSvg } from '../lib/glyph';
   import { QUIZ } from '../lib/quiz';
-  import { breakdown, guidePath, resultLabel, scoresFor } from '../lib/scoring';
+  import { breakdown, guidePath, openAppUrl, resultLabel, scoresFor } from '../lib/scoring';
   import { balancedFor, focusNow, seasonForDate, type Pair } from '../lib/windows';
 
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -244,6 +249,7 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
     $('week').replaceChildren(...cards);
     $<HTMLAnchorElement>('week-link').href = path;
     $<HTMLAnchorElement>('guide-link').href = path;
+    $<HTMLAnchorElement>('open-app').href = openAppUrl(scores);
     $('share-note').hidden = true;
     show(result);
     // Its own path, so Web Analytics counts finished quizzes. A reload of it
