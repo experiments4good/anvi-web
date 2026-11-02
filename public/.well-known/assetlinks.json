@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.utopianvisions.anvi",
+      "sha256_cert_fingerprints": [
+        "EB:AB:F5:F6:76:13:EA:8C:5E:F2:04:D2:2E:F8:A8:19:9B:4C:E9:69:4A:E2:AA:EC:11:40:E9:FA:CF:2F:01:AD",
+        "A3:F1:AF:60:A2:E3:35:87:4B:43:9F:82:12:86:A9:21:B6:49:C6:21:F9:58:AD:F2:64:C3:A1:C7:5D:A6:49:7D"
+      ]
+    }
+  }
+]

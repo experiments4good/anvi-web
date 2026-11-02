@@ -2,3 +2,8 @@
 # has no extension, so name its type; it is served as is, with no redirect.
 /.well-known/apple-app-site-association
   Content-Type: application/json
+
+# Android fetches this to verify the app's App Link on open.getanvi.app
+# (/app/result). Served as is, with no redirect.
+/.well-known/assetlinks.json
+  Content-Type: application/json
