@@ -1,6 +1,6 @@
 ---
 title: Delete your Anvi account
-updated: 2026-11-01
+updated: 2026-11-08
 ---
 
 You can delete your Anvi account and the information in it at any time, from inside the app or by email.

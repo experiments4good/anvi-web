@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-updated: 2026-11-01
+updated: 2026-11-08
 ---
 
 Anvi is an Ayurvedic wellness app published by Utopian Visions LLC ("Anvi," "we," "us"). This policy explains what we collect, why, how we use it, and the control you have over it. It is written to describe what the app actually does, not to keep our options open.
