@@ -3,7 +3,7 @@ import '../styles/guides.css';
 import '../styles/result.css';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import AppStoreBadge from '../components/AppStoreBadge.astro';
+import StoreBadges from '../components/StoreBadges.astro';
 import Glyph from '../components/Glyph.astro';
 import { CORE } from '../lib/core';
 
@@ -82,7 +82,7 @@ const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.
       <div class="r-app">
         <h2>Get your daily routine, tips and menu help in the Anvi app</h2>
         <div class="r-app-links">
-          <AppStoreBadge />
+          <StoreBadges />
           <!-- Carries the scores to the app. Nothing leaves the page until
                this is tapped; the href is only set at the result. -->
           <a class="r-btn r-open" id="open-app" href="/app/result/">Open in the Anvi app</a>

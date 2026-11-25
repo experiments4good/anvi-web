@@ -1,0 +1,23 @@
+---
+// The two store badges, both official artwork, unaltered: Apple's from
+// toolbox.marketingtools.apple.com and Google's from play.google.com. App
+// Store first in the page; on Android the script moves Google Play first,
+// before anything is painted. The browser's own name for itself is read on
+// the visitor's device and sent nowhere. Google's file has clear space
+// built in, so the styles size it by the badge inside (guides.css).
+---
+
+<div class="store-badges">
+  <a class="store-badge" href="https://apps.apple.com/app/id6811624799">
+    <img src="/badges/download-on-the-app-store-black.svg" alt="Download on the App Store" width="144" height="48" />
+  </a>
+  <a class="store-badge is-play" href="https://play.google.com/store/apps/details?id=com.utopianvisions.anvi">
+    <img src="/badges/get-it-on-google-play.png" alt="Get it on Google Play" width="646" height="250" />
+  </a>
+  <script is:inline>
+    if (/Android/i.test(navigator.userAgent)) {
+      var box = document.currentScript.parentElement;
+      box.prepend(box.querySelector('.is-play'));
+    }
+  </script>
+</div>

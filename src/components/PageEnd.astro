@@ -1,7 +1,7 @@
 ---
 // The ending every guide and stage 2 page shares: the quiz button, the App
 // Store line and badge, the wellness line, and the linked sources.
-import AppStoreBadge from './AppStoreBadge.astro';
+import StoreBadges from './StoreBadges.astro';
 import sources from '../lib/sources.json';
 import { NAMA_DIRECTORY } from '../lib/nama';
 
@@ -35,7 +35,7 @@ const list = sourceGroups.flatMap((g) =>
       <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
       <div class="store-band">
         <p class="store-line">{storeLine}</p>
-        <AppStoreBadge />
+        <StoreBadges />
       </div>
       <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a <a href={NAMA_DIRECTORY}>NAMA-certified Ayurvedic practitioner</a>.</p>
     </div>
@@ -43,7 +43,7 @@ const list = sourceGroups.flatMap((g) =>
     <div class="guide-end">
       <a class="btn btn-primary" href="/quiz/">{type ? `Not sure ${type} is you? ` : ''}Take the free dosha quiz: 20 questions, no sign-up.</a>
       <p class="store-line">{storeLine}</p>
-      <AppStoreBadge />
+      <StoreBadges />
       <p class="wellness">This page is general wellness information, not medical advice. For a clinical assessment, see a <a href={NAMA_DIRECTORY}>NAMA-certified Ayurvedic practitioner</a>.</p>
     </div>
   )

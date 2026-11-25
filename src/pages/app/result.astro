@@ -9,7 +9,7 @@
 import '../../styles/guides.css';
 import '../../styles/result.css';
 import Base from '../../layouts/Base.astro';
-import AppStoreBadge from '../../components/AppStoreBadge.astro';
+import StoreBadges from '../../components/StoreBadges.astro';
 
 const title = 'Your dosha | Anvi';
 const description = 'Open your Anvi dosha quiz result in the Anvi app.';
@@ -28,7 +28,7 @@ const description = 'Open your Anvi dosha quiz result in the Anvi app.';
           <div id="valid" hidden>
             <p class="result-name" id="result-name"></p>
             <div class="r-open-steps">
-              <AppStoreBadge />
+              <StoreBadges />
               <p>After installing, come back here and tap <strong>Open in the Anvi app</strong>.</p>
               <a class="r-btn" id="open-app" href="/app/result/">Open in the Anvi app</a>
               <p id="manual"></p>
@@ -100,6 +100,10 @@ const description = 'Open your Anvi dosha quiz result in the Anvi app.';
   @media (max-width: 820px) {
     .r-open-steps {
       align-items: center;
+    }
+
+    .r-open-steps :global(.store-badges) {
+      justify-content: center;
     }
   }
 </style>

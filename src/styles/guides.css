@@ -83,10 +83,17 @@
   filter: brightness(0.95);
 }
 
-/* Apple's badge, unaltered, at Apple's minimum on-screen height or more:
-   48px, and 54px on a phone. Apple asks for clear space of a quarter of the
-   badge's height (12px, 13.5px on a phone); every place the badge sits leaves
-   at least 14px around it. */
+/* The store badges, unaltered and the same height: 48px, 42px in the home
+   page's card on a computer, and 54px on a phone. Both stores ask for clear
+   space of a quarter of the badge's height (13.5px at most); every place they
+   sit leaves at least 14px around each. */
+.store-badges {
+  --badge: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
 .store-badge {
   display: inline-block;
   line-height: 0;
@@ -94,13 +101,22 @@
 }
 
 .store-badge img {
-  height: 48px;
+  height: var(--badge);
   width: auto;
 }
 
+/* Google's file is 646 by 250 with the 564 by 168 badge 41px in from each
+ * edge. Sized so the badge itself is as tall as Apple's, its own clear space
+ * pulled into the gap. */
+.store-badge.is-play img {
+  height: calc(var(--badge) * 250 / 168);
+  max-width: none;
+  margin: calc(var(--badge) * -41 / 168);
+}
+
 @media (max-width: 820px) {
-  .store-badge img {
-    height: 54px;
+  .store-badges {
+    --badge: 54px;
   }
 }
 

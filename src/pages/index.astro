@@ -2,7 +2,7 @@
 import '../styles/guides.css';
 import '../styles/home.css';
 import Base from '../layouts/Base.astro';
-import AppStoreBadge from '../components/AppStoreBadge.astro';
+import StoreBadges from '../components/StoreBadges.astro';
 import Glyph from '../components/Glyph.astro';
 import GuideCards from '../components/GuideCards.astro';
 import { NAMA_DIRECTORY } from '../lib/nama';
@@ -41,7 +41,7 @@ const sources = [
             <a class="h-btn" href="/quiz/">Start the quiz</a>
             <a class="h-browse" href="#guides">Browse the dosha guides</a>
           </div>
-          <div class="h-store"><AppStoreBadge /></div>
+          <div class="h-store"><StoreBadges /></div>
         </div>
         <div class="h-hero-glyph">
           <Glyph scores={[4, 4, 4]} id="home-glyph" label="The Anvi glyph: Vata, Pitta and Kapha in balance" settle />
@@ -77,7 +77,7 @@ const sources = [
                   {s.title}
                 </h3>
                 <p>{s.text}</p>
-                {i === 2 && <AppStoreBadge />}
+                {i === 2 && <StoreBadges />}
               </li>
             ))
           }
@@ -113,7 +113,7 @@ const sources = [
           <p>
             Ask about food, sleep, digestion, stress, and daily routine, and get answers in plain language that account for the dosha result you got.
           </p>
-          <AppStoreBadge />
+          <StoreBadges />
         </div>
         <div class="h-shot">
           <img

@@ -72,6 +72,8 @@ def ending(h, text, keys, where):
         problems.append(f'{where}: has the other App Store line')
     if 'download-on-the-app-store-black.svg' not in h:
         problems.append(f'{where}: App Store badge')
+    if 'get-it-on-google-play.png' not in h:
+        problems.append(f'{where}: Google Play badge')
     for k in keys:
         for e in sources[k]:
             need(text, e['name'], f'{where} source {k}')
@@ -331,6 +333,8 @@ for img in ('/screens/scan-a-menu-dish.jpg', '/screens/chat-with-anvi-breakfast.
         problems.append(f'/: missing {img}')
 if home.count('download-on-the-app-store-black.svg') != 3:
     problems.append('/: three App Store badges (hero, How it works, Chat with Anvi)')
+if home.count('get-it-on-google-play.png') != 3:
+    problems.append('/: three Google Play badges (hero, How it works, Chat with Anvi)')
 if home.count('class="guide-card"') != 7:
     problems.append('/: seven guide cards')
 
@@ -343,6 +347,8 @@ for s_ in ('Your dosha', 'Read your guide', 'Share', 'Your constitution breakdow
     need(quiz_text, s_, '/quiz/ result')
 if 'download-on-the-app-store-black.svg' not in quiz:
     problems.append('/quiz/: App Store badge')
+if 'get-it-on-google-play.png' not in quiz:
+    problems.append('/quiz/: Google Play badge')
 data = json.loads(html.unescape(re.search(r'<script type="application/json" id="guide-data">(.*?)</script>', quiz, re.S).group(1)))
 for f in sorted(glob.glob(str(root / 'src/content/guides/*.md'))):
     fm = dict(re.findall(r'^(\w+): (.+)$', Path(f).read_text().split('---')[1], re.M))

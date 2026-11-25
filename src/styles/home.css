@@ -190,8 +190,15 @@
   line-height: 1.3;
 }
 
-.h-steps .store-badge {
+/* Small enough for both badges side by side in the card. */
+.h-steps .store-badges {
   margin-top: 20px;
+}
+
+@media (min-width: 821px) {
+  .h-steps .store-badges {
+    --badge: 42px;
+  }
 }
 
 .h-steps p {
@@ -225,7 +232,7 @@
   color: var(--ink-soft);
 }
 
-.h-feature-text .store-badge {
+.h-feature-text .store-badges {
   margin-top: 28px;
 }
 
@@ -553,7 +560,12 @@
     border-radius: 12px;
   }
 
-  .h-feature-text .store-badge {
+  .h-store .store-badges,
+  .h-feature-text .store-badges {
+    justify-content: center;
+  }
+
+  .h-feature-text .store-badges {
     order: 4;
     justify-self: center;
     margin-top: 24px;
