@@ -302,6 +302,13 @@ a:hover {
   margin: 0;
 }
 
+/* The store trademark lines, on a row of their own. */
+.foot .foot-marks {
+  flex-basis: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 820px) {
   .foot {
     padding: 28px 0;

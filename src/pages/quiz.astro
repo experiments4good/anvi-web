@@ -15,7 +15,7 @@ const description = "Anvi's 20-question dosha quiz, free and with no sign-up. Yo
 const guides = Object.fromEntries((await getCollection('guides')).map((g) => [g.data.slug, { core: CORE[g.data.slug], week: g.data.week }]));
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} storeMarks>
   <section class="quiz page">
     <!-- Intro. The line under the heading is the App Store description's quiz sentence. -->
     <div id="intro" class="quiz-intro">

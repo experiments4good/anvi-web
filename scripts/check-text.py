@@ -381,6 +381,12 @@ for f in sorted(glob.glob(str(dist / '**/index.html'), recursive=True)):
     if 'aria-controls="site-nav"' not in head.group(1):
         problems.append(f'{rel}: menu button')
     need(visible(foot.group(1)), '© 2026 Utopian Visions, LLC', f'{rel} footer')
+    # The store trademark lines: on every page with the badges, and no other.
+    if 'get-it-on-google-play.png' in h:
+        need(visible(foot.group(1)), 'Google Play and the Google Play logo are trademarks of Google LLC.', f'{rel} footer')
+        need(visible(foot.group(1)), 'Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.', f'{rel} footer')
+    elif 'foot-marks' in h:
+        problems.append(f'{rel}: trademark lines without store badges')
 
 # Link-preview images: the tags on every page, and the words drawn on each
 # image (recorded in the PNG by scripts/build-og.ts) are the page's own

@@ -12,9 +12,11 @@ interface Props {
    * terms, which are kept exactly as published.
    */
   appBanner?: boolean;
+  /** On for every page that shows the store badges: the trademark lines in the footer. */
+  storeMarks?: boolean;
 }
 
-const { title, description, appBanner = true } = Astro.props;
+const { title, description, appBanner = true, storeMarks = false } = Astro.props;
 const origin = Astro.site?.origin ?? Astro.url.origin;
 const canonical = new URL(Astro.url.pathname, origin).href;
 // The page's link-preview image (src/pages/og), drawn at build time.
@@ -82,6 +84,13 @@ const image = new URL(imagePath(share.path), origin).href;
           <a href="mailto:support@getanvi.app">support@getanvi.app</a>
         </nav>
         <p>&copy; 2026 Utopian Visions, LLC</p>
+        {
+          storeMarks && (
+            <p class="foot-marks">
+              Google Play and the Google Play logo are trademarks of Google LLC.<br />Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.
+            </p>
+          )
+        }
       </div>
     </footer>
     <script>

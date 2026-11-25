@@ -15,7 +15,7 @@ const title = 'Your dosha | Anvi';
 const description = 'Open your Anvi dosha quiz result in the Anvi app.';
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} storeMarks>
   <script is:inline>
     if (location.hostname === 'open.getanvi.app') location.replace('https://getanvi.app' + location.pathname + location.search);
   </script>

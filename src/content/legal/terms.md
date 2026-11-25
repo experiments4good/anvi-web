@@ -1,6 +1,6 @@
 ---
 title: Terms of Use
-updated: 2026-09-13
+updated: 2026-11-25
 ---
 
 These Terms of Use ("Terms") are an agreement between you and Utopian Visions LLC ("Anvi," "we," "us") governing your use of the Anvi app. By creating an account or using Anvi, you agree to these Terms. If you do not agree, do not use Anvi.
@@ -31,7 +31,7 @@ Do not use Anvi's chat to submit others' personal information, to attempt to pro
 
 Anvi offers a free tier and a paid subscription ("Anvi Plus"). Some features and higher usage limits are available only to subscribers.
 
-- **Billing.** Paid subscriptions are sold as auto-renewing subscriptions through the Apple App Store (and, where offered, Google Play). Payment is charged to your app store account at confirmation of purchase.
+- **Billing.** Anvi is available on the Apple App Store and Google Play. Paid subscriptions are sold as auto-renewing subscriptions through the Apple App Store and Google Play. Payment is charged to your app store account at confirmation of purchase.
 - **Auto-renewal.** Your subscription renews automatically for the same period unless you cancel at least 24 hours before the end of the current period. Your account is charged for renewal within 24 hours before the period ends.
 - **Free trial.** If a subscription includes a free trial, any unused portion is forfeited when you purchase that subscription, where the app store applies that rule.
 - **Managing and canceling.** You manage and cancel your subscription in your app store account settings, not inside Anvi. Deleting the Anvi app does not cancel your subscription.
